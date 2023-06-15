@@ -13,51 +13,51 @@ website:
       - text: Básico do R
         menu: 
           - href: R_codes/aula1.qmd
-            text: Quarto
+            text: Quarto document
           - href: R_codes/aula2.qmd
-            text: Carregar pacotes
+            text: Pacotes no R
           - href: R_codes/aula3.qmd
             text: Importar dados
-      - text: Gráficos
+      - text: Análise exploratória
         menu:
           - href: R_codes/aula4.qmd
-            text: Plot 1
+            text: Função ggplot2
           - href: R_codes/aula5.qmd
-            text: Plot 2
+            text: Boxplot
           - href: R_codes/aula6.qmd
-            text: Plot 3
+            text: Tipos de gráficos
           - href: R_codes/aula7.qmd
-            text: Aula 7
+            text: Transformar dados
       - text: Teste T
         menu:
           - href: R_codes/aula8.qmd
-            text: Dois grupos
+            text: Entre dois grupos
           - href: R_codes/aula9.qmd
             text: Amostras dependentes ou pareadas
       - text: Anova
         menu: 
           - href: R_codes/aula10.qmd
-            text: "1 Fator"
+            text: 1 Fator
           - href: R_codes/aula11.qmd
-            text: "2 ou mais Fatores"
+            text: 2 ou mais Fatores
           - href: R_codes/aula12.qmd
-            text: "DBC"
+            text: DBC
       - text: Chi-squared/Fisher's Test
         menu:
           - href: R_codes/aula15.qmd
-            text: "Testes Qui-quadrado e Fisher"
+            text: Variável categórica
       - text: Mapas
         menu:
           - href: R_codes/aula16.qmd
-            text: "Mapas"
+            text: Mapas
       - text: Análises de Regressão
         menu:
           - href: R_codes/aula14.qmd
-            text: "Modelo de segunda ordem"
+            text: Modelo de segunda ordem
           - href: R_codes/aula17.qmd
-            text: "Não linear"
+            text: Não linear
           - href: R_codes/aula13.qmd
-            text: "Linear Simples, Misto e GLM"
+            text: Linear Simples, Misto e GLM
     right:
       - icon: linkedin
         href: https://www.linkedin.com/in/raphaelbarbozaagronomia

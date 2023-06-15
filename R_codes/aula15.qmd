@@ -62,7 +62,7 @@ survey |>
 
 # Curva de progresso da severidade
 
-Planilha dados-diversos, aba curve: dado temporal 
+Planilha dados-diversos, aba curve: dado temporal
 
 ```{r}
 curve <- read_excel("dados-diversos.xlsx", "curve")

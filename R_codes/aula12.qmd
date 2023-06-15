@@ -1,8 +1,6 @@
 ---
 title: "aula12"
-#format: html
-format: docx 
-#para salvar para Word
+format: html
 editor: visual
 
 execute: 
