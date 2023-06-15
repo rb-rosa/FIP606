@@ -12,6 +12,8 @@ website:
     left:
       - text: Básico do R
         menu: 
+          - href: R_codes/aula1.qmd
+            text: Quarto
           - href: R_codes/aula2.qmd
             text: Carregar pacotes
           - href: R_codes/aula3.qmd
