@@ -7,7 +7,6 @@ execute:
   freeze: auto
 
 website:
-  reader-mode: true
   page-navigation: true
   title: "FIP606"
   sidebar:
