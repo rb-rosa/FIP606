@@ -1,5 +1,5 @@
 ---
-title: "Welcome"
+title: "**Bem-vindo**"
 subtitle: "Análise e Visualização de Dados em Fitopatologia"
 ---
 

@@ -102,7 +102,7 @@ kruskal(insects$count, insects$spray, console = TRUE)
 
 ```
 
-# Modelo linear generalizado 
+# Modelo linear generalizado
 
 Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.
 

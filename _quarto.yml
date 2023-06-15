@@ -42,7 +42,7 @@ website:
             text: "2 ou mais Fatores"
           - href: R_codes/aula12.qmd
             text: "DBC"
-      - text: Chi-squared test/Fisher's Exact Test
+      - text: Chi-squared/Fisher's Test
         menu:
           - href: R_codes/aula15.qmd
             text: "Testes Qui-quadrado e Fisher"
@@ -59,6 +59,8 @@ website:
           - href: R_codes/aula13.qmd
             text: "Linear Simples, Misto e GLM"
     right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/raphaelbarbozaagronomia
       - icon: instagram
         href: https://www.instagram.com/invites/contact/?i=xk2vhn0e4rad&utm_content=2owlczy
       - icon: github
@@ -66,7 +68,7 @@ website:
     
 format:
   html:
-    theme: cosmo
+    theme: spacelab
     css: styles.css
     toc: true
 
