@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP 606 - aula10</title>
+<title>FIP606 - aula10</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,6 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../R_codes/aula11.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,11 +104,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -126,173 +127,238 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">FIP 606</span>
-    </a>
-  </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-básico-do-r" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Básico do R</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-básico-do-r">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula1.html">
- <span class="dropdown-text">Quarto document</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula2.html">
- <span class="dropdown-text">Pacotes no R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula3.html">
- <span class="dropdown-text">Importar dados</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análise-exploratória" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Análise exploratória</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-análise-exploratória">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula4.html">
- <span class="dropdown-text">Função ggplot2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula5.html">
- <span class="dropdown-text">Boxplot</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula6.html">
- <span class="dropdown-text">Tipos de gráficos</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula7.html">
- <span class="dropdown-text">Transformar dados</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teste-t" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Teste T</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-teste-t">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula8.html">
- <span class="dropdown-text">Entre dois grupos</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula9.html">
- <span class="dropdown-text">Amostras dependentes ou pareadas</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-anova" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Anova</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-anova">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula10.html">
- <span class="dropdown-text">1 Fator</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula11.html">
- <span class="dropdown-text">2 ou mais Fatores</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula12.html">
- <span class="dropdown-text">DBC</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-chi-squaredfishers-test" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Chi-squared/Fisher’s Test</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-chi-squaredfishers-test">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula15.html">
- <span class="dropdown-text">Variável categórica</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mapas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Mapas</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-mapas">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula16.html">
- <span class="dropdown-text">Mapas</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análises-de-regressão" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Análises de Regressão</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-análises-de-regressão">    
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula14.html">
- <span class="dropdown-text">Modelo de segunda ordem</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula17.html">
- <span class="dropdown-text">Não linear</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../R_codes/aula13.html">
- <span class="dropdown-text">Linear Simples, Misto e GLM</span></a>
-  </li>  
-    </ul>
-  </li>
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/raphaelbarbozaagronomia"><i class="bi bi-linkedin" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.instagram.com/invites/contact/?i=xk2vhn0e4rad&amp;utm_content=2owlczy"><i class="bi bi-instagram" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rb-rosa"><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-</ul>
-              <div id="quarto-search" class="" title="Search"></div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">aula10</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">FIP606</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://www.linkedin.com/in/raphaelbarbozaagronomia" title="" class="sidebar-tool px-1"><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.instagram.com/invites/contact/?i=xk2vhn0e4rad&amp;utm_content=2owlczy" title="" class="sidebar-tool px-1"><i class="bi bi-instagram"></i></a>
+    <a href="" title="" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-github"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/rb-rosa">
+          Source Code
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="mailto:rbarboza.rosa@gmail.com">
+          Report a Bug
+          </a>
+        </li>
+    </ul>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Básico do R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula1.html" class="sidebar-item-text sidebar-link">Quarto document</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula2.html" class="sidebar-item-text sidebar-link">Pacotes no R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula3.html" class="sidebar-item-text sidebar-link">Importar dados</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Análise exploratória</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula4.html" class="sidebar-item-text sidebar-link">Função ggplot2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula5.html" class="sidebar-item-text sidebar-link">Boxplot</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula6.html" class="sidebar-item-text sidebar-link">Tipos de gráficos</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula7.html" class="sidebar-item-text sidebar-link">Transformar dados</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Teste T</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula8.html" class="sidebar-item-text sidebar-link">Entre dois grupos</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula9.html" class="sidebar-item-text sidebar-link">Amostras dependentes ou pareadas</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Anova</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula10.html" class="sidebar-item-text sidebar-link active">1 Fator</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula11.html" class="sidebar-item-text sidebar-link">2 ou mais Fatores</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula12.html" class="sidebar-item-text sidebar-link">DBC</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Chi-squared/Fisher’s Test</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula15.html" class="sidebar-item-text sidebar-link">Variável categórica</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Análises de Regressão</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link">Modelo de segunda ordem</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula17.html" class="sidebar-item-text sidebar-link">Não linear</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link">Linear Simples, Misto e GLM</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">Mapas</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula16.html" class="sidebar-item-text sidebar-link">Mapas</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#anova-é-feita-para-níveis-categóricos-fator-qualitativo.-na-anova-queremos-saber-quem-é-diferente-de-quem." id="toc-anova-é-feita-para-níveis-categóricos-fator-qualitativo.-na-anova-queremos-saber-quem-é-diferente-de-quem." class="nav-link active" data-scroll-target="#anova-é-feita-para-níveis-categóricos-fator-qualitativo.-na-anova-queremos-saber-quem-é-diferente-de-quem.">ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.</a></li>
-  <li><a href="#modelo-linear-generalizado" id="toc-modelo-linear-generalizado" class="nav-link" data-scroll-target="#modelo-linear-generalizado">Modelo linear generalizado</a></li>
+  <li><a href="#três-ou-mais-tratamentos" id="toc-três-ou-mais-tratamentos" class="nav-link active" data-scroll-target="#três-ou-mais-tratamentos">Três ou mais tratamentos</a>
+  <ul class="collapse">
+  <li><a href="#anova-1-fator" id="toc-anova-1-fator" class="nav-link" data-scroll-target="#anova-1-fator">Anova 1 fator</a>
+  <ul class="collapse">
+  <li><a href="#preparo" id="toc-preparo" class="nav-link" data-scroll-target="#preparo">Preparo</a></li>
+  <li><a href="#premissas" id="toc-premissas" class="nav-link" data-scroll-target="#premissas">Premissas</a></li>
+  <li><a href="#modelo-usando-aov" id="toc-modelo-usando-aov" class="nav-link" data-scroll-target="#modelo-usando-aov">Modelo usando <code>aov()</code></a></li>
+  </ul></li>
+  <li><a href="#e-quanto-não-atende-às-premissas" id="toc-e-quanto-não-atende-às-premissas" class="nav-link" data-scroll-target="#e-quanto-não-atende-às-premissas">E quanto não atende às premissas?</a></li>
+  </ul></li>
+  <li><a href="#modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados." id="toc-modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados." class="nav-link" data-scroll-target="#modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados.">Modelo linear generalizado. Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</a></li>
   </ul>
 </nav>
     </div>
@@ -301,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">aula10</h1>
+<h1 class="title d-none d-lg-block">aula10</h1>
 </div>
 
 
@@ -316,9 +382,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="anova-é-feita-para-níveis-categóricos-fator-qualitativo.-na-anova-queremos-saber-quem-é-diferente-de-quem." class="level1">
-<h1>ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.</h1>
-<p>#ANOVA tem duas premissas.</p>
+<section id="três-ou-mais-tratamentos" class="level1">
+<h1>Três ou mais tratamentos</h1>
+<section id="anova-1-fator" class="level2">
+<h2 class="anchored" data-anchor-id="anova-1-fator">Anova 1 fator</h2>
+<p>ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.</p>
+<p>Experimento com um fator e em delineamento inteiramente casualizado para comparar o crescimento micelial de diferentes espécies de um fungo fitopatogênico. A resposta a ser estudada é a TCM = taxa de crescimento micelial.</p>
+<section id="preparo" class="level3">
+<h3 class="anchored" data-anchor-id="preparo">Preparo</h3>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-1_79570b42219efb0a84eb066d6d90a591">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -344,7 +415,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula10_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-3_1e223896d9b42e4db5b1b7d16ec70c8f">
+</section>
+<section id="premissas" class="level3">
+<h3 class="anchored" data-anchor-id="premissas">Premissas</h3>
+</section>
+<section id="modelo-usando-aov" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-usando-aov">Modelo usando <code>aov()</code></h3>
+<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-3_93b166406ff2309cc597cd959dbab162">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Ajustar o modelo</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;- (atribuiu aov a aov1); ~ (em função de); aov (função ANOVA)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(tcm <span class="sc">~</span> especie, <span class="at">data =</span> micelial)</span>
@@ -367,7 +444,7 @@ Residuals   37 2.1885 0.05915               </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>OK: residuals appear as normally distributed (p = 0.074).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#OK: residuals appear as normally distributed (p = 0.074). Significa que a normalidade </span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#OK: residuals appear as normally distributed (p = 0.074). Significa que há normalidade </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DHARMa)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">simulateResiduals</span>(aov1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -393,6 +470,11 @@ data:  aov1$residuals
 W = 0.95101, p-value = 0.07022</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="e-quanto-não-atende-às-premissas" class="level2">
+<h2 class="anchored" data-anchor-id="e-quanto-não-atende-às-premissas">E quanto não atende às premissas?</h2>
+<p>Efeito de inseticida na mortalidade de insetos (Beall, 1942). The Transformation of data from entomological field experiments, Biometrika, 29, 243–262. Dados no pacote “datasets” do R. data(InsectSprays)</p>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-4_c9314134306ee65bd555d7dff4e292d1">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criando o objeto insects</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>insects <span class="ot">&lt;-</span> <span class="fu">tbl_df</span>(InsectSprays) <span class="sc">|&gt;</span> </span>
@@ -569,9 +651,9 @@ C      11.45833      c</code></pre>
 </div>
 </div>
 </section>
-<section id="modelo-linear-generalizado" class="level1">
-<h1>Modelo linear generalizado</h1>
-<p>Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</p>
+</section>
+<section id="modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados." class="level1">
+<h1>Modelo linear generalizado. Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</h1>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-7_48de9d7db8c7b6abab7df7e89d779095">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(count <span class="sc">~</span> spray,</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> insects,</span>
@@ -765,7 +847,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../R_codes/aula11.html" class="pagination-link">
+        <span class="nav-page-text">2 ou mais Fatores</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Raphael B Rosa</div>   
+  </div>
+</footer>
 
 
 

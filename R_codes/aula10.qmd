@@ -8,9 +8,15 @@ execute:
   warning: false
 ---
 
-# ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.
+# Três ou mais tratamentos
 
-#ANOVA tem duas premissas.
+## Anova 1 fator
+
+ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.
+
+Experimento com um fator e em delineamento inteiramente casualizado para comparar o crescimento micelial de diferentes espécies de um fungo fitopatogênico. A resposta a ser estudada é a TCM = taxa de crescimento micelial.
+
+### Preparo
 
 ```{r}
 library(readxl)
@@ -26,6 +32,10 @@ micelial|>
   geom_boxplot()
 ```
 
+### Premissas
+
+### Modelo usando `aov()`
+
 ```{r}
 #Ajustar o modelo
 # <- (atribuiu aov a aov1); ~ (em função de); aov (função ANOVA)
@@ -38,7 +48,7 @@ library(performance)
 check_heteroscedasticity(aov1)
 #OK: Error variance appears to be homoscedastic (p = 0.175). Significa que as variâncias são homogeneas.
 check_normality(aov1)
-#OK: residuals appear as normally distributed (p = 0.074). Significa que a normalidade 
+#OK: residuals appear as normally distributed (p = 0.074). Significa que há normalidade 
 library(DHARMa)
 plot(simulateResiduals(aov1))
 #Normalidade a direita e variância homogenea a esquerda
@@ -49,6 +59,10 @@ qqline(aov1$residuals)
 shapiro.test(aov1$residuals)
 
 ```
+
+## E quanto não atende às premissas?
+
+Efeito de inseticida na mortalidade de insetos (Beall, 1942). The Transformation of data from entomological field experiments, Biometrika, 29, 243--262. Dados no pacote "datasets" do R. data(InsectSprays)
 
 ```{r}
 # criando o objeto insects
@@ -102,9 +116,7 @@ kruskal(insects$count, insects$spray, console = TRUE)
 
 ```
 
-# Modelo linear generalizado
-
-Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.
+# Modelo linear generalizado. Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.
 
 ```{r}
 glm1 <- glm(count ~ spray,

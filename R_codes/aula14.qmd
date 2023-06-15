@@ -8,11 +8,11 @@ execute:
   warning: false
 ---
 
-## Modelo linear de segunda ordem
+### Modelo linear de segunda ordem
 
-# Com mais um parâmetro, quadrática
+Com mais um parâmetro, quadrática
 
-# Nesse exemplo tem-se uma variável independente, que é um nível de um fator do experimento. Como é quantitativo, fazer regressão linear. Então, deve-se observar se é linear simples ou quadrática (nesse caso). Logo, usar o "lm", verificar o ajuste, verificar os coeficientes, pegar a equação que vai predizer o valor de y para cada valor de x ou x², dependendo do modelo usado, que vai reportar os coeficientes de variação, o R².
+Nesse exemplo tem-se uma variável independente, que é um nível de um fator do experimento. Como é quantitativo, fazer regressão linear. Então, deve-se observar se é linear simples ou quadrática (nesse caso). Logo, usar o "lm", verificar o ajuste, verificar os coeficientes, pegar a equação que vai predizer o valor de y para cada valor de x ou x², dependendo do modelo usado, que vai reportar os coeficientes de variação, o R².
 
 ## Ajustar modelo de segunda ordem
 

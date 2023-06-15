@@ -1,6 +1,11 @@
 ---
 title: "aula11"
 format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
 ---
 
 ```{r}
