@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rb-rosa"><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -285,7 +285,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mapas-no-r" id="toc-mapas-no-r" class="nav-link active" data-scroll-target="#mapas-no-r">Mapas no R</a></li>
+  <li><a href="#carregar-pacotes" id="toc-carregar-pacotes" class="nav-link active" data-scroll-target="#carregar-pacotes">Carregar pacotes</a></li>
+  <li><a href="#mapa-do-brasil" id="toc-mapa-do-brasil" class="nav-link" data-scroll-target="#mapa-do-brasil">Mapa do Brasil</a></li>
+  <li><a href="#plotar-os-estados" id="toc-plotar-os-estados" class="nav-link" data-scroll-target="#plotar-os-estados">Plotar os estados</a></li>
+  <li><a href="#selecionar-um-estado" id="toc-selecionar-um-estado" class="nav-link" data-scroll-target="#selecionar-um-estado">Selecionar um estado</a></li>
+  <li><a href="#localização-de-pontos-especificos-dos-dados-latitude-e-longitude" id="toc-localização-de-pontos-especificos-dos-dados-latitude-e-longitude" class="nav-link" data-scroll-target="#localização-de-pontos-especificos-dos-dados-latitude-e-longitude">Localização de pontos especificos dos dados (latitude e longitude)</a></li>
+  <li><a href="#separar-a-data-em-dia-mês-e-ano" id="toc-separar-a-data-em-dia-mês-e-ano" class="nav-link" data-scroll-target="#separar-a-data-em-dia-mês-e-ano">Separar a data em dia, mês e ano</a></li>
+  <li><a href="#inserir-rosa-dos-ventos-e-a-escala-no-mapa" id="toc-inserir-rosa-dos-ventos-e-a-escala-no-mapa" class="nav-link" data-scroll-target="#inserir-rosa-dos-ventos-e-a-escala-no-mapa">Inserir rosa dos ventos e a escala no mapa</a></li>
+  <li><a href="#malha-de-municípios" id="toc-malha-de-municípios" class="nav-link" data-scroll-target="#malha-de-municípios">Malha de municípios</a></li>
   </ul>
 </nav>
     </div>
@@ -309,8 +316,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="mapas-no-r" class="level2">
-<h2 class="anchored" data-anchor-id="mapas-no-r">Mapas no R</h2>
+<section id="carregar-pacotes" class="level2">
+<h2 class="anchored" data-anchor-id="carregar-pacotes">Carregar pacotes</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-1_7595c0384d60df4e4e3e126f9d17125f">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -323,11 +330,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearthhires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#Instalar pacote do github:</p>
+<p>##Instalar pacote do github:</p>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-2_cd7e5267c57f9c971b752f2d4bd87f13">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ropensci/rnaturalearthhires"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#Conjunto de dados: Para plotar o mapa do pais, usa-se a função ne_countries</p>
+</section>
+<section id="mapa-do-brasil" class="level2">
+<h2 class="anchored" data-anchor-id="mapa-do-brasil">Mapa do Brasil</h2>
+<p>Para plotar o mapa do país, usa-se a função “ne_countries”</p>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-3_78b0bd196698a6cffc6a18b13f405085">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sbr <span class="ot">&lt;-</span> RustSoybean</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -339,7 +349,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula16_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>#Para plotar os estados:</p>
+</section>
+<section id="plotar-os-estados" class="level2">
+<h2 class="anchored" data-anchor-id="plotar-os-estados">Plotar os estados</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-4_525fe8d68de3975b8aa4107e6a0446b0">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>BRA <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"Brazil"</span>, </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
@@ -351,7 +363,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula16_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>#Para selecionar um estado: Para</p>
+</section>
+<section id="selecionar-um-estado" class="level2">
+<h2 class="anchored" data-anchor-id="selecionar-um-estado">Selecionar um estado</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-5_814d93df95763a3de6e2d8da1079795b">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>BRA <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"Brazil"</span>, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
@@ -365,7 +379,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula16_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>#Para inserir os pontos especificos dos dados (latitude e longitude)</p>
+</section>
+<section id="localização-de-pontos-especificos-dos-dados-latitude-e-longitude" class="level2">
+<h2 class="anchored" data-anchor-id="localização-de-pontos-especificos-dos-dados-latitude-e-longitude">Localização de pontos especificos dos dados (latitude e longitude)</h2>
 <p>Para plotar os pontos, precisa-se das coordenadas de onde foram coletados os pontos. Ex.: pontos de coleta - precisa-se coletar as coordenadas para plotar em um mapa (no caso de ser só o municipio, pode pegar na internet as coordenadas).</p>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-6_fb397898900a14c2daa48b0e1a3a5653">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>BRA <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"Brazil"</span>, </span>
@@ -379,7 +395,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula16_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>#Para separar a data em dia, mês e ano</p>
+</section>
+<section id="separar-a-data-em-dia-mês-e-ano" class="level2">
+<h2 class="anchored" data-anchor-id="separar-a-data-em-dia-mês-e-ano">Separar a data em dia, mês e ano</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-7_14ad5a1301f212b1db345a810bf175c1">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sbr2 <span class="ot">&lt;-</span> sbr <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(planting, <span class="at">into =</span> </span>
@@ -399,7 +417,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula16_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>#Como inserir a rosa dos ventos e a escala no mapa</p>
+</section>
+<section id="inserir-rosa-dos-ventos-e-a-escala-no-mapa" class="level2">
+<h2 class="anchored" data-anchor-id="inserir-rosa-dos-ventos-e-a-escala-no-mapa">Inserir rosa dos ventos e a escala no mapa</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-8_377143e2043df8d3130e406ae8f57201">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BRA) <span class="sc">+</span></span>
@@ -416,31 +436,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula16_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>#Malha de municipios</p>
-<p>Pega o arquivo shape, que baixado dos municipios em um site do IBJE ou outro confiável. Usa o pacote rgdal e executa os eeguintes comandos:</p>
-<div class="cell" data-hash="aula16_cache/html/unnamed-chunk-9_0522a9b2006a4b705bce7da7796c2de3">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>shapefile <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"Aula16_BR_Municipios_2022/BR_Municipios_2022.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `BR_Municipios_2022' from data source 
-  `C:\Users\rbarb\OneDrive\Área de Trabalho\Mestrado UFV\Disciplinas\FIP 606 Análise e Visualização de Dados em Fitopatologia\Aulas\Aula 19 - Quarto website\website\R_codes\Aula16_BR_Municipios_2022\BR_Municipios_2022.shp' 
-  using driver `ESRI Shapefile'
-Simple feature collection with 5572 features and 4 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841
-Geodetic CRS:  SIRGAS 2000</code></pre>
+</section>
+<section id="malha-de-municípios" class="level2">
+<h2 class="anchored" data-anchor-id="malha-de-municípios">Malha de municípios</h2>
+<p>Baixar arquivo “shape” dos municípios em um site do IBJE Usar pacote rgdal</p>
+<p>Para todos os municípios, chunk comentado</p>
+<div class="cell" data-hash="aula16_cache/html/unnamed-chunk-9_0024ff3975b49a3443d54ba9b9f2411c">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(rgdal)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(sf)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#shapefile &lt;- st_read("Aula16_BR_Municipios_2022/BR_Municipios_2022.shp")</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplot(BRA) +</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = shapefile)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BRA) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> shapefile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="aula16_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Para MG: Precisa filtrar</p>
-<div class="cell" data-hash="aula16_cache/html/unnamed-chunk-10_6b4eb2d063895047b66375cea7dd87c3">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>shapefile <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"MG_Municipios_2022/MG_Municipios_2022.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para MG</p>
+<div class="cell" data-hash="aula16_cache/html/unnamed-chunk-10_21caf6c74813d902c404c013a255b2cd">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shapefile <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"MG_Municipios_2022/MG_Municipios_2022.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MG_Municipios_2022' from data source 
   `C:\Users\rbarb\OneDrive\Área de Trabalho\Mestrado UFV\Disciplinas\FIP 606 Análise e Visualização de Dados em Fitopatologia\Aulas\Aula 19 - Quarto website\website\R_codes\MG_Municipios_2022\MG_Municipios_2022.shp' 
@@ -451,8 +461,8 @@ Dimension:     XY
 Bounding box:  xmin: -51.04608 ymin: -22.92276 xmax: -39.85683 ymax: -14.23318
 Geodetic CRS:  SIRGAS 2000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(MG) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> shapefile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(MG)<span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> shapefile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="aula16_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>

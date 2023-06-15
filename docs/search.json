@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This is a Quarto website\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "R_codes/aula1.html",
@@ -46,14 +46,7 @@
     "href": "R_codes/aula13.html",
     "title": "aula13",
     "section": "",
-    "text": "Análise de regressão estuda a relação entre uma variável dependente (resposta) e outras variáveis independentes (explicativas).Ela permite construir um modelo matemático que represente dois atributos x e y. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.\nJá a correlação linear, resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis.\nPara fatores com níveis quantitavos se faz análise de regressão e não de média. Para essa aula, será feita análise de regressão (fator quantitativo). O objetivo é ajustar um modelo (função ou equação) teórico que permite estimar qualquer valor (3,2,2.6,6….). Nesse caso, queremos saber se há efeito significativo do inóculo na taxa de emergência, se não tiver efito, é observado uma linha reta, mas se tiver, a reta terá uma inclinação (snoop = coeficiente angular da reta). Se o snoop for zero, o ângulo é zero. O p-valor da regressão é se o snoop (diminuição ou aumento) é significativamente diferetne de zero.\nO primeiro passo é fazer uma análise exploratório de representação com o gráfico geom_point, depois ajusta o modelo ao colocar a tendência (regressão linear) de primeira ordem (há dois parâmetros ou coeficientes)."
-  },
-  {
-    "objectID": "R_codes/aula13.html#usar-modelo-misto-ou-simples-não-os-dois.-59-minutos",
-    "href": "R_codes/aula13.html#usar-modelo-misto-ou-simples-não-os-dois.-59-minutos",
-    "title": "aula13",
-    "section": "Usar modelo misto ou simples, não os dois. 59 minutos",
-    "text": "Usar modelo misto ou simples, não os dois. 59 minutos\n\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(dplyr)\nestande <- read_excel(\"dados-diversos.xlsx\", \"estande\")\n\nestande |> \n  ggplot(aes(trat, nplants,))+\n  geom_point()+\n  ylim(0, max(estande$nplants))+\n  #linha de tendência é uma linha suavisada para ver o padrão\n  geom_smooth(se = F, method = \"lm\")"
+    "text": "Análise de regressão estuda a relação entre uma variável dependente (resposta) e outras variáveis independentes (explicativas).Ela permite construir um modelo matemático que represente dois atributos x e y. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.\nJá a correlação linear, resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis.\nPara fatores com níveis quantitavos se faz análise de regressão e não de média. Para essa aula, será feita análise de regressão (fator quantitativo). O objetivo é ajustar um modelo (função ou equação) teórico que permite estimar qualquer valor (3,2,2.6,6….). Nesse caso, queremos saber se há efeito significativo do inóculo na taxa de emergência, se não tiver efito, é observado uma linha reta, mas se tiver, a reta terá uma inclinação (snoop = coeficiente angular da reta). Se o snoop for zero, o ângulo é zero. O p-valor da regressão é se o snoop (diminuição ou aumento) é significativamente diferetne de zero.\nO primeiro passo é fazer uma análise exploratório de representação com o gráfico geom_point, depois ajusta o modelo ao colocar a tendência (regressão linear) de primeira ordem (há dois parâmetros ou coeficientes).\nUsar modelo misto ou simples, não os dois"
   },
   {
     "objectID": "R_codes/aula13.html#modelo-linear-simples-fator-fixo",
@@ -88,7 +81,56 @@
     "href": "R_codes/aula16.html",
     "title": "aula16",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(readxl)\nlibrary(ggplot2)\n\nlibrary(remotes)\nremotes::install_github(\"emdelponte/r4pde\")\nlibrary(r4pde)\n\nlibrary(rnaturalearth)\nlibrary(rnaturalearthhires)\n\n#Instalar pacote do github:\n\nremotes::install_github(\"ropensci/rnaturalearthhires\")\n\n#Conjunto de dados: Para plotar o mapa do pais, usa-se a função ne_countries\n\nsbr <- RustSoybean\n\nBRA <- ne_countries(country = \"Brazil\", \n                    returnclass = \"sf\")\nggplot(BRA) +\ngeom_sf(fill = \"white\")\n\n\n\n\n#Para plotar os estados:\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nggplot(BRA) +\ngeom_sf(color = \"white\",\n          fill = \"darkgreen\") +\n  theme_void()\n\n\n\n\n#Para selecionar um estado: Para\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nMG <- BRA |> filter(name_en == \"Minas Gerais\")\nggplot(BRA) +\ngeom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_sf(data = MG, color = \"black\",\n            fill = \"green\")\n\n\n\n\n#Para inserir os pontos especificos dos dados (latitude e longitude)\nPara plotar os pontos, precisa-se das coordenadas de onde foram coletados os pontos. Ex.: pontos de coleta - precisa-se coletar as coordenadas para plotar em um mapa (no caso de ser só o municipio, pode pegar na internet as coordenadas).\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nMG <- BRA |> filter(name_en == \"Minas Gerais\")\nggplot(BRA) +\ngeom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_point(data = sbr, aes(longitude, latitude), alpha = 0.5)\n\n\n\n\n#Para separar a data em dia, mês e ano\n\nsbr2 <- sbr |>\n  separate(planting, into = \n             c(\"year\", \"month\", \"day\"), sep = \"-\", remove = FALSE)\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nMG <- BRA |> filter(name_en == \"Minas Gerais\")\nggplot(BRA) +\ngeom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_point(data = sbr2,\n             aes(longitude, latitude, color = year), alpha = 0.5)+\n  facet_wrap(~year)+\n  theme_void()\n\n\n\n\n#Como inserir a rosa dos ventos e a escala no mapa\n\nlibrary(ggspatial)\nggplot(BRA) +\n  annotation_north_arrow(location = \"bl\")+\n  annotation_scale(location = \"br\")+\n  geom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_point(data = sbr2,\n             aes(longitude, latitude, color = year, size = severity), alpha = 0.5)+\n  labs(color = \"Planting Year\")+\n  theme_minimal()+\n  theme(legend.position = \"right\")\n\n\n\n\n#Malha de municipios\nPega o arquivo shape, que baixado dos municipios em um site do IBJE ou outro confiável. Usa o pacote rgdal e executa os eeguintes comandos:\n\nlibrary(rgdal)\nlibrary(sf)\nshapefile <- st_read(\"Aula16_BR_Municipios_2022/BR_Municipios_2022.shp\")\n\nReading layer `BR_Municipios_2022' from data source \n  `C:\\Users\\rbarb\\OneDrive\\Área de Trabalho\\Mestrado UFV\\Disciplinas\\FIP 606 Análise e Visualização de Dados em Fitopatologia\\Aulas\\Aula 19 - Quarto website\\website\\R_codes\\Aula16_BR_Municipios_2022\\BR_Municipios_2022.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 5572 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -73.99045 ymin: -33.75118 xmax: -28.84764 ymax: 5.271841\nGeodetic CRS:  SIRGAS 2000\n\nggplot(BRA) +\n  geom_sf(data = shapefile)\n\n\n\n\nPara MG: Precisa filtrar\n\nshapefile <- st_read(\"MG_Municipios_2022/MG_Municipios_2022.shp\")\n\nReading layer `MG_Municipios_2022' from data source \n  `C:\\Users\\rbarb\\OneDrive\\Área de Trabalho\\Mestrado UFV\\Disciplinas\\FIP 606 Análise e Visualização de Dados em Fitopatologia\\Aulas\\Aula 19 - Quarto website\\website\\R_codes\\MG_Municipios_2022\\MG_Municipios_2022.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 853 features and 4 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -51.04608 ymin: -22.92276 xmax: -39.85683 ymax: -14.23318\nGeodetic CRS:  SIRGAS 2000\n\nggplot(MG) +\n  geom_sf(data = shapefile)"
+    "text": "library(tidyverse)\nlibrary(readxl)\nlibrary(ggplot2)\n\nlibrary(remotes)\nremotes::install_github(\"emdelponte/r4pde\")\nlibrary(r4pde)\n\nlibrary(rnaturalearth)\nlibrary(rnaturalearthhires)\n\n##Instalar pacote do github:\n\nremotes::install_github(\"ropensci/rnaturalearthhires\")"
+  },
+  {
+    "objectID": "R_codes/aula16.html#mapa-do-brasil",
+    "href": "R_codes/aula16.html#mapa-do-brasil",
+    "title": "aula16",
+    "section": "Mapa do Brasil",
+    "text": "Mapa do Brasil\nPara plotar o mapa do país, usa-se a função “ne_countries”\n\nsbr <- RustSoybean\n\nBRA <- ne_countries(country = \"Brazil\", \n                    returnclass = \"sf\")\nggplot(BRA) +\ngeom_sf(fill = \"white\")"
+  },
+  {
+    "objectID": "R_codes/aula16.html#plotar-os-estados",
+    "href": "R_codes/aula16.html#plotar-os-estados",
+    "title": "aula16",
+    "section": "Plotar os estados",
+    "text": "Plotar os estados\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nggplot(BRA) +\ngeom_sf(color = \"white\",\n          fill = \"darkgreen\") +\n  theme_void()"
+  },
+  {
+    "objectID": "R_codes/aula16.html#selecionar-um-estado",
+    "href": "R_codes/aula16.html#selecionar-um-estado",
+    "title": "aula16",
+    "section": "Selecionar um estado",
+    "text": "Selecionar um estado\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nMG <- BRA |> filter(name_en == \"Minas Gerais\")\nggplot(BRA) +\ngeom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_sf(data = MG, color = \"black\",\n            fill = \"green\")"
+  },
+  {
+    "objectID": "R_codes/aula16.html#localização-de-pontos-especificos-dos-dados-latitude-e-longitude",
+    "href": "R_codes/aula16.html#localização-de-pontos-especificos-dos-dados-latitude-e-longitude",
+    "title": "aula16",
+    "section": "Localização de pontos especificos dos dados (latitude e longitude)",
+    "text": "Localização de pontos especificos dos dados (latitude e longitude)\nPara plotar os pontos, precisa-se das coordenadas de onde foram coletados os pontos. Ex.: pontos de coleta - precisa-se coletar as coordenadas para plotar em um mapa (no caso de ser só o municipio, pode pegar na internet as coordenadas).\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nMG <- BRA |> filter(name_en == \"Minas Gerais\")\nggplot(BRA) +\ngeom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_point(data = sbr, aes(longitude, latitude), alpha = 0.5)"
+  },
+  {
+    "objectID": "R_codes/aula16.html#separar-a-data-em-dia-mês-e-ano",
+    "href": "R_codes/aula16.html#separar-a-data-em-dia-mês-e-ano",
+    "title": "aula16",
+    "section": "Separar a data em dia, mês e ano",
+    "text": "Separar a data em dia, mês e ano\n\nsbr2 <- sbr |>\n  separate(planting, into = \n             c(\"year\", \"month\", \"day\"), sep = \"-\", remove = FALSE)\n\nBRA <- ne_states(country = \"Brazil\", \n                    returnclass = \"sf\")\nMG <- BRA |> filter(name_en == \"Minas Gerais\")\nggplot(BRA) +\ngeom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_point(data = sbr2,\n             aes(longitude, latitude, color = year), alpha = 0.5)+\n  facet_wrap(~year)+\n  theme_void()"
+  },
+  {
+    "objectID": "R_codes/aula16.html#inserir-rosa-dos-ventos-e-a-escala-no-mapa",
+    "href": "R_codes/aula16.html#inserir-rosa-dos-ventos-e-a-escala-no-mapa",
+    "title": "aula16",
+    "section": "Inserir rosa dos ventos e a escala no mapa",
+    "text": "Inserir rosa dos ventos e a escala no mapa\n\nlibrary(ggspatial)\nggplot(BRA) +\n  annotation_north_arrow(location = \"bl\")+\n  annotation_scale(location = \"br\")+\n  geom_sf(color = \"black\",\n          fill = \"white\") +\n  geom_point(data = sbr2,\n             aes(longitude, latitude, color = year, size = severity), alpha = 0.5)+\n  labs(color = \"Planting Year\")+\n  theme_minimal()+\n  theme(legend.position = \"right\")"
+  },
+  {
+    "objectID": "R_codes/aula16.html#malha-de-municípios",
+    "href": "R_codes/aula16.html#malha-de-municípios",
+    "title": "aula16",
+    "section": "Malha de municípios",
+    "text": "Malha de municípios\nBaixar arquivo “shape” dos municípios em um site do IBJE Usar pacote rgdal\nPara todos os municípios, chunk comentado\n\n#library(rgdal)\n#library(sf)\n#shapefile <- st_read(\"Aula16_BR_Municipios_2022/BR_Municipios_2022.shp\")\n#ggplot(BRA) +\n  #geom_sf(data = shapefile)\n\nPara MG\n\nshapefile <- st_read(\"MG_Municipios_2022/MG_Municipios_2022.shp\")\n\nReading layer `MG_Municipios_2022' from data source \n  `C:\\Users\\rbarb\\OneDrive\\Área de Trabalho\\Mestrado UFV\\Disciplinas\\FIP 606 Análise e Visualização de Dados em Fitopatologia\\Aulas\\Aula 19 - Quarto website\\website\\R_codes\\MG_Municipios_2022\\MG_Municipios_2022.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 853 features and 4 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -51.04608 ymin: -22.92276 xmax: -39.85683 ymax: -14.23318\nGeodetic CRS:  SIRGAS 2000\n\nggplot(MG)+\n  geom_sf(data = shapefile)"
   },
   {
     "objectID": "R_codes/aula17.html",
@@ -151,7 +193,7 @@
     "href": "R_codes/aula4.html",
     "title": "Plot 1",
     "section": "",
-    "text": "library(tidyverse)\nmg <- read_csv(\"dados-diversos.csv\")\n\nmg |> \n  ggplot(aes(Irrigation, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)\n\n\n\n\n\nmg |> \n# filter(rep == 3) |> \n  ggplot(aes(day, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)+\n  geom_line()+\n  facet_wrap(~rep)\n\n\n\n\n\nmg2 <- mg |> \n  select(day, rep, severity) |> \n  group_by(day) |> \n  summarize(sev =  mean(severity))\n\n  mg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_point()+\n  geom_line()+\n  ylim(0,100)+\n    labs(x = \"Time (days)\", y = \"Severity (%)\")\n\n\n\n#   Configurar o gráfico\n\n\nmg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_line(color = \"darkorange\")+\n  geom_point(size = 3, \n             color = \"darkorange\")+\n  scale_x_continuous(breaks = c(0,7,14,21,28,35,42,49,56,63))+\n  scale_y_continuous(n.breaks = 5, \n                     limits = c(0,100))+\n    labs(x = \"Time (days)\", \n         y = \"Severity (%)\", \n         title = \"My first ggplot\", \n         subtitle = \"It is beatiful\", \n         caption = \"Source: FIP 606\")+\n#   Configurar o gráfico\n  theme_light()\n\n\n\nggsave(\"myfirstggplot.png\",\n       bg = \"white\",\n       width = 4,\n       height = 3)"
+    "text": "library(tidyverse)\nmg <- read_csv(\"dados-diversos.csv\")\n\nmg |> \n  ggplot(aes(Irrigation, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)\n\n\n\n\n\nmg |> \n# filter(rep == 3) |> \n  ggplot(aes(day, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)+\n  geom_line()+\n  facet_wrap(~rep)\n\n\n\n\n\nmg2 <- mg |> \n  select(day, rep, severity) |> \n  group_by(day) |> \n  summarize(sev =  mean(severity))\n\n  mg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_point()+\n  geom_line()+\n  ylim(0,100)+\n    labs(x = \"Time (days)\", y = \"Severity (%)\")\n\n\n\n#   Configurar o gráfico\n\n\nmg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_line(color = \"darkorange\")+\n  geom_point(size = 3, \n             color = \"darkorange\")+\n  scale_x_continuous(breaks = c(0,7,14,21,28,35,42,49,56,63))+\n  scale_y_continuous(n.breaks = 5, \n                     limits = c(0,100))+\n    labs(x = \"Time (days)\", \n         y = \"Severity (%)\", \n         title = \"My first ggplot\", \n         subtitle = \"It is beatiful\", \n         caption = \"Source: FIP 606\")+\n#   Configurar o gráfico\n  theme_light()\n\n\n\nggsave(\"figs/myfirstggplot.png\",\n       bg = \"white\",\n       width = 4,\n       height = 3)"
   },
   {
     "objectID": "R_codes/aula5.html",

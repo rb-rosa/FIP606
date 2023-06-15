@@ -1,7 +1,10 @@
 ---
 title: "Welcome"
+subtitle: "Análise e Visualização de Dados em Fitopatologia"
 ---
 
-![](images/rstudio-logo.png){style="float:left; padding-right:30px" width="111"}This is a Quarto website.
+![](images/RStudio_Logo-700x246-01.png){width="361"}
+
+This is a Quarto website
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

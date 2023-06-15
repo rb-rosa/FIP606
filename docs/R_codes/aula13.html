@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rb-rosa"><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -285,8 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#usar-modelo-misto-ou-simples-não-os-dois.-59-minutos" id="toc-usar-modelo-misto-ou-simples-não-os-dois.-59-minutos" class="nav-link active" data-scroll-target="#usar-modelo-misto-ou-simples-não-os-dois.-59-minutos">Usar modelo misto ou simples, não os dois. 59 minutos</a></li>
-  <li><a href="#modelo-linear-simples-fator-fixo" id="toc-modelo-linear-simples-fator-fixo" class="nav-link" data-scroll-target="#modelo-linear-simples-fator-fixo">Modelo linear simples (fator fixo)</a></li>
+  <li><a href="#modelo-linear-simples-fator-fixo" id="toc-modelo-linear-simples-fator-fixo" class="nav-link active" data-scroll-target="#modelo-linear-simples-fator-fixo">Modelo linear simples (fator fixo)</a></li>
   <li><a href="#modelo-misto" id="toc-modelo-misto" class="nav-link" data-scroll-target="#modelo-misto">Modelo misto</a></li>
   <li><a href="#modelo-glm" id="toc-modelo-glm" class="nav-link" data-scroll-target="#modelo-glm">Modelo GLM</a></li>
   </ul>
@@ -316,8 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Já a correlação linear, resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis.</p>
 <p>Para fatores com níveis quantitavos se faz análise de regressão e não de média. Para essa aula, será feita análise de regressão (fator quantitativo). O objetivo é ajustar um modelo (função ou equação) teórico que permite estimar qualquer valor (3,2,2.6,6….). Nesse caso, queremos saber se há efeito significativo do inóculo na taxa de emergência, se não tiver efito, é observado uma linha reta, mas se tiver, a reta terá uma inclinação (snoop = coeficiente angular da reta). Se o snoop for zero, o ângulo é zero. O p-valor da regressão é se o snoop (diminuição ou aumento) é significativamente diferetne de zero.</p>
 <p>O primeiro passo é fazer uma análise exploratório de representação com o gráfico geom_point, depois ajusta o modelo ao colocar a tendência (regressão linear) de primeira ordem (há dois parâmetros ou coeficientes).</p>
-<section id="usar-modelo-misto-ou-simples-não-os-dois.-59-minutos" class="level2">
-<h2 class="anchored" data-anchor-id="usar-modelo-misto-ou-simples-não-os-dois.-59-minutos">Usar modelo misto ou simples, não os dois. 59 minutos</h2>
+<p>Usar modelo misto ou simples, não os dois</p>
 <div class="cell" data-hash="aula13_cache/html/unnamed-chunk-1_bbb15be46a0e22bb365d314a6184d604">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -334,7 +332,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula13_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
 <section id="modelo-linear-simples-fator-fixo" class="level2">
 <h2 class="anchored" data-anchor-id="modelo-linear-simples-fator-fixo">Modelo linear simples (fator fixo)</h2>
 <div class="cell" data-hash="aula13_cache/html/unnamed-chunk-2_3ad683723f8fd1b46bb3c9073c6b86f6">

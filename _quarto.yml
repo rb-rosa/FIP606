@@ -62,7 +62,8 @@ website:
             text: "Linear Simples, Misto e GLM"
     right:
       - icon: github
-        href: https://github.com/
+        href: https://github.com/rb-rosa
+    
 format:
   html:
     theme: cosmo
@@ -70,4 +71,3 @@ format:
     toc: true
 
 editor: visual
-
