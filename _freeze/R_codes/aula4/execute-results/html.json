@@ -1,0 +1,14 @@
+{
+  "hash": "feb027313e5088bb96d9ab8218ba9015",
+  "result": {
+    "markdown": "---\ntitle: \"Plot 1\"\nformat: html\neditor: visual\n\nexecute: \n  freeze: auto\n  cache: true\n  warning: false\n---\n\n\n# Ggplot\n\n## Importar dados\n\n\n::: {.cell hash='aula4_cache/html/unnamed-chunk-1_08dcea617523537d2091277af8c3663c'}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nmg <- read_csv(\"dados-diversos.csv\")\n\nmg |> \n  ggplot(aes(Irrigation, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)\n```\n\n::: {.cell-output-display}\n![](aula4_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n::: {.cell hash='aula4_cache/html/unnamed-chunk-2_3417ec7147c245ed1c820e7b59fe9542'}\n\n```{.r .cell-code}\nmg |> \n# filter(rep == 3) |> \n  ggplot(aes(day, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)+\n  geom_line()+\n  facet_wrap(~rep)\n```\n\n::: {.cell-output-display}\n![](aula4_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n::: {.cell hash='aula4_cache/html/unnamed-chunk-3_c762d68acb7722cbd118daf3987dec90'}\n\n```{.r .cell-code}\nmg2 <- mg |> \n  select(day, rep, severity) |> \n  group_by(day) |> \n  summarize(sev =  mean(severity))\n\n  mg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_point()+\n  geom_line()+\n  ylim(0,100)+\n    labs(x = \"Time (days)\", y = \"Severity (%)\")\n```\n\n::: {.cell-output-display}\n![](aula4_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n\n```{.r .cell-code}\n#   Configurar o gráfico\n```\n:::\n\n::: {.cell hash='aula4_cache/html/unnamed-chunk-4_7eca612e8b387018de0bcc112745728a'}\n\n```{.r .cell-code}\nmg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_line(color = \"darkorange\")+\n  geom_point(size = 3, \n             color = \"darkorange\")+\n  scale_x_continuous(breaks = c(0,7,14,21,28,35,42,49,56,63))+\n  scale_y_continuous(n.breaks = 5, \n                     limits = c(0,100))+\n    labs(x = \"Time (days)\", \n         y = \"Severity (%)\", \n         title = \"My first ggplot\", \n         subtitle = \"It is beatiful\", \n         caption = \"Source: FIP 606\")+\n#   Configurar o gráfico\n  theme_light()\n```\n\n::: {.cell-output-display}\n![](aula4_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n\n```{.r .cell-code}\nggsave(\"myfirstggplot.png\",\n       bg = \"white\",\n       width = 4,\n       height = 3)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

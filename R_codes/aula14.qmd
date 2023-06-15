@@ -1,0 +1,129 @@
+---
+title: "aula14"
+format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+## Modelo linear de segunda ordem
+
+# Com mais um parâmetro, quadrática
+
+# Nesse exemplo tem-se uma variável independente, que é um nível de um fator do experimento. Como é quantitativo, fazer regressão linear. Então, deve-se observar se é linear simples ou quadrática (nesse caso). Logo, usar o "lm", verificar o ajuste, verificar os coeficientes, pegar a equação que vai predizer o valor de y para cada valor de x ou x², dependendo do modelo usado, que vai reportar os coeficientes de variação, o R².
+
+## Ajustar modelo de segunda ordem
+
+# variável independente
+
+```{r}
+# 
+
+library(readxl)
+library(tidyverse)
+estande <- read_excel("dados-diversos.xlsx", "estande")
+
+estande |> 
+  ggplot(aes(trat, nplants, group = exp))+
+  geom_point()+
+  facet_wrap(~exp)+
+  ylim(0, max(estande$nplants))+
+  geom_smooth(se = F)
+```
+
+## Ajustar modelo linear e quadrático no ggplot
+
+```{r}
+estande2 <- estande |> 
+  filter(exp ==2) |> 
+  group_by(trat) |>
+  summarise(mean_nplants = mean(nplants))
+
+estande2 |> 
+  ggplot(aes(trat, mean_nplants))+
+  geom_point()+
+  #geom_line()+
+  geom_smooth(se = F, formula = y ~ poly(x, 2), method = "lm", color = "black")+
+  theme_minimal()+
+  annotate(geom = "text",
+           x = 25, y = 70,
+           label = "y = 66.3 - 1.777x + 0.0222x²
+           R² = 0.88")
+# R² = coeficiente de determinação, 49 minutos
+  
+```
+
+```{r}
+estande2 <- estande2 |> 
+  mutate(trat2 = trat^2)
+
+m1 <- lm(mean_nplants ~ trat, data = estande2)
+summary(m1)
+# Adjusted R-squared:   0.69 = 69% de plantas é explicado pelo tratamento de acordo com o modelo linear.
+# histograma dos resíduos
+hist(m1$residuals)
+
+m2 <- lm(mean_nplants ~ trat + trat2, data = estande2)
+summary(m2)
+
+AIC(m1, m2)
+```
+
+# Relacionar duas respostas
+
+Duas variáveis resposta do tipo númerica quantitativa. . Para saber se há associação entre duas variáveis dependentes.
+
+Primeiro, fazer análise para testar a associação. A análise de correlação dá o coeficiente de correlação de Pearson (R), que é a raiz do R², que será sempre maior que o R².
+
+```{r}
+mofo <- read_excel("dados-diversos.xlsx", "mofo")
+
+mofo |> 
+  ggplot(aes(inc, yld))+
+  geom_point()+
+  facet_wrap(~study)+
+  geom_smooth(se = F, method = "lm")
+```
+
+```{r}
+mofo1 <- mofo |> 
+  filter(study == 3)
+mofo1
+# Correlação linear resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.
+# teste de correlação, de pearson, quando tem normalidade. Testar a associação. Quanto maior o cor, maior a associação. Quanto mais disperso os pontos, menor a associação.
+cor.test(mofo1$inc, mofo1$yld)
+#função cor
+pcor <- cor(mofo1 |> select(3:5))
+library(corrplot)
+corrplot (pcor, method = "number", type = "lower")
+```
+
+```{r}
+mofo1 <- mofo |> 
+  filter(study == 3)
+mofo1
+#teste de normalidade
+shapiro.test(mofo$inc)
+# usar spearman (não paramétrica, quando não assume normalidade) quando falta de normalidade. Usar sperarman como padrão 
+cor.test(mofo1$inc, mofo1$yld, method = "spearman")
+#função cor
+pcor <- cor(mofo1 |> select(3:5), method = "spearman")
+library(corrplot)
+corrplot (pcor, method = "number", type = "lower")
+```
+
+```{r}
+mofo1 <- mofo |> 
+  filter(study == 3)
+mofo1
+#teste de normalidade
+shapiro.test(mofo$inc)
+# usar kendall (não paramétrica, quando não assume normalidade) para dados (variável) ordinais
+cor.test(mofo1$inc, mofo1$yld, method = "kendall")
+#função cor
+pcor <- cor(mofo1 |> select(3:5), method = "kendall")
+library(corrplot)
+corrplot (pcor, method = "number", type = "lower")
+```

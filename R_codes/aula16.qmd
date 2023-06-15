@@ -1,0 +1,139 @@
+---
+title: "aula16"
+format: html
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+## Carregar pacotes
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+
+library(remotes)
+remotes::install_github("emdelponte/r4pde")
+library(r4pde)
+
+library(rnaturalearth)
+library(rnaturalearthhires)
+```
+
+##Instalar pacote do github:
+
+```{r}
+remotes::install_github("ropensci/rnaturalearthhires")
+```
+
+## Mapa do Brasil
+
+Para plotar o mapa do país, usa-se a função "ne_countries"
+
+```{r}
+sbr <- RustSoybean
+
+BRA <- ne_countries(country = "Brazil", 
+                    returnclass = "sf")
+ggplot(BRA) +
+geom_sf(fill = "white")
+```
+
+## Plotar os estados
+
+```{r}
+BRA <- ne_states(country = "Brazil", 
+                    returnclass = "sf")
+ggplot(BRA) +
+geom_sf(color = "white",
+          fill = "darkgreen") +
+  theme_void()
+```
+
+## Selecionar um estado
+
+```{r}
+BRA <- ne_states(country = "Brazil", 
+                    returnclass = "sf")
+MG <- BRA |> filter(name_en == "Minas Gerais")
+ggplot(BRA) +
+geom_sf(color = "black",
+          fill = "white") +
+  geom_sf(data = MG, color = "black",
+            fill = "green")
+```
+
+## Localização de pontos especificos dos dados (latitude e longitude)
+
+Para plotar os pontos, precisa-se das coordenadas de onde foram coletados os pontos. Ex.: pontos de coleta - precisa-se coletar as coordenadas para plotar em um mapa (no caso de ser só o municipio, pode pegar na internet as coordenadas).
+
+```{r}
+BRA <- ne_states(country = "Brazil", 
+                    returnclass = "sf")
+MG <- BRA |> filter(name_en == "Minas Gerais")
+ggplot(BRA) +
+geom_sf(color = "black",
+          fill = "white") +
+  geom_point(data = sbr, aes(longitude, latitude), alpha = 0.5)
+```
+
+## Separar a data em dia, mês e ano
+
+```{r}
+sbr2 <- sbr |>
+  separate(planting, into = 
+             c("year", "month", "day"), sep = "-", remove = FALSE)
+
+BRA <- ne_states(country = "Brazil", 
+                    returnclass = "sf")
+MG <- BRA |> filter(name_en == "Minas Gerais")
+ggplot(BRA) +
+geom_sf(color = "black",
+          fill = "white") +
+  geom_point(data = sbr2,
+             aes(longitude, latitude, color = year), alpha = 0.5)+
+  facet_wrap(~year)+
+  theme_void()
+```
+
+## Inserir rosa dos ventos e a escala no mapa
+
+```{r}
+library(ggspatial)
+ggplot(BRA) +
+  annotation_north_arrow(location = "bl")+
+  annotation_scale(location = "br")+
+  geom_sf(color = "black",
+          fill = "white") +
+  geom_point(data = sbr2,
+             aes(longitude, latitude, color = year, size = severity), alpha = 0.5)+
+  labs(color = "Planting Year")+
+  theme_minimal()+
+  theme(legend.position = "right")
+```
+
+## Malha de municípios
+
+Baixar arquivo "shape" dos municípios em um site do IBJE Usar pacote rgdal
+
+Para todos os municípios, chunk comentado
+
+```{r}
+#library(rgdal)
+#library(sf)
+#shapefile <- st_read("Aula16_BR_Municipios_2022/BR_Municipios_2022.shp")
+#ggplot(BRA) +
+  #geom_sf(data = shapefile)
+```
+
+Para MG
+
+```{r}
+shapefile <- st_read("MG_Municipios_2022/MG_Municipios_2022.shp")
+ggplot(MG)+
+  geom_sf(data = shapefile)
+```

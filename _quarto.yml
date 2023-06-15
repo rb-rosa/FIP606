@@ -1,0 +1,73 @@
+project:
+  type: website
+  output-dir: docs
+  
+execute:
+  cache: true
+  freeze: auto
+
+website:
+  title: "FIP 606"
+  navbar:
+    left:
+      - text: Básico do R
+        menu: 
+          - href: index.qmd
+            text: Início
+          - href: R_codes/aula1.qmd
+            text: Quarto
+          - href: R_codes/aula2.qmd
+            text: Carregar pacotes
+          - href: R_codes/aula3.qmd
+            text: Importar dados
+      - text: Gráficos
+        menu:
+          - href: R_codes/aula4.qmd
+            text: Plot 1
+          - href: R_codes/aula5.qmd
+            text: Plot 2
+          - href: R_codes/aula6.qmd
+            text: Plot 3
+          - href: R_codes/aula7.qmd
+            text: Aula 7
+      - text: Teste T
+        menu:
+          - href: R_codes/aula8.qmd
+            text: Dois grupos
+          - href: R_codes/aula9.qmd
+            text: Amostras dependentes ou pareadas
+      - text: Anova
+        menu: 
+          - href: R_codes/aula10.qmd
+            text: "1 Fator"
+          - href: R_codes/aula11.qmd
+            text: "2 ou mais Fatores"
+          - href: R_codes/aula12.qmd
+            text: "DBC"
+      - text: Chi-squared test/Fisher's Exact Test
+        menu:
+          - href: R_codes/aula15.qmd
+            text: "Testes Qui-quadrado e Fisher"
+      - text: Mapas
+        menu:
+          - href: R_codes/aula16.qmd
+            text: "Mapas"
+      - text: Análises de Regressão
+        menu:
+          - href: R_codes/aula14.qmd
+            text: "Modelo de segunda ordem"
+          - href: R_codes/aula17.qmd
+            text: "Não linear"
+          - href: R_codes/aula13.qmd
+            text: "Linear Simples, Misto e GLM"
+    right:
+      - icon: github
+        href: https://github.com/
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+

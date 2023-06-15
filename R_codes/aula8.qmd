@@ -1,0 +1,66 @@
+---
+title: "Teste T"
+format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+# Comparação entre dois grupos
+
+```{r}
+library(tidyverse)
+library(readxl)
+
+mg <- read_excel("dados-diversos.xlsx","magnesio")
+
+mg |> 
+  ggplot(aes(trat, comp))+
+  geom_jitter(width = 0.05)+
+  geom_boxplot(fill = NA,
+               outlier.colour = NA)+
+  ylim(5,20)
+```
+
+```{r}
+#Para usar o t.test, organizar a tabela no formato largo, um nível do tratamento em uma coluna e outro em outra coluna
+mg2 <- mg |> 
+  #pega a coluna 1, ...
+  pivot_wider(1,
+              names_from = trat,
+              values_from = comp)
+mg2
+
+```
+
+```{r}
+#recebe o grupo mg e depois o grupo controle
+#o $ liga o objeto mg2 a variável Mg2 da tabela no formato longo
+t <- t.test(mg2$Mg2, mg2$Ctrl)
+
+#resultado:df é grau de liberdade
+```
+
+```{r}
+mg |>
+  ggplot(aes(trat, comp))+
+  #erro padrão da média
+  stat_summary(fun.data = "mean_se")
+
+library(report)
+#sugestão para colocar no texto dos resultados
+report(t)
+
+mg |> 
+  ggplot(aes(trat, comp))+
+  geom_jitter(width = 0.05)+
+  geom_boxplot(fill = NA,
+               outlier.colour = NA)+
+  ylim(5,20)+
+  annotate(geom = "text",
+           x = 0.7, y = 19,
+           label = " t = 8.12; P < 0.001")
+
+```

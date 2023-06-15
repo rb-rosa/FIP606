@@ -1,0 +1,97 @@
+---
+title: "aula7"
+format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+
+mofo <- read_excel("dados-diversos.xlsx","mofo")
+
+```
+
+```{r}
+
+mofo |> 
+  ggplot(aes(treat, yld))+
+  geom_col()+
+  facet_wrap(~study)
+
+```
+
+```{r}
+
+h1 <- mofo |> 
+  ggplot(aes(x = scl))+
+  geom_histogram(bins = 10)
+
+```
+
+```{r}
+
+i <- mofo |> 
+  ggplot(aes(x = scl))+
+  geom_boxplot(bins = 10)
+  
+library (patchwork)
+(h1 / i)
+
+```
+
+```{r}
+#média 
+mean (mofo$scl)
+#para cada variável
+summary(mofo)
+```
+
+```{r}
+#cria um novo conjunto, entra no mofo, então
+mofo2 <- mofo |> 
+  #cria a variável scl2, que é igual ao logarítimo (log) do número de escleródios (scl)
+  #mutate(scl2 = log(scl))
+#cria a variável scl2, que é igual a raíz quadrada (sqrt) do número de escleródios (scl)
+  mutate(scl2 = sqrt(scl))
+mofo2
+```
+
+```{r}
+h2 <- mofo2 |> 
+  ggplot(aes(scl2))+
+  geom_histogram(bins = 10)
+h2
+
+
+h1 / h2
+
+```
+
+```{r}
+#cria um novo conjunto com a aba survey do arquivo dados-diversos
+survey <- read_excel("dados-diversos.xlsx", "survey")
+#entra no survey, então
+survey |>
+  #filtra por estado
+  filter(state == "RS") |>
+  #conta a variável do maior para o menor por padrão
+  count(species, residue) |>
+  #reordena uma coluna, do menor para o maior (n), maior para menor (-n), nome da variável
+  arrange(species) |>
+  #seleciona linhas por posição
+  #slice(1:2) |>
+  #renomear coluna
+  rename(res = residue) |>
+  #cria nova variável segudo uma condição de uma variável anterior
+  mutate(n_class = case_when (
+          n < 30 ~ "baixa", 
+          TRUE ~ "Alta"))
+
+```

@@ -1,0 +1,106 @@
+---
+title: "Aula 6"
+format: html
+editor_options: 
+  
+  chunk_output_type: console
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+# Scatter plot
+
+```{r}
+library(tidyverse)
+library(readxl)
+fungicida <- read_excel("dados-diversos.xlsx",
+            "fungicida_campo")
+  
+
+```
+
+```{r}
+fungicida |> 
+  ggplot(aes(trat, yld))+
+  geom_jitter(width = 0.1, 
+              color = "gray60")+
+  stat_summary(fun.data  = mean_se, 
+               color = "red")
+```
+
+```{r}
+library(ggthemes)
+fungicida |> 
+  ggplot(aes(sev, yld))+
+  geom_point(size = 3, 
+             color = "gray50")+
+  scale_color_colorblind()+
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "black",
+              linetype = "solid",
+              size = 1)
+```
+
+## Experimento fatorial
+
+```{r}
+milho <- read_excel("dados-diversos.xlsx",
+                    "milho")
+```
+
+```{r}
+milho |> 
+  ggplot(aes(method, index,
+             color = method))+
+  geom_jitter(width = 0.1)+
+  facet_grid(~hybrid)
+```
+
+## Histograms
+
+```{r}
+y <- milho |> 
+  ggplot(aes(x = yield))+
+  geom_histogram(bins = 10,
+                 color = "black", fill = "green")
+
+i <- milho |> 
+  ggplot(aes(x = index))+
+  geom_histogram(bins = 10,
+                 color = "black", fill = "green")
+
+library(patchwork)
+(y + i) +
+  plot_annotation(tag_levels = "A")
+ggsave("figs/histograms.png", bg = "white")
+
+```
+
+## Gráfico de densidade
+
+```{r}
+milho |> 
+  ggplot(aes(x = yield))+
+  geom_density()
+```
+
+## Formato largo para longo
+
+```{r}
+
+insect <- read_excel("dados-diversos.xlsx",
+                   "mortalidade")
+insect |> 
+  pivot_longer(2:3, 
+               names_to = "status",
+               values_to = "value") |> 
+  ggplot(aes(inseticida, value, 
+             fill = status))+
+  geom_col()
+  
+
+
+```

@@ -1,0 +1,144 @@
+---
+title: "aula15"
+format: html
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+## Chi-squared test/Fisher's Exact Test
+
+# Teste para dados de levantamento e variável categorica (ano, resto cultural...) nominal
+
+```{r}
+library(readxl)
+library(tidyverse)
+survey <- read_excel("dados-diversos.xlsx", "survey")
+
+survey |> 
+  count(year) # frequências de ocorrências por ano
+
+# table é do R base e não do tidyverse
+q <- table (survey$year, survey$species) # em formato largo
+
+library(janitor)
+survey |> 
+  tabyl(year, species) |> # dá o mesmo resultado do table, em formato largo
+  adorn_percentages() # dá o vlaor em porcentagem
+  
+# gráfico de barras é indicado para visualizar frequências. O gráfico precisa ser no formato longo
+survey |> 
+  count(year, species) |> # dá o formato longo 
+  ggplot(aes(year, n, fill = species))+
+  geom_col()
+
+survey |> 
+  filter(residue != "NA") |> 
+  count(residue, species) |> # dá o formato longo 
+  ggplot(aes(residue, n, fill = species))+
+  geom_col()
+
+# Chi-squared test
+# a hipótese nula é que a frequência são iguais
+
+q <- table (survey$residue, survey$species)
+chisq.test(q)
+#Fisher's Exact Test
+fisher.test(q) # usado quando a frequência é baixa, número muito baixo, menor que 6
+
+q <- table (survey$residue, survey$inc_class)
+chisq.test(q) # p-value = 0.1058: classe da frequência da doença independe do resto cultural
+
+survey |> 
+  filter(residue != "NA") |> 
+  count(residue, inc_class) |> # dá o formato longo 
+  ggplot(aes(residue, n, fill = inc_class))+
+  geom_col()
+
+```
+
+# Curva de progresso da severidade
+
+Planilha dados-diversos, aba curve: dado temporal 
+
+```{r}
+curve <- read_excel("dados-diversos.xlsx", "curve")
+
+curve |> 
+  group_by(Irrigation, day) |> # manter irrigation e day e desconsiderar rep
+  summarise(mean_severity = mean(severity), 
+            sd_severity = sd(severity))|> 
+  ggplot(aes(day, mean_severity, color = Irrigation))+
+  geom_point()+
+  geom_errorbar(aes(ymin = mean_severity - sd_severity, ymax = mean_severity + sd_severity), width = 0.1)+
+  geom_line()
+
+# Calcular área abaixo da curva do progresseo da doença
+
+library(epifitter)
+
+curve3 <- curve |> 
+  group_by(Irrigation, rep) |> 
+  summarise(audpc = AUDPC(day, severity, 
+                          y_proportion = F)) |> 
+  # Aplicar T-test para dois grupos
+  # Primeiro passar para o formato largo
+  pivot_wider(1, names_from = Irrigation, values_from = audpc)
+
+t.test(curve3$Drip, curve3$Furrow)
+```
+
+## Experimetno fatorial, dados tan-spot-wheat
+
+```{r}
+library(gsheet)
+tw <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1t5xftb0xSRPNFhM7h_MiPNtwt2UFUcm9/edit?rtpof=true")
+
+tw |> 
+  group_by(cult, silicio, hai) |> 
+   summarise(mean_lesion = mean(lesion_size), sd_lesion = sd(lesion_size)) |> 
+  ggplot(aes(hai, mean_lesion, color = silicio))+
+  geom_point()+
+  geom_errorbar(aes(ymin = mean_lesion - sd_lesion, 
+                    ymax = mean_lesion + sd_lesion), 
+                width = 0.1)+
+  geom_line()+
+  facet_wrap(~cult)+
+  labs(x = "Hours after inoculation", y = "Lesion size (mm)")
+
+# Calcular área abaixo da curva do tamanho da lesão
+
+library(epifitter)
+
+tw2 <- tw |> 
+  group_by(exp, cult, silicio, rep) |> 
+  summarise(audpc = AUDPC(lesion_size, hai))
+
+tw2|> 
+  ggplot(aes(cult, audpc, color = silicio))+
+  geom_boxplot()+
+  facet_wrap(~exp)
+
+```
+
+```{r}
+# qualitativo, ANOVA para a área abaixo da curva
+# Experimetno fatorial. Primeiro, testar o experimento completo, se não for significativo, reduzir o modelo. 
+aov1 <- aov(audpc ~exp*cult*silicio, data = tw2)
+summary(aov1) # não deu significativo
+
+aov1 <- aov(sqrt(audpc) ~cult*silicio, data = tw2)
+summary(aov1) # modelo reduzido, foi significativo
+
+library(performance)
+check_normality(aov1)
+check_heteroscedasticity(aov1)
+
+library(emmeans)
+m1 <- emmeans(aov1, ~ cult | silicio, type = "response")
+m1
+
+```

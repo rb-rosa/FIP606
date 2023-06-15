@@ -1,0 +1,83 @@
+---
+title: "aula11"
+format: html
+---
+
+```{r}
+library(readxl)
+library(tidyverse)
+dat <- read_excel("dados-diversos.xlsx", "fungicida_vaso")
+
+dat2 <- dat |> 
+  # mutate para criar uma variável
+  mutate(inc = dis_sp / n_sp*100)
+
+dat2 |>
+  ggplot(aes(x = treat,
+             y = inc))+
+  geom_jitter(width = 0.1)+
+  facet_wrap(~ dose)
+
+```
+
+```{r}
+m1 <- aov(log(inc +0.5) ~ treat*dose,
+          data = dat2)
+summary(m1)
+
+library(performance)
+check_normality(m1)
+# p=0.050 considera-se dados normais.
+check_heteroscedasticity(m1)
+library(DHARMa)
+plot(simulateResiduals(m1))
+
+library(emmeans)
+means_m1 <- emmeans(m1, ~ dose | treat,
+                    type = "response")
+means_m1
+library(multcompView)
+library(multcomp)
+# para comparar as médias.
+cld(means_m1)
+# para calcular o coeficiente de variação
+library(agricolae)
+cv.model(m1)
+
+```
+
+```{r}
+milho <- read_excel("dados-diversos.xlsx", 
+                    "armazena")
+milho2 <- milho |> 
+  filter(tempo == 8)
+
+milho2 |> 
+  ggplot(aes(factor(tipo), peso_mil,
+             color = factor(umidade)))+
+  geom_jitter(width = 0.1)+
+  facet_wrap(~umidade)
+
+m2 <- aov(peso_mil ~ factor(tipo)*factor(umidade),
+          data = milho2)
+summary(m2)
+
+```
+
+```{r}
+#quando não houver significãncia entre a interação, testar as variáveis independentes.
+milho3 <- read_excel("dados-diversos.xlsx", 
+                    "milho")
+
+m4 <- aov(yield ~ hybrid,
+          data = milho3)
+summary(m4)
+check_heteroscedasticity(m4)
+plot(simulateResiduals(m4))
+medias_m4 <- emmeans(m4, ~ hybrid)
+medias_m4
+#Tuckey
+cld(medias_m4)
+pwpm(medias_m4)
+pwpp(medias_m4)
+```

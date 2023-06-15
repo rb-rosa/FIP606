@@ -1,0 +1,7 @@
+---
+title: "Welcome"
+---
+
+![](images/rstudio-logo.png){style="float:left; padding-right:30px" width="111"}This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

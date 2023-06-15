@@ -1,0 +1,121 @@
+---
+title: "aula10"
+format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+# ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.
+
+#ANOVA tem duas premissas.
+
+```{r}
+library(readxl)
+library(tidyverse)
+micelial <- read_excel("dados-diversos.xlsx", "micelial")
+head (micelial)
+
+```
+
+```{r}
+micelial|> 
+  ggplot(aes(especie, tcm)) +
+  geom_boxplot()
+```
+
+```{r}
+#Ajustar o modelo
+# <- (atribuiu aov a aov1); ~ (em função de); aov (função ANOVA)
+aov1 <- aov(tcm ~ especie, data = micelial)
+summary(aov1)
+#Não há efeito significativo de espécie P=0.117.
+
+#Checar as premissas para verificar se o modelo está correto
+library(performance)
+check_heteroscedasticity(aov1)
+#OK: Error variance appears to be homoscedastic (p = 0.175). Significa que as variâncias são homogeneas.
+check_normality(aov1)
+#OK: residuals appear as normally distributed (p = 0.074). Significa que a normalidade 
+library(DHARMa)
+plot(simulateResiduals(aov1))
+#Normalidade a direita e variância homogenea a esquerda
+# teste de normalidade
+hist(aov1$residuals)
+qqnorm(aov1$residuals)
+qqline(aov1$residuals)
+shapiro.test(aov1$residuals)
+
+```
+
+```{r}
+# criando o objeto insects
+insects <- tbl_df(InsectSprays) |> 
+  select(spray, count)
+insects
+```
+
+```{r}
+insects|> 
+  ggplot(aes(spray, count)) +
+  geom_boxplot()
+```
+
+```{r}
+aov1 <- aov(count ~ spray, data = insects)
+summary(aov1)
+
+library(performance)
+check_heteroscedasticity(aov1)
+#OK: Error variance appears to be homoscedastic (p = 0.175). Significa que as variâncias não são homogeneas, p < 0.05.
+
+
+# nesse caso, recomenda-se transformar os dados para atender as premissas e então utilizar a ANOVA. Se as transformações não atenderem a homocedasticidade, utilizar teste não paramétrico.
+# alternativa 1: transformar dados originais, se for números. Usar raiz quadrada ou logaritimo
+# sqrt:  raiz quadrada
+# log: logarítimo. se houver valor zero no "count" somar 0.5.
+aov2 <- aov(sqrt(count) ~ spray, data = insects)
+#aov2 <- aov(log(count+0.5) ~ spray, data = insects)
+summary(aov2)
+check_heteroscedasticity(aov2)
+check_normality(aov2)
+# atenteu as premissas
+
+library(emmeans)
+# médias por inseticida
+# type = "response": para que a média não seja transformada, o inverso da raiz
+aov2_means <- emmeans(aov2, ~ spray, type = "response")
+aov2_means
+# comparação entre pares
+pwpm(aov2_means)
+# com letras
+library(multcomp)
+library(multcompView)
+cld(aov2_means)
+
+# teste não paramétrico, se não atendeu as premissas da ANOVA mesmo com transformção dos dados.
+kruskal.test(count ~ spray, data = insects)
+library(agricolae)
+kruskal(insects$count, insects$spray, console = TRUE)
+
+```
+
+# Modelo linear generalizado 
+
+Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.
+
+```{r}
+glm1 <- glm(count ~ spray,
+         data = insects,
+         family = poisson(link = "identity"))
+# poisson: adequado para dados de contagem. Muito utilizado para nematoide.
+plot(simulateResiduals(glm1))
+# catPred é o mais importante
+summary(glm1)
+glm1_means <- emmeans(glm1, ~ spray)
+cld(glm1_means)
+
+
+```

@@ -1,0 +1,68 @@
+---
+title: "Importação de dados"
+format: html
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+## From packages
+
+```{r}
+cars
+cars2 <- cars
+speed <- cars2
+
+```
+
+## Dataframe from packages
+
+```{r}
+library(remotes)
+remotes::install_github("emdelponte/r4pde")
+library("r4pde")
+df <- RustSoybean
+df
+```
+
+## From excel
+
+```{r}
+library(readxl)
+magnesio <- read_excel("dados-diversos.xlsx")
+escala1 <- read_excel("dados-diversos.xlsx", "escala")
+escala2 <- read_excel("dados-diversos.xlsx", 2)
+```
+
+## From CSV
+
+```{r}
+library(tidyverse)
+magnesio2 <- read.csv("dados-diversos.csv")
+magnesio3 <- read_csv("dados-diversos.csv")
+```
+
+## From TXT
+
+```{r}
+magnesio4 <- read.table("dados-diversos.txt", sep = ',')
+
+```
+
+## From google sheet
+
+### First tab link
+
+### Second tab link
+
+### Internet link
+
+```{r}
+library(gsheet)
+magnesio5 <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=921203844")
+survey <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=366054269")
+fusarium <- read_csv("https://raw.githubusercontent.com/emdelponte/epidemiology-R/main/data/fusarium_banana.csv")
+```

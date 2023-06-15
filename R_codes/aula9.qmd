@@ -1,0 +1,119 @@
+---
+title: "aula9"
+format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+```{r}
+library(magrittr) # para usar pipes
+library(ggplot2) # para gráficos
+library(dplyr)
+library(readxl)
+library(tidyr)
+
+```
+
+```{r}
+data_mg <- read_excel("dados-diversos.xlsx")
+head(data_mg)
+```
+
+```{r}
+data_mg %>%
+  ggplot(aes(trat, comp)) +
+  geom_boxplot(outlier.color = NA) +
+  geom_jitter(width = 0.1, shape = 1)
+```
+
+```{r}
+dat2 <- data_mg |> 
+  group_by(trat) |> 
+  summarise(
+    mean_comp = mean(comp),
+    sd_comp = sd(comp),
+    var_comp = var(comp),
+    n = n(),
+    se_comp = sd_comp / sqrt(n-1),
+    ci = se_comp * qt(0.025, df = 9)#intervalo de confiança
+    ) 
+dat2
+```
+
+```{r}
+dat2 |> 
+  ggplot(aes(trat, mean_comp))+
+  geom_col(width = 0.5, fill = "steelblue")+
+  geom_errorbar(aes(
+    ymin = mean_comp - ci,
+    ymax = mean_comp + ci), width = 0.1)+
+  ylim(0,20)+
+  labs(x = "", y = "Mean size (mm)")
+  
+```
+
+```{r}
+data_mg2 <- data_mg |> 
+  pivot_wider(1,
+              names_from = trat,
+              values_from = comp)
+data_mg2
+```
+
+```{r}
+t.test(data_mg2$Mg2, data_mg2$Ctrl, paired = F)
+
+```
+
+```{r}
+attach(data_mg2) # vamos facilitar o uso dos vetores. Libera no ambiente os objetos
+var.test(Mg2, Ctrl)
+```
+
+```{r}
+shapiro.test(Mg2)
+shapiro.test(Ctrl)
+```
+
+```{r}
+qqnorm(Mg2)
+qqline(Mg2)
+qqnorm(Ctrl)
+qqline(Ctrl)
+```
+
+```{r}
+escala <- read_excel("dados-diversos.xlsx", "escala")
+head(escala)
+
+escala2 <- escala |> 
+  select(assessment, rater, acuracia)|> 
+pivot_wider(1,
+            names_from = assessment,
+            values_from = acuracia)
+escala2
+```
+
+#Teste t para amostras dependentes ou pareadas (para um (quando se compara com um valor padrão) ou dois grupos)
+
+```{r}
+
+attach(escala2)
+t_escala <- t.test(Aided1, Unaided,
+       paired = TRUE,
+       var.equal = FALSE) # Resultado:  há efeito da escala
+
+var.test(Aided1,Unaided) # Homocedasticidade
+shapiro.test(Aided1) # Normalidade. p-value maior que 0,05, então não rejeita H0, logo os valores são homogeneos. 
+shapiro.test(Unaided) # p-value maior que 0,05, então não rejeita H0, logo os valores são homogeneos.
+library(report)
+report(t_escala)
+wilcox.test(Aided1, Unaided) # Teste não paramétrico equivalente ao teste t pareado. Utilizar esse teste se houvesse problemas com a normalidade e homocedaticidade.
+
+escala |> 
+  ggplot(aes(assessment, precisao)) +
+  geom_boxplot(outlier.color = NA)
+```

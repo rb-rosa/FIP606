@@ -1,0 +1,14 @@
+{
+  "hash": "b9842f75b278a41a6ffcbc97529b3a0a",
+  "result": {
+    "markdown": "---\ntitle: \"Welcome\"\n---\n\n\n![](images/WhatsApp%20Image%202023-06-09%20at%2011.45.56-01.jpeg){width=\"195\"}This is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell hash='index_cache/html/unnamed-chunk-1_f163e66671f76d3a3512df88a27061b5'}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

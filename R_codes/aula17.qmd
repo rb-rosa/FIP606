@@ -1,0 +1,91 @@
+---
+title: "aula17"
+format: html
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+# Regressão não linear para estimar EC50
+
+## EC50: valor da dose que reduz 50% do crescimento micelial comparado com a dose zero
+
+```{r}
+library(gsheet)
+library(tidyverse)
+
+dat <- gsheet2tbl("https://docs.google.com/spreadsheets/d/15pCj0zljvd-TGECe67OMt6sa21xO8BqUgv4d-kU8qi8/edit#gid=0")
+
+# Fazer sumarização
+
+options(scipen=999)
+dat2 <- dat |> 
+  select(-Isolate, -Population) |> 
+# juntar em um valor só
+  group_by(Code, Year, Dose) |> # group_by trabalha junto com summarise
+    summarise(GC_mean = mean(GC))
+
+FGT152 <- dat2 |> 
+  filter(Code == "FGT152")
+
+FGT152 |> 
+  ggplot(aes(factor(Dose), GC_mean))+
+  geom_point()+
+  geom_line()
+
+dat2 |> 
+  ggplot(aes(factor(Dose), GC_mean))+
+  geom_point()+
+  geom_line()+
+  facet_wrap(~Code)
+
+
+```
+
+# EC50 com pacote DRM
+
+```{r}
+library(drc)
+
+# modelo LL.3 (modelo de três parâmetros e intercepta o eixo X)
+drc1 <- drm(GC_mean ~ Dose, data = FGT152,
+    fct = LL.3())
+AIC(drc1) # qual o modelo melhor, quanto menor melhor
+summary(drc1)
+plot(drc1)
+ED(drc1, 50)
+
+# modelo W1.3
+drc2 <- drm(GC_mean ~ Dose, data = FGT152,
+    fct = W1.3())
+AIC(drc2) # qual o modelo melhor
+summary(drc2)
+plot(drc2)
+ED(drc2, 50)
+
+```
+
+```{r}
+library(ec50estimator)
+
+df_ec50 <- estimate_EC50(GC_mean ~ Dose, 
+                         data = dat2,
+                         isolate_col = "Code",
+                         interval = "delta",
+                         fct = drc::LL.3())
+
+df_ec50 |> 
+  ggplot(aes(Estimate))+
+  geom_histogram()
+
+df_ec50 |>
+  ggplot(aes(Estimate, reorder(ID, Estimate)))+
+  geom_point()+
+  geom_errorbar(aes(xmin = Lower,
+                    xmax = Upper), width = 0.1)+
+  xlim(0,30)
+
+```

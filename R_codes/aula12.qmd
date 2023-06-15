@@ -1,0 +1,92 @@
+---
+title: "aula12"
+#format: html
+format: docx 
+#para salvar para Word
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+```{r}
+library(readxl)
+library(tidyverse)
+#delineamento em blocos casualisados
+#efeito fixo (bloco): trat + bloco
+fungicidas <- read_excel("dados-diversos.xlsx", "fungicida_campo")
+```
+
+## Modelo ANOVA com bloco
+
+```{r}
+#sev (resposta)
+#diferença do dic é o rep
+aov_fung <- aov(sev ~ trat + rep, data = fungicidas)
+summary(aov_fung)
+#se não der significativo, deixa o bloco, pq o delineamento foi em bloco
+```
+
+```{r}
+#verificar as premissas
+library(performance)
+#ou
+library(DHARMa)
+check_normality(aov_fung)
+check_heteroscedasticity(aov_fung)
+#plot do DHARMA
+plot(simulateResiduals(aov_fung))
+
+library(emmeans)
+
+#rodar a média (aov_fung em função de trat)
+means_fung <- emmeans(aov_fung, ~ trat)
+library(multcomp)
+library(multcompView)
+
+cld(means_fung)
+
+plot(means_fung)+
+coord_flip()+
+theme_minimal()
+```
+
+```{r}
+milho <- read_excel("dados-diversos.xlsx", "milho")
+
+#Base R
+#DBC
+#model
+
+#bloco com parcela subdividida precisa de estrutura de erro (bloco, parcela principal, subparcela)(Error)
+aov_milho_bloco <- aov(index ~ factor(block) + hybrid*method +
+Error(factor(block)/hybrid/method), data = milho)
+
+summary(aov_milho_bloco)
+#usando avo não permitiu checar a normalidade, usar outro modelo (misto)
+
+```
+
+```{r}
+#lme4 - pacote que permite checar as premissas. O modelo misto é mais moderno que o aov
+library(lme4)
+#usando bloco
+milho$block <- as.factor(milho$block)
+#sqrt para transformar os dados e atender a heterocedasticidade
+mix2 <- lmer(sqrt(index) ~ block + hybrid*method +
+ (1|block/hybrid), data = milho)
+library(car)
+#anova no modelo misto não dá o p-valor, só o F. Então, do pacote car, usar anova com A maiusculo 
+Anova(mix2)
+check_normality(mix2)
+check_heteroscedasticity(mix2)
+
+#comparação de médias
+#inverter hybrid e method para fazer outra comparação
+means_mix2 <- emmeans(mix2, ~ hybrid|method)
+means_mix2
+cld(means_mix2) #na tabela, letras maiúsculas comparam na coluna e minúsculas na linha
+
+```

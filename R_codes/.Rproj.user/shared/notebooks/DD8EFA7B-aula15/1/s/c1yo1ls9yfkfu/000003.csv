@@ -1,0 +1,12 @@
+"0","curve <- read_excel(""dados-diversos.xlsx"", ""curve"")
+
+curve |> 
+  group_by(Irrigation, day) |> # manter irrigation e day e desconsiderar rep
+  summarise(mean_severity = mean(severity), 
+            sd_severity = sd(severity))|> 
+  ggplot(aes(day, mean_severity, color = Irrigation))+
+  geom_point()+
+  geom_errorbar(aes(ymin = mean_severity - sd_severity, ymax = mean_severity + sd_severity), width = 0.1)+
+  geom_line()
+"
+"2","`summarise()` has grouped output by 'Irrigation'. You can override using the `.groups` argument."

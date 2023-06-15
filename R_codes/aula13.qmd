@@ -1,0 +1,152 @@
+---
+title: "aula13"
+format: html
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+Análise de regressão estuda a relação entre uma variável dependente (resposta) e outras variáveis independentes (explicativas).Ela permite construir um modelo matemático que represente dois atributos x e y. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.
+
+Já a correlação linear, resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis.
+
+Para fatores com níveis quantitavos se faz análise de regressão e não de média. Para essa aula, será feita análise de regressão (fator quantitativo). O objetivo é ajustar um modelo (função ou equação) teórico que permite estimar qualquer valor (3,2,2.6,6....). Nesse caso, queremos saber se há efeito significativo do inóculo na taxa de emergência, se não tiver efito, é observado uma linha reta, mas se tiver, a reta terá uma inclinação (snoop = coeficiente angular da reta). Se o snoop for zero, o ângulo é zero. O p-valor da regressão é se o snoop (diminuição ou aumento) é significativamente diferetne de zero.
+
+O primeiro passo é fazer uma análise exploratório de representação com o gráfico geom_point, depois ajusta o modelo ao colocar a tendência (regressão linear) de primeira ordem (há dois parâmetros ou coeficientes).
+
+Usar modelo misto ou simples, não os dois
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(dplyr)
+estande <- read_excel("dados-diversos.xlsx", "estande")
+
+estande |> 
+  ggplot(aes(trat, nplants,))+
+  geom_point()+
+  ylim(0, max(estande$nplants))+
+  #linha de tendência é uma linha suavisada para ver o padrão
+  geom_smooth(se = F, method = "lm")
+```
+
+## Modelo linear simples (fator fixo)
+
+```{r}
+exp1 <- estande |> 
+  filter(exp == 1)
+# nplants é a resposta
+m1 <- lm(nplants ~ trat, data = exp1)
+summary(m1)
+
+exp2 <- estande |> 
+  filter(exp == 2)
+
+# nplants é a resposta
+m2 <- lm(nplants ~ trat, data = exp2)
+summary(m2)
+
+exp3 <- estande |> 
+  filter(exp == 3)
+
+# nplants é a resposta
+m3 <- lm(nplants ~ trat, data = exp3)
+summary(m3)
+
+# Modelo de regressão linear simples: y= B0 + B1*X
+# B0 = beta zero (interceptor): é o valor no qual a linha ajsutada cruza o eixo Y. Interpretação: é o valor médio de resposta quando todas as variáveis explicativas são definidas como zero.No m3, se o trat (número de inóculos) for igual a zero, o valor médio seria 95.7500.
+# B1 = "trat" (a cada aumento de uma unidade do trat, espera-se uma diminuição média de -0.7634 (m3) no número de plantas (nplants))
+#x = variável explicativa
+
+#Adjusted R-squared: R², indica quantos porcento da variabilidade de y está sendo explicada por x.
+
+#Multiple R-squared:  0.6085 (m3): é uma medida que indica quão bem o medelo prevê os dados observados.
+
+# p-valor < 2e-16 *** (m3): é a probabilidade que a variável não seja relevante para o modelo. Quanto mais asterísticos presentes ao lado do efeito estimado, maior o nível de confiança com o que podemos afirmar que o efeito não é nulo. Ou seja, se o p-valor for menor que 0.05 a variável é significativa para o modelo, ou seja, as alterações na variável explicativa influenciam nas alterações da variável resposta. Se o p-valor for >0.05, sugere que as mudanças na variável explicativa não estão associadas as mudanças na variável resposta.
+
+#Residuals (m3): informações referente aos resíduos do modelo. É a diferença do valor previsto e o valor real.
+
+
+
+library(report)
+report(m1)
+
+g1 <- exp1 |> 
+  ggplot(aes(trat, nplants))+
+  geom_point()+
+  geom_abline(intercept = 52.5, slope = -0.24)+
+    ylim(0, max(estande$nplants))+
+  #geom_smooth(method = "lm", se = F)+
+  annotate(geom =  "text", x = 24,
+           y = 70, label = "y = 52.5 -0.24x")
+
+g2 <- exp1 |> 
+  ggplot(aes(trat, nplants))+
+  geom_point()+
+  ylim(0, max(estande$nplants))+
+  geom_smooth(method = "lm", se = F)+
+  annotate(geom =  "text", x = 24,
+           y = 70, label = "y = 60 -0.7x")
+
+g3 <- exp1 |> 
+  ggplot(aes(trat, nplants))+
+  geom_point()+
+  ylim(0, max(estande$nplants))+
+  geom_smooth(method = "lm", se = F)+
+  annotate(geom =  "text", x = 24,
+           y = 70, label = "y = 95 -0.7x")
+
+library(patchwork)
+g1 | g2 | g3
+
+```
+
+# Modelo misto
+
+Tem fator fixo e aleatório. Junta os 3 experimentos em um modelo só e compara se houve significancia nos 3 ou não.
+
+```{r}
+library(lme4)
+mix <- lmer(nplants ~ trat + (trat | exp),
+        data = estande)
+summary(mix)
+library(car)
+Anova(mix)
+
+```
+
+```{r}
+estande |> 
+  ggplot(aes(trat, nplants, group = exp))+
+  geom_point()+
+  ylim(0, max(estande$nplants))+
+  #linha de tendência é uma linha suavisada para ver o padrão
+  geom_smooth(se = F, method = "lm")
+```
+
+# Modelo GLM
+
+Modelo linear é um caso especial do GLM
+
+```{r}
+lm1 <- lm(nplants ~ trat, data = exp3)
+summary(lm1)
+# glm "gaussian" é o mesmo lm
+# "gaussian" é para dados contínuos, pode ser menor que zero
+# poisson
+
+# Ajustar o modelo aos dados
+glm1 <- glm(nplants ~ trat, family = "gaussian",
+           data = exp3)
+
+glm2 <- glm(nplants ~ trat, family = "poisson" (link = "log"),
+           data = exp3)
+#Informação critério de arcaique - quanto menor o AIC, melhor o modelo
+AIC(glm1)
+AIC(glm2)
+
+summary(glm1)
+summary(glm2)
+```
