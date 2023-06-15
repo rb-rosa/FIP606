@@ -1,7 +1,0 @@
-"2","Warning in gzfile(file, ""wb"") :"
-"2","
- "
-"2"," cannot open compressed file 'C:/Users/rbarb/OneDrive/Área de Trabalho/Mestrado UFV/Disciplinas/FIP 606 Análise e Visualização de Dados em Fitopatologia/Aulas/Aula 1/new_project/.Rproj.user/shared/notebooks/DD8EFA7B-aula15/1/74742BBA98a961fd/c1yo1ls9yfkfu_t/f0bedaf1d60344fba6609ed0f8537e78.snapshot', probable reason 'No such file or directory'
-"
-"2","Error in gzfile(file, ""wb"") : cannot open the connection
-"
