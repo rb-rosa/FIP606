@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP 606 - Importação de dados</title>
+<title>FIP 606 - aula3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -149,11 +149,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="dropdown-menu" aria-labelledby="nav-menu-básico-do-r">    
         <li>
     <a class="dropdown-item" href="../R_codes/aula1.html">
- <span class="dropdown-text">Quarto</span></a>
+ <span class="dropdown-text">Quarto document</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_codes/aula2.html">
- <span class="dropdown-text">Carregar pacotes</span></a>
+ <span class="dropdown-text">Pacotes no R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_codes/aula3.html">
@@ -162,25 +162,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gráficos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Gráficos</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análise-exploratória" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Análise exploratória</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-gráficos">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-análise-exploratória">    
         <li>
     <a class="dropdown-item" href="../R_codes/aula4.html">
- <span class="dropdown-text">Plot 1</span></a>
+ <span class="dropdown-text">Função ggplot2</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_codes/aula5.html">
- <span class="dropdown-text">Plot 2</span></a>
+ <span class="dropdown-text">Boxplot</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_codes/aula6.html">
- <span class="dropdown-text">Plot 3</span></a>
+ <span class="dropdown-text">Tipos de gráficos</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_codes/aula7.html">
- <span class="dropdown-text">Aula 7</span></a>
+ <span class="dropdown-text">Transformar dados</span></a>
   </li>  
     </ul>
   </li>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="dropdown-menu" aria-labelledby="nav-menu-teste-t">    
         <li>
     <a class="dropdown-item" href="../R_codes/aula8.html">
- <span class="dropdown-text">Dois grupos</span></a>
+ <span class="dropdown-text">Entre dois grupos</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_codes/aula9.html">
@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">2 ou mais Fatores</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../R_codes/aula12.docx">
+    <a class="dropdown-item" href="../R_codes/aula12.html">
  <span class="dropdown-text">DBC</span></a>
   </li>  
     </ul>
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="dropdown-menu" aria-labelledby="nav-menu-chi-squaredfishers-test">    
         <li>
     <a class="dropdown-item" href="../R_codes/aula15.html">
- <span class="dropdown-text">Testes Qui-quadrado e Fisher</span></a>
+ <span class="dropdown-text">Variável categórica</span></a>
   </li>  
     </ul>
   </li>
@@ -310,7 +310,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Importação de dados</h1>
+<h1 class="title">aula3</h1>
 </div>
 
 
@@ -392,9 +392,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"emdelponte/r4pde"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
+<pre><code>vctrs (0.6.2 -&gt; 0.6.3) [CRAN]
+package 'vctrs' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\rbarb\AppData\Local\Temp\RtmpO0Hr6y\downloaded_packages
 ── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file 'C:\Users\rbarb\AppData\Local\Temp\RtmpkLeLLX\remotesa583fa1c4a\emdelponte-r4pde-963a605/DESCRIPTION' ... OK
+* checking for file 'C:\Users\rbarb\AppData\Local\Temp\RtmpO0Hr6y\remotes399c26cf2f83\emdelponte-r4pde-bd26793/DESCRIPTION' ... OK
 * preparing 'r4pde':
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
