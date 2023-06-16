@@ -9,13 +9,29 @@ execute:
 website:
   page-navigation: true
   title: "FIP606"
-  sidebar:
-    style: "docked"
-    search: true
+  navbar:
     collapse-level: 1
-    border: false
+    border: true
     background: light
-    tools:
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Básico do R"
+        file: R_codes/aula1.qmd
+      - text: "Análise exploratória"
+        file: R_codes/aula4.qmd
+      - text: "Teste T"
+        file: R_codes/aula8.qmd
+      - text: "Anova"
+        file: R_codes/aula10.qmd
+      - text: "Chi-squared/Fisher's Test"
+        file: R_codes/aula15.qmd
+      - text: "Regressão"
+        file: R_codes/aula14.qmd
+      - text: "Mapas"
+        file: R_codes/aula16.qmd
+    right:
       - icon: linkedin
         href: https://www.linkedin.com/in/raphaelbarbozaagronomia
       - icon: instagram
@@ -26,70 +42,62 @@ website:
             url:  https://github.com/rb-rosa
           - text: Report a Bug
             url:  mailto:rbarboza.rosa@gmail.com
-    contents:
-      - section: "Básico do R"
-        contents:
-          - href: R_codes/aula1.qmd
-            text: Quarto document
-          - href: R_codes/aula2.qmd
-            text: Pacotes no R
-          - href: R_codes/aula3.qmd
-            text: Importar dados
-      - text: "---"
-      - section: "Análise exploratória"
-        contents:
-          - href: R_codes/aula4.qmd
-            text: Função ggplot2
-          - href: R_codes/aula5.qmd
-            text: Boxplot
-          - href: R_codes/aula6.qmd
-            text: Tipos de gráficos
-          - href: R_codes/aula7.qmd
-            text: Transformar dados
-      - text: "---"
-      - section: "Teste T"
-        contents:
-          - href: R_codes/aula8.qmd
-            text: Entre dois grupos
-          - href: R_codes/aula9.qmd
-            text: Amostras dependentes ou pareadas
-      - text: "---"
-      - section: "Anova"
-        contents:
-          - href: R_codes/aula10.qmd
-            text: 1 Fator
-          - href: R_codes/aula11.qmd
-            text: 2 ou mais Fatores
-          - href: R_codes/aula12.qmd
-            text: DBC
-      - text: "---"
-      - section: "Chi-squared/Fisher's Test"
-        contents:
-          - href: R_codes/aula15.qmd
-            text: Variável categórica
-      - text: "---"
-      - section: "Análises de Regressão"
-        contents:
-          - href: R_codes/aula14.qmd
-            text: Modelo de segunda ordem
-          - href: R_codes/aula17.qmd
-            text: Não linear
-          - href: R_codes/aula13.qmd
-            text: Linear Simples, Misto e GLM
-      - text: "---"
-      - section: "Mapas"
-        contents:
-          - href: R_codes/aula16.qmd
-            text: Mapas
+  sidebar:
+    - title: "Home"
+    - title: "Básico do R"
+      contents:
+        - href: R_codes/aula1.qmd
+          text: Quarto
+        - href: R_codes/aula2.qmd
+          text: Pacotes
+        - href: R_codes/aula3.qmd
+          text: Importar dados
+    - title: "Análise exploratória" 
+      contents:
+        - href: R_codes/aula4.qmd
+          text: Ggplot2
+        - href: R_codes/aula5.qmd
+          text: Boxplot
+        - href: R_codes/aula6.qmd
+          text: Gráficos
+        - href: R_codes/aula7.qmd
+          text: Transformar dados
+    - title: "Teste T"   
+      contents:
+        - href: R_codes/aula8.qmd
+          text: Dois grupos
+        - href: R_codes/aula9.qmd
+          text: Amostras dependentes 
+    - title: "Anova"   
+      contents:
+        - href: R_codes/aula10.qmd
+          text: 1 Fator
+        - href: R_codes/aula11.qmd
+          text: 2 ou mais fatores
+        - href: R_codes/aula12.qmd
+          text: DBC
+    - title: "Chi-squared/Fisher's Test"   
+      contents:
+        - href: R_codes/aula15.qmd
+          text: Variável categórica
+    - title: "Regressão"   
+      contents:
+        - href: R_codes/aula14.qmd
+          text: De segunda ordem
+        - href: R_codes/aula17.qmd
+          text: Não linear
+        - href: R_codes/aula13.qmd
+          text: Linear Simples, Misto e GLM
+    - title: "Mapas"
+      contents:
+        - href: R_codes/aula16.qmd
+          text: Mapas
   page-footer:
     border: true
     center: "Copyright 2023, Raphael B Rosa" 
-
- 
 format:
   html:
     theme: spacelab
     css: styles.css
     toc: true
-
 editor: visual
