@@ -68,5 +68,17 @@
   },
   "R_codes/aula17.qmd": {
     "aula17.html": "19ad188d"
+  },
+  "R_codes/R.qmd": {
+    "R.html": "90fdb713"
+  },
+  "R_codes/visãogeral.qmd": {
+    "visãogeral.html": "3ea740fe"
+  },
+  "R_codes/perfil.qmd": {
+    "perfil.html": "0959003f"
+  },
+  "R_codes/rrstudio.qmd": {
+    "rrstudio.html": "2927cce4"
   }
 }

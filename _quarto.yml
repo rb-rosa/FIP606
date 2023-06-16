@@ -11,7 +11,7 @@ website:
   title: "FIP606"
   navbar:
     border: false
-    background: light
+    background: "White"
     search: true
     left:
       - text: "Home"
@@ -43,6 +43,13 @@ website:
             url:  mailto:rbarboza.rosa@gmail.com
   sidebar:
     - title: "Home"
+      contents:
+        - href: index.qmd
+          text: Bem-vindo
+        - href: R_codes/rrstudio.qmd
+          text: R e RStudio
+        - href: R_codes/perfil.qmd
+          text: Perfil do criador
     - title: "Básico do R"
       contents:
         - href: R_codes/aula1.qmd

@@ -1,10 +1,5 @@
----
-title: "**Bem-vindo**"
-subtitle: "Análise e Visualização de Dados em Fitopatologia"
----
+## **Bem-vindo**
 
-![](images/RStudio_Logo-700x246-01.png){width="361"}
+Este é o Quarto website para disponibilizar as aulas da FIP 606 sobre **"Análise e Visualização de Dados em Fitopatologia"** no programa **RStudio**. A disciplina é oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa.
 
-This is a Quarto website
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Para mais informações sobre ciência de dados no R, [clique aqui](https://r4ds.hadley.nz/).
