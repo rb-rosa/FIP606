@@ -10,8 +10,7 @@ website:
   page-navigation: true
   title: "FIP606"
   navbar:
-    collapse-level: 1
-    border: true
+    border: false
     background: light
     search: true
     left:
@@ -93,7 +92,7 @@ website:
         - href: R_codes/aula16.qmd
           text: Mapas
   page-footer:
-    border: true
+    border: false
     center: "Copyright 2023, Raphael B Rosa" 
 format:
   html:
