@@ -74,6 +74,7 @@ website:
     - title: "Teste t"
       contents:
         - text: Teste t
+          file: 
         - text: "---"    
         - href: R_codes/aula8.qmd
           text: Para dois grupos
@@ -82,6 +83,7 @@ website:
     - title: "Anova"   
       contents:
         - text: ANOVA
+          file:
         - text: "---"  
         - href: R_codes/aula10.qmd
           text: 1 Fator
@@ -92,12 +94,14 @@ website:
     - title: "Variável categórica" 
       contents:
         - text: Variável categórica
+          file:
         - text: "---"  
         - href: R_codes/aula15.qmd
           text: Chi-squared/Fisher's Test"  
     - title: "Regressão"   
       contents:
         - text: Regressão
+          file:
         - text: "---"  
         - href: R_codes/aula14.qmd
           text: Linear de segunda ordem
