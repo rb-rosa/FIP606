@@ -1,5 +1,3 @@
-![](images/Rlogo.png){width="115"}
-
 ## O que é R?
 
 R é uma linguagem e ambiente para computação estatística e gráficos. É um [projeto GNU](http://www.gnu.org/) que é semelhante à linguagem e ambiente S que foi desenvolvido nos Laboratórios Bell (anteriormente AT&T, agora Lucent Technologies) por John Chambers e colegas. R pode ser considerado como uma implementação diferente de S. Existem algumas diferenças importantes, mas muito código escrito para S roda inalterado sob R.
@@ -10,7 +8,7 @@ Um dos pontos fortes do R é a facilidade com que gráficos de qualidade de publ
 
 R está disponível como Software Livre sob os termos da [Licença Pública Geral GNU](https://www.r-project.org/COPYING) da [Free Software Foundation](http://www.gnu.org/) em forma de código-fonte. Ele compila e roda em uma ampla variedade de plataformas UNIX e sistemas similares (incluindo FreeBSD e Linux), Windows e MacOS.
 
-![](images/RStudio-Logo-Flat.png){width="288"}
+![](images/Rlogo.png){fig-align="right" width="115"}
 
 ## O que é RStudio?
 
@@ -31,3 +29,5 @@ Algumas de suas características incluem:
 -   Também pode ser executado como um servidor, permitindo que vários usuários acessem o RStudio IDE usando um navegador da web.
 
 Para mais informações sobre o RStudio e download dos programas, visite o [site do projeto](http://www.posit.co/) .
+
+![](images/RStudio-Logo-Flat.png){fig-align="right" width="288"}
