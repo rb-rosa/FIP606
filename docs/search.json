@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "FIP606",
     "section": "",
-    "text": "Este é o Quarto website para disponibilizar as aulas da FIP 606 sobre “Análise e Visualização de Dados em Fitopatologia” no programa RStudio. A disciplina é oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa.\nPara mais informações sobre ciência de dados no R, clique aqui."
+    "text": "Este é o Quarto website para disponibilizar as aulas da FIP 606\nsobre “Análise e Visualização de Dados em Fitopatologia”\nno programa RStudio. A disciplina é oferecida no mestrado em\nFitopatologia da Universidade Federal de Viçosa.\nPara mais informações sobre ciência de dados no R, clique aqui."
   },
   {
     "objectID": "R_codes/aula1.html",
@@ -278,5 +278,12 @@
     "title": "FIP606",
     "section": "O que é RStudio?",
     "text": "O que é RStudio?\n\nRStudio é um ambiente de desenvolvimento integrado (IDE) para R e Python. Ele inclui um console, editor de realce de sintaxe que oferece suporte à execução direta de código e ferramentas para plotagem, histórico, depuração e gerenciamento de espaço de trabalho. O RStudio está disponível em código aberto e edições comerciais e é executado na área de trabalho (Windows, Mac e Linux).\nAlgumas de suas características incluem:\n\nBancada de trabalho personalizável com todas as ferramentas necessárias para trabalhar com R em um só lugar (console, source, plots, workspace, help, history, etc.).\nEditor de realce de sintaxe com conclusão de código.\nExecute o código diretamente do editor de origem (linha, seleção ou arquivo).\nSuporte completo para autoria de documentos Sweave e TeX.\nRoda em Windows, Mac e Linux, e tem uma porta FreeBSD mantida pela comunidade.\nTambém pode ser executado como um servidor, permitindo que vários usuários acessem o RStudio IDE usando um navegador da web.\n\nPara mais informações sobre o RStudio e download dos programas, visite o site do projeto ."
+  },
+  {
+    "objectID": "index.html#bem-vindo",
+    "href": "index.html#bem-vindo",
+    "title": "FIP606",
+    "section": "Bem-vindo",
+    "text": "Bem-vindo\nEste é o Quarto website para disponibilizar as aulas da FIP 606 sobre “Análise e Visualização de Dados em Fitopatologia” no programa RStudio. A disciplina é oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa.\nPara mais informações sobre ciência de dados no R, clique aqui."
   }
 ]

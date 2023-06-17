@@ -1,3 +1,5 @@
+![](images/plot2.png){style="float: right; padding-left:40px" fig-align="right" width="311"}
+
 ## **Bem-vindo**
 
 Este é o Quarto website para disponibilizar as aulas da FIP 606 sobre **"Análise e Visualização de Dados em Fitopatologia"** no programa **RStudio**. A disciplina é oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa.
