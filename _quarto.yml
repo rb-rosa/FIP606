@@ -40,9 +40,9 @@ website:
         href: https://www.instagram.com/invites/contact/?i=xk2vhn0e4rad&utm_content=2owlczy
       - icon: github
         menu:
-          - text: Source Code
+          - text: Código fonte
             url:  https://github.com/rb-rosa
-          - text: Report a Bug
+          - text: Reportar um erro
             url:  mailto:rbarboza.rosa@gmail.com
   sidebar:
     - title: "Home"
