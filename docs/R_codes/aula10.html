@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula10</title>
+<title>FIP606 - 1 Fator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula14.html">
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula10</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>1 Fator</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -248,17 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#três-ou-mais-tratamentos" id="toc-três-ou-mais-tratamentos" class="nav-link active" data-scroll-target="#três-ou-mais-tratamentos">Três ou mais tratamentos</a>
-  <ul class="collapse">
-  <li><a href="#anova-1-fator" id="toc-anova-1-fator" class="nav-link" data-scroll-target="#anova-1-fator">Anova 1 fator</a>
-  <ul class="collapse">
+  <li><a href="#três-ou-mais-tratamentos" id="toc-três-ou-mais-tratamentos" class="nav-link active" data-scroll-target="#três-ou-mais-tratamentos">Três ou mais tratamentos</a></li>
   <li><a href="#preparo" id="toc-preparo" class="nav-link" data-scroll-target="#preparo">Preparo</a></li>
   <li><a href="#premissas" id="toc-premissas" class="nav-link" data-scroll-target="#premissas">Premissas</a></li>
   <li><a href="#modelo-usando-aov" id="toc-modelo-usando-aov" class="nav-link" data-scroll-target="#modelo-usando-aov">Modelo usando <code>aov()</code></a></li>
-  </ul></li>
-  <li><a href="#e-quanto-não-atende-às-premissas" id="toc-e-quanto-não-atende-às-premissas" class="nav-link" data-scroll-target="#e-quanto-não-atende-às-premissas">E quanto não atende às premissas?</a></li>
-  </ul></li>
-  <li><a href="#modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados." id="toc-modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados." class="nav-link" data-scroll-target="#modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados.">Modelo linear generalizado. Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</a></li>
+  <li><a href="#e-quando-não-atende-às-premissas" id="toc-e-quando-não-atende-às-premissas" class="nav-link" data-scroll-target="#e-quando-não-atende-às-premissas">E quando não atende às premissas?</a></li>
+  <li><a href="#modelo-linear-generalizado" id="toc-modelo-linear-generalizado" class="nav-link" data-scroll-target="#modelo-linear-generalizado">Modelo linear generalizado</a></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula10</h1>
+<h1 class="title d-none d-lg-block"><strong>1 Fator</strong></h1>
 </div>
 
 
@@ -282,14 +277,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="três-ou-mais-tratamentos" class="level1">
-<h1>Três ou mais tratamentos</h1>
-<section id="anova-1-fator" class="level2">
-<h2 class="anchored" data-anchor-id="anova-1-fator">Anova 1 fator</h2>
+<p>Aula 10</p>
+<section id="três-ou-mais-tratamentos" class="level2">
+<h2 class="anchored" data-anchor-id="três-ou-mais-tratamentos">Três ou mais tratamentos</h2>
 <p>ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.</p>
 <p>Experimento com um fator e em delineamento inteiramente casualizado para comparar o crescimento micelial de diferentes espécies de um fungo fitopatogênico. A resposta a ser estudada é a TCM = taxa de crescimento micelial.</p>
-<section id="preparo" class="level3">
-<h3 class="anchored" data-anchor-id="preparo">Preparo</h3>
+</section>
+<section id="preparo" class="level2">
+<h2 class="anchored" data-anchor-id="preparo">Preparo</h2>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-1_79570b42219efb0a84eb066d6d90a591">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -316,11 +311,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="premissas" class="level3">
-<h3 class="anchored" data-anchor-id="premissas">Premissas</h3>
+<section id="premissas" class="level2">
+<h2 class="anchored" data-anchor-id="premissas">Premissas</h2>
 </section>
-<section id="modelo-usando-aov" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-usando-aov">Modelo usando <code>aov()</code></h3>
+<section id="modelo-usando-aov" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-usando-aov">Modelo usando <code>aov()</code></h2>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-3_93b166406ff2309cc597cd959dbab162">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Ajustar o modelo</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;- (atribuiu aov a aov1); ~ (em função de); aov (função ANOVA)</span></span>
@@ -371,9 +366,8 @@ W = 0.95101, p-value = 0.07022</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="e-quanto-não-atende-às-premissas" class="level2">
-<h2 class="anchored" data-anchor-id="e-quanto-não-atende-às-premissas">E quanto não atende às premissas?</h2>
+<section id="e-quando-não-atende-às-premissas" class="level2">
+<h2 class="anchored" data-anchor-id="e-quando-não-atende-às-premissas">E quando não atende às premissas?</h2>
 <p>Efeito de inseticida na mortalidade de insetos (Beall, 1942). The Transformation of data from entomological field experiments, Biometrika, 29, 243–262. Dados no pacote “datasets” do R. data(InsectSprays)</p>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-4_c9314134306ee65bd555d7dff4e292d1">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criando o objeto insects</span></span>
@@ -551,9 +545,9 @@ C      11.45833      c</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="modelo-linear-generalizado.-para-publicar-artigo-o-modelo-linear-é-melhor-que-transformar-os-dados-originais.-é-mais-elegante-usar-o-glm-do-que-transformar-os-dados." class="level1">
-<h1>Modelo linear generalizado. Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</h1>
+<section id="modelo-linear-generalizado" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-linear-generalizado">Modelo linear generalizado</h2>
+<p>Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</p>
 <div class="cell" data-hash="aula10_cache/html/unnamed-chunk-7_48de9d7db8c7b6abab7df7e89d779095">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(count <span class="sc">~</span> spray,</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> insects,</span>

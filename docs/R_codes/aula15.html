@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula15</title>
+<title>FIP606 - Chi-squared/Fisher’s Test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../R_codes/aula15.html" aria-current="page">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula14.html">
@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula15</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Chi-squared/Fisher’s Test</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula15.html" class="sidebar-item-text sidebar-link active">Variável categórica</a>
+  <a href="../R_codes/aula15.html" class="sidebar-item-text sidebar-link active">Chi-squared/Fisher’s Test”</a>
   </div>
 </li>
     </ul>
@@ -237,12 +237,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chi-squared-testfishers-exact-test" id="toc-chi-squared-testfishers-exact-test" class="nav-link active" data-scroll-target="#chi-squared-testfishers-exact-test">Chi-squared test/Fisher’s Exact Test</a></li>
-  <li><a href="#teste-para-dados-de-levantamento-e-variável-categorica-ano-resto-cultural-nominal" id="toc-teste-para-dados-de-levantamento-e-variável-categorica-ano-resto-cultural-nominal" class="nav-link" data-scroll-target="#teste-para-dados-de-levantamento-e-variável-categorica-ano-resto-cultural-nominal">Teste para dados de levantamento e variável categorica (ano, resto cultural…) nominal</a></li>
-  <li><a href="#curva-de-progresso-da-severidade" id="toc-curva-de-progresso-da-severidade" class="nav-link" data-scroll-target="#curva-de-progresso-da-severidade">Curva de progresso da severidade</a>
-  <ul class="collapse">
+  <li><a href="#curva-de-progresso-da-severidade" id="toc-curva-de-progresso-da-severidade" class="nav-link active" data-scroll-target="#curva-de-progresso-da-severidade">Curva de progresso da severidade</a></li>
   <li><a href="#experimetno-fatorial-dados-tan-spot-wheat" id="toc-experimetno-fatorial-dados-tan-spot-wheat" class="nav-link" data-scroll-target="#experimetno-fatorial-dados-tan-spot-wheat">Experimetno fatorial, dados tan-spot-wheat</a></li>
-  </ul></li>
+  <li><a href="#anova-aov-para-área-abaixo-da-curva" id="toc-anova-aov-para-área-abaixo-da-curva" class="nav-link" data-scroll-target="#anova-aov-para-área-abaixo-da-curva">ANOVA aov() para área abaixo da curva</a></li>
   </ul>
 </nav>
     </div>
@@ -251,7 +248,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula15</h1>
+<h1 class="title d-none d-lg-block"><strong>Chi-squared/Fisher’s Test</strong></h1>
 </div>
 
 
@@ -266,11 +263,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="chi-squared-testfishers-exact-test" class="level2">
-<h2 class="anchored" data-anchor-id="chi-squared-testfishers-exact-test">Chi-squared test/Fisher’s Exact Test</h2>
-</section>
-<section id="teste-para-dados-de-levantamento-e-variável-categorica-ano-resto-cultural-nominal" class="level1">
-<h1>Teste para dados de levantamento e variável categorica (ano, resto cultural…) nominal</h1>
+<p>Aula 15</p>
+<p>Teste para dados de levantamento e variável categorica nominal ano, resto cultural…</p>
 <div class="cell" data-hash="aula15_cache/html/unnamed-chunk-1_56d7efa8f387bfaacb05e9ab15df8a71">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -360,9 +354,8 @@ X-squared = 2.6165, df = 1, p-value = 0.1058</code></pre>
 <p><img src="aula15_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="curva-de-progresso-da-severidade" class="level1">
-<h1>Curva de progresso da severidade</h1>
+<section id="curva-de-progresso-da-severidade" class="level2">
+<h2 class="anchored" data-anchor-id="curva-de-progresso-da-severidade">Curva de progresso da severidade</h2>
 <p>Planilha dados-diversos, aba curve: dado temporal</p>
 <div class="cell" data-hash="aula15_cache/html/unnamed-chunk-2_d9aa844751fde92e23cd2f4b0f4ad4d0">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>curve <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>, <span class="st">"curve"</span>)</span>
@@ -405,6 +398,7 @@ mean of x mean of y
  13.38983  13.79933 </code></pre>
 </div>
 </div>
+</section>
 <section id="experimetno-fatorial-dados-tan-spot-wheat" class="level2">
 <h2 class="anchored" data-anchor-id="experimetno-fatorial-dados-tan-spot-wheat">Experimetno fatorial, dados tan-spot-wheat</h2>
 <div class="cell" data-hash="aula15_cache/html/unnamed-chunk-3_96954e6539a43f74ac613db57d885a32">
@@ -441,6 +435,9 @@ mean of x mean of y
 <p><img src="aula15_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="anova-aov-para-área-abaixo-da-curva" class="level2">
+<h2 class="anchored" data-anchor-id="anova-aov-para-área-abaixo-da-curva">ANOVA aov() para área abaixo da curva</h2>
 <div class="cell" data-hash="aula15_cache/html/unnamed-chunk-4_c0c8a73c4898f8731a3e5cb229ba5048">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># qualitativo, ANOVA para a área abaixo da curva</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Experimetno fatorial. Primeiro, testar o experimento completo, se não for significativo, reduzir o modelo. </span></span>
@@ -500,7 +497,6 @@ Intervals are back-transformed from the sqrt scale </code></pre>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

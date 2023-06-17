@@ -1,5 +1,5 @@
 ---
-title: "aula1"
+title: "**Quarto**"
 format: html
 
 execute: 
@@ -8,21 +8,23 @@ execute:
   warning: false
 ---
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Aula 1
 
-## Running Code
+Permite que você junte conteúdo e código executável em um documento finalizado. Para saber mais sobre Quarto veja <https://quarto.org>.
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Código em execução
+
+Ao clicar no botão **Renderizar**, será gerado um documento que inclui o conteúdo e a saída do código incorporado. Você pode incorporar código como este:
 
 ```{r}
 1 + 1
 ```
 
-You can add options to executable code like this
+Você pode adicionar opções ao código executável como este
 
 ```{r}
 #| echo: false
 2 * 2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+A opção echo: false desativa a impressão do código (somente a saída é exibida).

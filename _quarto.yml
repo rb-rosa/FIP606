@@ -16,7 +16,7 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - text: "Básico do R"
+      - text: "Fundamentos"
         file: R_codes/aula1.qmd
       - text: "Análise exploratória"
         file: R_codes/aula4.qmd
@@ -24,7 +24,7 @@ website:
         file: R_codes/aula8.qmd
       - text: "Anova"
         file: R_codes/aula10.qmd
-      - text: "Chi-squared/Fisher's Test"
+      - text: "Variável categórica"
         file: R_codes/aula15.qmd
       - text: "Regressão"
         file: R_codes/aula14.qmd
@@ -50,7 +50,7 @@ website:
           text: R e RStudio
         - href: R_codes/perfil.qmd
           text: Perfil do criador
-    - title: "Básico do R"
+    - title: "Fundamentos"
       contents:
         - href: R_codes/aula1.qmd
           text: Quarto
@@ -71,7 +71,7 @@ website:
     - title: "Teste T"   
       contents:
         - href: R_codes/aula8.qmd
-          text: Dois grupos
+          text: Para dois grupos
         - href: R_codes/aula9.qmd
           text: Amostras dependentes 
     - title: "Anova"   
@@ -82,18 +82,18 @@ website:
           text: 2 ou mais fatores
         - href: R_codes/aula12.qmd
           text: DBC
-    - title: "Chi-squared/Fisher's Test"   
+    - title: "Variável categórica" 
       contents:
         - href: R_codes/aula15.qmd
-          text: Variável categórica
+          text: Chi-squared/Fisher's Test"  
     - title: "Regressão"   
       contents:
         - href: R_codes/aula14.qmd
-          text: De segunda ordem
+          text: Linear de segunda ordem
         - href: R_codes/aula17.qmd
           text: Não linear
         - href: R_codes/aula13.qmd
-          text: Linear Simples, Misto e GLM
+          text: Linear simples, misto e GLM
     - title: "Mapas"
       contents:
         - href: R_codes/aula16.qmd

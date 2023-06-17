@@ -1,5 +1,5 @@
 ---
-title: "aula5"
+title: "**Boxplot**"
 format: html
 editor: visual
 
@@ -9,6 +9,8 @@ execute:
   warning: false
 ---
 
+Aula 5
+
 ## Importa dados
 
 ```{r}
@@ -17,7 +19,7 @@ library(readxl)
 mg <- read_excel("dados-diversos.xlsx")
 ```
 
-## Visualiza
+## Visualizar
 
 ```{r}
 ### entra no mg, então 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula3</title>
+<title>FIP606 - Importar dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula14.html">
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula3</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Importar dados</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -267,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula3</h1>
+<h1 class="title d-none d-lg-block"><strong>Importar dados</strong></h1>
 </div>
 
 
@@ -282,6 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Aula 3</p>
 <section id="from-packages" class="level2">
 <h2 class="anchored" data-anchor-id="from-packages">From packages</h2>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-1_2d428db463e203bb5ac98e6dc952ae14">
@@ -349,13 +350,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"emdelponte/r4pde"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>vctrs (0.6.2 -&gt; 0.6.3) [CRAN]
+<pre><code>vctrs  (0.6.2 -&gt; 0.6.3) [CRAN]
+igraph (1.4.3 -&gt; 1.5.0) [CRAN]
+
+  There is a binary version available but the source version is later:
+       binary source needs_compilation
+igraph  1.4.3  1.5.0              TRUE
+
 package 'vctrs' successfully unpacked and MD5 sums checked
 
 The downloaded binary packages are in
-    C:\Users\rbarb\AppData\Local\Temp\RtmpO0Hr6y\downloaded_packages
+    C:\Users\rbarb\AppData\Local\Temp\RtmpuO7EDV\downloaded_packages
 ── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file 'C:\Users\rbarb\AppData\Local\Temp\RtmpO0Hr6y\remotes399c26cf2f83\emdelponte-r4pde-bd26793/DESCRIPTION' ... OK
+* checking for file 'C:\Users\rbarb\AppData\Local\Temp\RtmpuO7EDV\remotes39f041e35afb\emdelponte-r4pde-c1cc0b7/DESCRIPTION' ... OK
 * preparing 'r4pde':
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts

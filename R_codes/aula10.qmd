@@ -1,5 +1,5 @@
 ---
-title: "aula10"
+title: "**1 Fator**"
 format: html
 
 execute: 
@@ -8,15 +8,15 @@ execute:
   warning: false
 ---
 
-# Três ou mais tratamentos
+Aula 10
 
-## Anova 1 fator
+## Três ou mais tratamentos
 
 ANOVA é feita para níveis categóricos (fator qualitativo). Na ANOVA, queremos saber quem é diferente de quem.
 
 Experimento com um fator e em delineamento inteiramente casualizado para comparar o crescimento micelial de diferentes espécies de um fungo fitopatogênico. A resposta a ser estudada é a TCM = taxa de crescimento micelial.
 
-### Preparo
+## Preparo
 
 ```{r}
 library(readxl)
@@ -32,9 +32,9 @@ micelial|>
   geom_boxplot()
 ```
 
-### Premissas
+## Premissas
 
-### Modelo usando `aov()`
+## Modelo usando `aov()`
 
 ```{r}
 #Ajustar o modelo
@@ -60,7 +60,7 @@ shapiro.test(aov1$residuals)
 
 ```
 
-## E quanto não atende às premissas?
+## E quando não atende às premissas?
 
 Efeito de inseticida na mortalidade de insetos (Beall, 1942). The Transformation of data from entomological field experiments, Biometrika, 29, 243--262. Dados no pacote "datasets" do R. data(InsectSprays)
 
@@ -116,7 +116,9 @@ kruskal(insects$count, insects$spray, console = TRUE)
 
 ```
 
-# Modelo linear generalizado. Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.
+## Modelo linear generalizado
+
+Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.
 
 ```{r}
 glm1 <- glm(count ~ spray,

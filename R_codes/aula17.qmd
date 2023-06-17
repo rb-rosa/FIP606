@@ -1,5 +1,5 @@
 ---
-title: "aula17"
+title: "**Não Linear**"
 format: html
 editor: visual
 
@@ -9,9 +9,9 @@ execute:
   warning: false
 ---
 
-# Regressão não linear para estimar EC50
+## Para estimar EC50
 
-## EC50: valor da dose que reduz 50% do crescimento micelial comparado com a dose zero
+EC50: valor da dose que reduz 50% do crescimento micelial comparado com a dose zero
 
 ```{r}
 library(gsheet)
@@ -45,7 +45,7 @@ dat2 |>
 
 ```
 
-# EC50 com pacote DRM
+## EC50 com pacote DRM
 
 ```{r}
 library(drc)

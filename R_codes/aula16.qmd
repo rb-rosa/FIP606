@@ -1,5 +1,5 @@
 ---
-title: "aula16"
+title: "**Mapas**"
 format: html
 editor: visual
 
@@ -8,6 +8,8 @@ execute:
   cache: true
   warning: false
 ---
+
+Aula 16
 
 ## Carregar pacotes
 
@@ -24,7 +26,7 @@ library(rnaturalearth)
 library(rnaturalearthhires)
 ```
 
-##Instalar pacote do github:
+## Instalar pacote do github:
 
 ```{r}
 remotes::install_github("ropensci/rnaturalearthhires")
@@ -67,7 +69,7 @@ geom_sf(color = "black",
             fill = "green")
 ```
 
-## Localização de pontos especificos dos dados (latitude e longitude)
+## Pontos especificos dos dados no mapa (latitude e longitude)
 
 Para plotar os pontos, precisa-se das coordenadas de onde foram coletados os pontos. Ex.: pontos de coleta - precisa-se coletar as coordenadas para plotar em um mapa (no caso de ser só o municipio, pode pegar na internet as coordenadas).
 
@@ -100,7 +102,7 @@ geom_sf(color = "black",
   theme_void()
 ```
 
-## Inserir rosa dos ventos e a escala no mapa
+## Inserir rosa dos ventos e escala
 
 ```{r}
 library(ggspatial)
@@ -133,7 +135,7 @@ Para todos os municípios, chunk comentado
 Para MG
 
 ```{r}
-shapefile <- st_read("MG_Municipios_2022/MG_Municipios_2022.shp")
-ggplot(MG)+
+shapefile <- sf::st_read("MG_Municipios_2022/MG_Municipios_2022.shp") 
+ggplot(MG) +
   geom_sf(data = shapefile)
 ```

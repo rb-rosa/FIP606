@@ -1,5 +1,5 @@
 ---
-title: "aula13"
+title: "**Simples, Misto e GLM**"
 format: html
 
 execute: 
@@ -7,6 +7,8 @@ execute:
   cache: true
   warning: false
 ---
+
+Aula 13
 
 Análise de regressão estuda a relação entre uma variável dependente (resposta) e outras variáveis independentes (explicativas).Ela permite construir um modelo matemático que represente dois atributos x e y. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.
 
@@ -103,7 +105,7 @@ g1 | g2 | g3
 
 ```
 
-# Modelo misto
+## Modelo misto
 
 Tem fator fixo e aleatório. Junta os 3 experimentos em um modelo só e compara se houve significancia nos 3 ou não.
 
@@ -126,7 +128,7 @@ estande |>
   geom_smooth(se = F, method = "lm")
 ```
 
-# Modelo GLM
+### Modelo GLM
 
 Modelo linear é um caso especial do GLM
 

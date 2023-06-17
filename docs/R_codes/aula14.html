@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula14</title>
+<title>FIP606 - Linear de segunda ordem</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../R_codes/aula14.html" aria-current="page">
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula14</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Linear de segunda ordem</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link active">De segunda ordem</a>
+  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link active">Linear de segunda ordem</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -236,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link">Linear Simples, Misto e GLM</a>
+  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link">Linear simples, misto e GLM</a>
   </div>
 </li>
     </ul>
@@ -248,13 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#modelo-linear-de-segunda-ordem" id="toc-modelo-linear-de-segunda-ordem" class="nav-link active" data-scroll-target="#modelo-linear-de-segunda-ordem">Modelo linear de segunda ordem</a></li>
-  <li><a href="#ajustar-modelo-de-segunda-ordem" id="toc-ajustar-modelo-de-segunda-ordem" class="nav-link" data-scroll-target="#ajustar-modelo-de-segunda-ordem">Ajustar modelo de segunda ordem</a></li>
-  <li><a href="#variável-independente" id="toc-variável-independente" class="nav-link" data-scroll-target="#variável-independente">variável independente</a>
-  <ul class="collapse">
+  <li><a href="#ajustar-modelo-de-segunda-ordem" id="toc-ajustar-modelo-de-segunda-ordem" class="nav-link active" data-scroll-target="#ajustar-modelo-de-segunda-ordem">Ajustar modelo de segunda ordem</a></li>
   <li><a href="#ajustar-modelo-linear-e-quadrático-no-ggplot" id="toc-ajustar-modelo-linear-e-quadrático-no-ggplot" class="nav-link" data-scroll-target="#ajustar-modelo-linear-e-quadrático-no-ggplot">Ajustar modelo linear e quadrático no ggplot</a></li>
-  </ul></li>
   <li><a href="#relacionar-duas-respostas" id="toc-relacionar-duas-respostas" class="nav-link" data-scroll-target="#relacionar-duas-respostas">Relacionar duas respostas</a></li>
+  <li><a href="#correlação-linear" id="toc-correlação-linear" class="nav-link" data-scroll-target="#correlação-linear">Correlação linear</a></li>
+  <li><a href="#spearman-não-paramétrica" id="toc-spearman-não-paramétrica" class="nav-link" data-scroll-target="#spearman-não-paramétrica">Spearman (não paramétrica)</a></li>
+  <li><a href="#kendall-não-paramétrica" id="toc-kendall-não-paramétrica" class="nav-link" data-scroll-target="#kendall-não-paramétrica">kendall (não paramétrica)</a></li>
   </ul>
 </nav>
     </div>
@@ -263,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula14</h1>
+<h1 class="title d-none d-lg-block"><strong>Linear de segunda ordem</strong></h1>
 </div>
 
 
@@ -278,16 +277,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="modelo-linear-de-segunda-ordem" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-linear-de-segunda-ordem">Modelo linear de segunda ordem</h3>
+<p>Aula 14</p>
 <p>Com mais um parâmetro, quadrática</p>
 <p>Nesse exemplo tem-se uma variável independente, que é um nível de um fator do experimento. Como é quantitativo, fazer regressão linear. Então, deve-se observar se é linear simples ou quadrática (nesse caso). Logo, usar o “lm”, verificar o ajuste, verificar os coeficientes, pegar a equação que vai predizer o valor de y para cada valor de x ou x², dependendo do modelo usado, que vai reportar os coeficientes de variação, o R².</p>
-</section>
 <section id="ajustar-modelo-de-segunda-ordem" class="level2">
 <h2 class="anchored" data-anchor-id="ajustar-modelo-de-segunda-ordem">Ajustar modelo de segunda ordem</h2>
-</section>
-<section id="variável-independente" class="level1">
-<h1>variável independente</h1>
+<p>Variável independente</p>
 <div class="cell" data-hash="aula14_cache/html/unnamed-chunk-1_e90a0dc501a3dddc3af0b661d8d46909">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -305,6 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula14_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 <section id="ajustar-modelo-linear-e-quadrático-no-ggplot" class="level2">
 <h2 class="anchored" data-anchor-id="ajustar-modelo-linear-e-quadrático-no-ggplot">Ajustar modelo linear e quadrático no ggplot</h2>
 <div class="cell" data-hash="aula14_cache/html/unnamed-chunk-2_f48eccfefc5dc60116889ac495e2f95e">
@@ -391,10 +387,9 @@ m2  4 43.36151</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="relacionar-duas-respostas" class="level1">
-<h1>Relacionar duas respostas</h1>
-<p>Duas variáveis resposta do tipo númerica quantitativa. . Para saber se há associação entre duas variáveis dependentes.</p>
+<section id="relacionar-duas-respostas" class="level2">
+<h2 class="anchored" data-anchor-id="relacionar-duas-respostas">Relacionar duas respostas</h2>
+<p>Duas variáveis resposta do tipo númerica quantitativa. Para saber se há associação entre duas variáveis dependentes.</p>
 <p>Primeiro, fazer análise para testar a associação. A análise de correlação dá o coeficiente de correlação de Pearson (R), que é a raiz do R², que será sempre maior que o R².</p>
 <div class="cell" data-hash="aula14_cache/html/unnamed-chunk-4_56baa9301726ee66057a9878e397867b">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mofo <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>, <span class="st">"mofo"</span>)</span>
@@ -408,6 +403,9 @@ m2  4 43.36151</code></pre>
 <p><img src="aula14_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="correlação-linear" class="level2">
+<h2 class="anchored" data-anchor-id="correlação-linear">Correlação linear</h2>
 <div class="cell" data-hash="aula14_cache/html/unnamed-chunk-5_b19ff403ebb69643b2fa8959696f2d6b">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mofo1 <span class="ot">&lt;-</span> mofo <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="dv">3</span>)</span>
@@ -454,6 +452,9 @@ sample estimates:
 <p><img src="aula14_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="spearman-não-paramétrica" class="level2">
+<h2 class="anchored" data-anchor-id="spearman-não-paramétrica">Spearman (não paramétrica)</h2>
 <div class="cell" data-hash="aula14_cache/html/unnamed-chunk-6_9b7626009c09471bd416953c5a3a368f">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mofo1 <span class="ot">&lt;-</span> mofo <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="dv">3</span>)</span>
@@ -506,6 +507,9 @@ sample estimates:
 <p><img src="aula14_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="kendall-não-paramétrica" class="level2">
+<h2 class="anchored" data-anchor-id="kendall-não-paramétrica">kendall (não paramétrica)</h2>
 <div class="cell" data-hash="aula14_cache/html/unnamed-chunk-7_3152ab37c1b838d031127adee113949f">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mofo1 <span class="ot">&lt;-</span> mofo <span class="sc">|&gt;</span> </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="dv">3</span>)</span>

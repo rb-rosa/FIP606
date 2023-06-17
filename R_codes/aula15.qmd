@@ -1,5 +1,5 @@
 ---
-title: "aula15"
+title: "**Chi-squared/Fisher's Test**"
 format: html
 editor: visual
 
@@ -9,9 +9,9 @@ execute:
   warning: false
 ---
 
-## Chi-squared test/Fisher's Exact Test
+Aula 15
 
-# Teste para dados de levantamento e variável categorica (ano, resto cultural...) nominal
+Teste para dados de levantamento e variável categorica nominal ano, resto cultural...
 
 ```{r}
 library(readxl)
@@ -60,7 +60,7 @@ survey |>
 
 ```
 
-# Curva de progresso da severidade
+## Curva de progresso da severidade
 
 Planilha dados-diversos, aba curve: dado temporal
 
@@ -123,6 +123,8 @@ tw2|>
   facet_wrap(~exp)
 
 ```
+
+## ANOVA aov() para área abaixo da curva
 
 ```{r}
 # qualitativo, ANOVA para a área abaixo da curva

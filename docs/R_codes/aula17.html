@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula17</title>
+<title>FIP606 - Não Linear</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../R_codes/aula14.html" aria-current="page">
@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula17</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Não Linear</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -227,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link">De segunda ordem</a>
+  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link">Linear de segunda ordem</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link">Linear Simples, Misto e GLM</a>
+  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link">Linear simples, misto e GLM</a>
   </div>
 </li>
     </ul>
@@ -249,10 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#regressão-não-linear-para-estimar-ec50" id="toc-regressão-não-linear-para-estimar-ec50" class="nav-link active" data-scroll-target="#regressão-não-linear-para-estimar-ec50">Regressão não linear para estimar EC50</a>
-  <ul class="collapse">
-  <li><a href="#ec50-valor-da-dose-que-reduz-50-do-crescimento-micelial-comparado-com-a-dose-zero" id="toc-ec50-valor-da-dose-que-reduz-50-do-crescimento-micelial-comparado-com-a-dose-zero" class="nav-link" data-scroll-target="#ec50-valor-da-dose-que-reduz-50-do-crescimento-micelial-comparado-com-a-dose-zero">EC50: valor da dose que reduz 50% do crescimento micelial comparado com a dose zero</a></li>
-  </ul></li>
+  <li><a href="#para-estimar-ec50" id="toc-para-estimar-ec50" class="nav-link active" data-scroll-target="#para-estimar-ec50">Para estimar EC50</a></li>
   <li><a href="#ec50-com-pacote-drm" id="toc-ec50-com-pacote-drm" class="nav-link" data-scroll-target="#ec50-com-pacote-drm">EC50 com pacote DRM</a></li>
   </ul>
 </nav>
@@ -262,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula17</h1>
+<h1 class="title d-none d-lg-block"><strong>Não Linear</strong></h1>
 </div>
 
 
@@ -277,10 +274,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="regressão-não-linear-para-estimar-ec50" class="level1">
-<h1>Regressão não linear para estimar EC50</h1>
-<section id="ec50-valor-da-dose-que-reduz-50-do-crescimento-micelial-comparado-com-a-dose-zero" class="level2">
-<h2 class="anchored" data-anchor-id="ec50-valor-da-dose-que-reduz-50-do-crescimento-micelial-comparado-com-a-dose-zero">EC50: valor da dose que reduz 50% do crescimento micelial comparado com a dose zero</h2>
+<section id="para-estimar-ec50" class="level2">
+<h2 class="anchored" data-anchor-id="para-estimar-ec50">Para estimar EC50</h2>
+<p>EC50: valor da dose que reduz 50% do crescimento micelial comparado com a dose zero</p>
 <div class="cell" data-hash="aula17_cache/html/unnamed-chunk-1_2736eb35c9ca2d7c75d3413f0b6ab533">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -316,9 +312,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-</section>
-<section id="ec50-com-pacote-drm" class="level1">
-<h1>EC50 com pacote DRM</h1>
+<section id="ec50-com-pacote-drm" class="level2">
+<h2 class="anchored" data-anchor-id="ec50-com-pacote-drm">EC50 com pacote DRM</h2>
 <div class="cell" data-hash="aula17_cache/html/unnamed-chunk-2_ebdada5bc344c489cc34f7576c17b307">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drc)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -563,12 +558,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../R_codes/aula14.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">De segunda ordem</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Linear de segunda ordem</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../R_codes/aula13.html" class="pagination-link">
-        <span class="nav-page-text">Linear Simples, Misto e GLM</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Linear simples, misto e GLM</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

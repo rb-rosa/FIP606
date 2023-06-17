@@ -1,5 +1,5 @@
 ---
-title: "aula12"
+title: "**DBC**"
 format: html
 editor: visual
 
@@ -8,6 +8,10 @@ execute:
   cache: true
   warning: false
 ---
+
+Aula 12
+
+## Delineamento em blocos casualisados
 
 ```{r}
 library(readxl)
@@ -26,6 +30,8 @@ aov_fung <- aov(sev ~ trat + rep, data = fungicidas)
 summary(aov_fung)
 #se não der significativo, deixa o bloco, pq o delineamento foi em bloco
 ```
+
+## Checar premissas
 
 ```{r}
 #verificar as premissas
@@ -51,6 +57,8 @@ coord_flip()+
 theme_minimal()
 ```
 
+## Bloco com parcela subdividida
+
 ```{r}
 milho <- read_excel("dados-diversos.xlsx", "milho")
 
@@ -66,6 +74,8 @@ summary(aov_milho_bloco)
 #usando avo não permitiu checar a normalidade, usar outro modelo (misto)
 
 ```
+
+## Modelo misto
 
 ```{r}
 #lme4 - pacote que permite checar as premissas. O modelo misto é mais moderno que o aov

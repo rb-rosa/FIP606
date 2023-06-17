@@ -1,5 +1,5 @@
 ---
-title: "aula4"
+title: "**Ggplot**"
 format: html
 editor: visual
 
@@ -9,7 +9,7 @@ execute:
   warning: false
 ---
 
-# Ggplot
+Aula 4
 
 ## Importar dados
 
@@ -22,6 +22,8 @@ mg |>
   geom_point(alpha = 0.5)
 
 ```
+
+## Gerando gráficos
 
 ```{r}
 mg |> 

@@ -1,5 +1,5 @@
 ---
-title: "aula11"
+title: "**2 ou mais fatores**"
 format: html
 
 execute: 
@@ -7,6 +7,8 @@ execute:
   cache: true
   warning: false
 ---
+
+Aula 11
 
 ```{r}
 library(readxl)
@@ -24,6 +26,8 @@ dat2 |>
   facet_wrap(~ dose)
 
 ```
+
+## Checar premissas, comparar médias, CV
 
 ```{r}
 m1 <- aov(log(inc +0.5) ~ treat*dose,
@@ -68,6 +72,8 @@ m2 <- aov(peso_mil ~ factor(tipo)*factor(umidade),
 summary(m2)
 
 ```
+
+## Sem significância entre a interação
 
 ```{r}
 #quando não houver significãncia entre a interação, testar as variáveis independentes.

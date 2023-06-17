@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula16</title>
+<title>FIP606 - Mapas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula14.html">
@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula16</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Mapas</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -238,12 +238,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#carregar-pacotes" id="toc-carregar-pacotes" class="nav-link active" data-scroll-target="#carregar-pacotes">Carregar pacotes</a></li>
+  <li><a href="#instalar-pacote-do-github" id="toc-instalar-pacote-do-github" class="nav-link" data-scroll-target="#instalar-pacote-do-github">Instalar pacote do github:</a></li>
   <li><a href="#mapa-do-brasil" id="toc-mapa-do-brasil" class="nav-link" data-scroll-target="#mapa-do-brasil">Mapa do Brasil</a></li>
   <li><a href="#plotar-os-estados" id="toc-plotar-os-estados" class="nav-link" data-scroll-target="#plotar-os-estados">Plotar os estados</a></li>
   <li><a href="#selecionar-um-estado" id="toc-selecionar-um-estado" class="nav-link" data-scroll-target="#selecionar-um-estado">Selecionar um estado</a></li>
-  <li><a href="#localização-de-pontos-especificos-dos-dados-latitude-e-longitude" id="toc-localização-de-pontos-especificos-dos-dados-latitude-e-longitude" class="nav-link" data-scroll-target="#localização-de-pontos-especificos-dos-dados-latitude-e-longitude">Localização de pontos especificos dos dados (latitude e longitude)</a></li>
+  <li><a href="#pontos-especificos-dos-dados-no-mapa-latitude-e-longitude" id="toc-pontos-especificos-dos-dados-no-mapa-latitude-e-longitude" class="nav-link" data-scroll-target="#pontos-especificos-dos-dados-no-mapa-latitude-e-longitude">Pontos especificos dos dados no mapa (latitude e longitude)</a></li>
   <li><a href="#separar-a-data-em-dia-mês-e-ano" id="toc-separar-a-data-em-dia-mês-e-ano" class="nav-link" data-scroll-target="#separar-a-data-em-dia-mês-e-ano">Separar a data em dia, mês e ano</a></li>
-  <li><a href="#inserir-rosa-dos-ventos-e-a-escala-no-mapa" id="toc-inserir-rosa-dos-ventos-e-a-escala-no-mapa" class="nav-link" data-scroll-target="#inserir-rosa-dos-ventos-e-a-escala-no-mapa">Inserir rosa dos ventos e a escala no mapa</a></li>
+  <li><a href="#inserir-rosa-dos-ventos-e-escala" id="toc-inserir-rosa-dos-ventos-e-escala" class="nav-link" data-scroll-target="#inserir-rosa-dos-ventos-e-escala">Inserir rosa dos ventos e escala</a></li>
   <li><a href="#malha-de-municípios" id="toc-malha-de-municípios" class="nav-link" data-scroll-target="#malha-de-municípios">Malha de municípios</a></li>
   </ul>
 </nav>
@@ -253,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula16</h1>
+<h1 class="title d-none d-lg-block"><strong>Mapas</strong></h1>
 </div>
 
 
@@ -268,6 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Aula 16</p>
 <section id="carregar-pacotes" class="level2">
 <h2 class="anchored" data-anchor-id="carregar-pacotes">Carregar pacotes</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-1_7595c0384d60df4e4e3e126f9d17125f">
@@ -282,7 +284,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearthhires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>##Instalar pacote do github:</p>
+</section>
+<section id="instalar-pacote-do-github" class="level2">
+<h2 class="anchored" data-anchor-id="instalar-pacote-do-github">Instalar pacote do github:</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-2_cd7e5267c57f9c971b752f2d4bd87f13">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ropensci/rnaturalearthhires"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -332,8 +336,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="localização-de-pontos-especificos-dos-dados-latitude-e-longitude" class="level2">
-<h2 class="anchored" data-anchor-id="localização-de-pontos-especificos-dos-dados-latitude-e-longitude">Localização de pontos especificos dos dados (latitude e longitude)</h2>
+<section id="pontos-especificos-dos-dados-no-mapa-latitude-e-longitude" class="level2">
+<h2 class="anchored" data-anchor-id="pontos-especificos-dos-dados-no-mapa-latitude-e-longitude">Pontos especificos dos dados no mapa (latitude e longitude)</h2>
 <p>Para plotar os pontos, precisa-se das coordenadas de onde foram coletados os pontos. Ex.: pontos de coleta - precisa-se coletar as coordenadas para plotar em um mapa (no caso de ser só o municipio, pode pegar na internet as coordenadas).</p>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-6_fb397898900a14c2daa48b0e1a3a5653">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>BRA <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"Brazil"</span>, </span>
@@ -370,8 +374,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="inserir-rosa-dos-ventos-e-a-escala-no-mapa" class="level2">
-<h2 class="anchored" data-anchor-id="inserir-rosa-dos-ventos-e-a-escala-no-mapa">Inserir rosa dos ventos e a escala no mapa</h2>
+<section id="inserir-rosa-dos-ventos-e-escala" class="level2">
+<h2 class="anchored" data-anchor-id="inserir-rosa-dos-ventos-e-escala">Inserir rosa dos ventos e escala</h2>
 <div class="cell" data-hash="aula16_cache/html/unnamed-chunk-8_377143e2043df8d3130e406ae8f57201">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BRA) <span class="sc">+</span></span>
@@ -401,11 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = shapefile)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para MG</p>
-<div class="cell" data-hash="aula16_cache/html/unnamed-chunk-10_21caf6c74813d902c404c013a255b2cd">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shapefile <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"MG_Municipios_2022/MG_Municipios_2022.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="aula16_cache/html/unnamed-chunk-10_2034a6ed976d5371dcdeb85376ca4a33">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shapefile <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="st">"MG_Municipios_2022/MG_Municipios_2022.shp"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MG_Municipios_2022' from data source 
-  `C:\Users\rbarb\OneDrive\Área de Trabalho\Mestrado UFV\Disciplinas\FIP 606 Análise e Visualização de Dados em Fitopatologia\Aulas\Aula 19 - Quarto website\website\R_codes\MG_Municipios_2022\MG_Municipios_2022.shp' 
+  `C:\Users\rbarb\OneDrive\Documentos\GitHub\FIP606\R_codes\MG_Municipios_2022\MG_Municipios_2022.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 853 features and 4 fields
 Geometry type: POLYGON
@@ -413,7 +417,7 @@ Dimension:     XY
 Bounding box:  xmin: -51.04608 ymin: -22.92276 xmax: -39.85683 ymax: -14.23318
 Geodetic CRS:  SIRGAS 2000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(MG)<span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(MG) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> shapefile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="aula16_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>

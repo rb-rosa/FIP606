@@ -1,5 +1,5 @@
 ---
-title: "aula9"
+title: "**Amostras dependentes ou pareadas**"
 format: html
 
 execute: 
@@ -8,12 +8,18 @@ execute:
   warning: false
 ---
 
+Aula 9
+
+## Carregar pacotes
+
 ```{r}
 library(magrittr) # para usar pipes
 library(ggplot2) # para gráficos
 library(dplyr)
 library(readxl)
 library(tidyr)
+
+
 
 ```
 
@@ -73,6 +79,8 @@ attach(data_mg2) # vamos facilitar o uso dos vetores. Libera no ambiente os obje
 var.test(Mg2, Ctrl)
 ```
 
+## Normalidade e Heterocedasticidade
+
 ```{r}
 shapiro.test(Mg2)
 shapiro.test(Ctrl)
@@ -97,7 +105,7 @@ pivot_wider(1,
 escala2
 ```
 
-#Teste t para amostras dependentes ou pareadas (para um (quando se compara com um valor padrão) ou dois grupos)
+## Teste não paramétrico
 
 ```{r}
 

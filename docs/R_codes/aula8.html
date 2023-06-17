@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula8</title>
+<title>FIP606 - Comparação entre dois grupos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula14.html">
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula8</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Comparação entre dois grupos</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula8.html" class="sidebar-item-text sidebar-link active">Dois grupos</a>
+  <a href="../R_codes/aula8.html" class="sidebar-item-text sidebar-link active">Para dois grupos</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -243,7 +243,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#comparação-entre-dois-grupos" id="toc-comparação-entre-dois-grupos" class="nav-link active" data-scroll-target="#comparação-entre-dois-grupos">Comparação entre dois grupos</a></li>
+  <li><a href="#tabela-em-formato-largo" id="toc-tabela-em-formato-largo" class="nav-link active" data-scroll-target="#tabela-em-formato-largo">Tabela em formato largo</a></li>
+  <li><a href="#teste-t" id="toc-teste-t" class="nav-link" data-scroll-target="#teste-t">Teste t</a></li>
+  <li><a href="#erro-padrão-da-média-e-resultados" id="toc-erro-padrão-da-média-e-resultados" class="nav-link" data-scroll-target="#erro-padrão-da-média-e-resultados">Erro padrão da média e resultados</a></li>
   </ul>
 </nav>
     </div>
@@ -252,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula8</h1>
+<h1 class="title d-none d-lg-block"><strong>Comparação entre dois grupos</strong></h1>
 </div>
 
 
@@ -267,8 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="comparação-entre-dois-grupos" class="level1">
-<h1>Comparação entre dois grupos</h1>
+<p>Aula 8</p>
 <div class="cell" data-hash="aula8_cache/html/unnamed-chunk-1_1a861289e1befdcdee870fd428e564ed">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -285,6 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula8_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<section id="tabela-em-formato-largo" class="level2">
+<h2 class="anchored" data-anchor-id="tabela-em-formato-largo">Tabela em formato largo</h2>
 <div class="cell" data-hash="aula8_cache/html/unnamed-chunk-2_4fe474d8cc90b6053d57d47edf040dea">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Para usar o t.test, organizar a tabela no formato largo, um nível do tratamento em uma coluna e outro em outra coluna</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mg2 <span class="ot">&lt;-</span> mg <span class="sc">|&gt;</span> </span>
@@ -309,6 +312,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 10    10  10.4  16  </code></pre>
 </div>
 </div>
+</section>
+<section id="teste-t" class="level2">
+<h2 class="anchored" data-anchor-id="teste-t">Teste t</h2>
 <div class="cell" data-hash="aula8_cache/html/unnamed-chunk-3_6b60d9d2d55f2a9eb731069bc6c7d79e">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#recebe o grupo mg e depois o grupo controle</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#o $ liga o objeto mg2 a variável Mg2 da tabela no formato longo</span></span>
@@ -316,6 +322,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#resultado:df é grau de liberdade</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="erro-padrão-da-média-e-resultados" class="level2">
+<h2 class="anchored" data-anchor-id="erro-padrão-da-média-e-resultados">Erro padrão da média e resultados</h2>
 <div class="cell" data-hash="aula8_cache/html/unnamed-chunk-4_f5777d2f814a65512968a9fd699e58f7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mg <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trat, comp))<span class="sc">+</span></span>

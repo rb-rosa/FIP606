@@ -1,5 +1,5 @@
 ---
-title: "aula2"
+title: "**Carregar pacotes**"
 format: html
 execute: 
   freeze: auto
@@ -7,18 +7,20 @@ execute:
   warning: false #suprime as mensagens globalmente, assim não precisa colocar em cada chunk
 ---
 
-## Carregar pacotes
+Aula 2
 
 O carregamento de **pacotes** pode ser feito pelo menu ou então com um comando no *console*. O fluxo básico da programação pode ser conferido [neste link](https://r4ds.hadley.nz/workflow-basics.html).
 
-Abaixo demonstraremos como instalar e carregar um pacote. A instalação é feita através do menu: Tools \> Install packages.
+## Instalar e carregar um pacote
+
+A instalação é feita através do menu: Tools \> Install packages.
 
 ```{r}
 library(tidyverse)
 library(gsheet)
 ```
 
-Vamos ver como invocar uma função de um pacote
+## Invocar uma função de um pacote
 
 ```{r}
 mtcars

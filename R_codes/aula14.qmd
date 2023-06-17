@@ -1,5 +1,5 @@
 ---
-title: "aula14"
+title: "**Linear de segunda ordem**"
 format: html
 
 execute: 
@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-### Modelo linear de segunda ordem
+Aula 14
 
 Com mais um parâmetro, quadrática
 
@@ -16,7 +16,7 @@ Nesse exemplo tem-se uma variável independente, que é um nível de um fator do
 
 ## Ajustar modelo de segunda ordem
 
-# variável independente
+Variável independente
 
 ```{r}
 # 
@@ -71,9 +71,9 @@ summary(m2)
 AIC(m1, m2)
 ```
 
-# Relacionar duas respostas
+## Relacionar duas respostas
 
-Duas variáveis resposta do tipo númerica quantitativa. . Para saber se há associação entre duas variáveis dependentes.
+Duas variáveis resposta do tipo númerica quantitativa. Para saber se há associação entre duas variáveis dependentes.
 
 Primeiro, fazer análise para testar a associação. A análise de correlação dá o coeficiente de correlação de Pearson (R), que é a raiz do R², que será sempre maior que o R².
 
@@ -86,6 +86,8 @@ mofo |>
   facet_wrap(~study)+
   geom_smooth(se = F, method = "lm")
 ```
+
+## Correlação linear
 
 ```{r}
 mofo1 <- mofo |> 
@@ -100,6 +102,8 @@ library(corrplot)
 corrplot (pcor, method = "number", type = "lower")
 ```
 
+## Spearman (não paramétrica)
+
 ```{r}
 mofo1 <- mofo |> 
   filter(study == 3)
@@ -113,6 +117,8 @@ pcor <- cor(mofo1 |> select(3:5), method = "spearman")
 library(corrplot)
 corrplot (pcor, method = "number", type = "lower")
 ```
+
+## kendall (não paramétrica)
 
 ```{r}
 mofo1 <- mofo |> 

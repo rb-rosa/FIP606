@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FIP606 - aula13</title>
+<title>FIP606 - Simples, Misto e GLM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../R_codes/aula15.html">
- <span class="menu-text">Chi-squared/Fisher’s Test</span></a>
+ <span class="menu-text">Variável categórica</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../R_codes/aula14.html" aria-current="page">
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">aula13</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>Simples, Misto e GLM</strong></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link">De segunda ordem</a>
+  <a href="../R_codes/aula14.html" class="sidebar-item-text sidebar-link">Linear de segunda ordem</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -236,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link active">Linear Simples, Misto e GLM</a>
+  <a href="../R_codes/aula13.html" class="sidebar-item-text sidebar-link active">Linear simples, misto e GLM</a>
   </div>
 </li>
     </ul>
@@ -249,8 +249,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#modelo-linear-simples-fator-fixo" id="toc-modelo-linear-simples-fator-fixo" class="nav-link active" data-scroll-target="#modelo-linear-simples-fator-fixo">Modelo linear simples (fator fixo)</a></li>
-  <li><a href="#modelo-misto" id="toc-modelo-misto" class="nav-link" data-scroll-target="#modelo-misto">Modelo misto</a></li>
+  <li><a href="#modelo-misto" id="toc-modelo-misto" class="nav-link" data-scroll-target="#modelo-misto">Modelo misto</a>
+  <ul class="collapse">
   <li><a href="#modelo-glm" id="toc-modelo-glm" class="nav-link" data-scroll-target="#modelo-glm">Modelo GLM</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -259,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">aula13</h1>
+<h1 class="title d-none d-lg-block"><strong>Simples, Misto e GLM</strong></h1>
 </div>
 
 
@@ -274,6 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Aula 13</p>
 <p>Análise de regressão estuda a relação entre uma variável dependente (resposta) e outras variáveis independentes (explicativas).Ela permite construir um modelo matemático que represente dois atributos x e y. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.</p>
 <p>Já a correlação linear, resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis.</p>
 <p>Para fatores com níveis quantitavos se faz análise de regressão e não de média. Para essa aula, será feita análise de regressão (fator quantitativo). O objetivo é ajustar um modelo (função ou equação) teórico que permite estimar qualquer valor (3,2,2.6,6….). Nesse caso, queremos saber se há efeito significativo do inóculo na taxa de emergência, se não tiver efito, é observado uma linha reta, mas se tiver, a reta terá uma inclinação (snoop = coeficiente angular da reta). Se o snoop for zero, o ângulo é zero. O p-valor da regressão é se o snoop (diminuição ou aumento) é significativamente diferetne de zero.</p>
@@ -439,8 +442,8 @@ computed using a Wald t-distribution approximation.</code></pre>
 </div>
 </div>
 </section>
-<section id="modelo-misto" class="level1">
-<h1>Modelo misto</h1>
+<section id="modelo-misto" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-misto">Modelo misto</h2>
 <p>Tem fator fixo e aleatório. Junta os 3 experimentos em um modelo só e compara se houve significancia nos 3 ou não.</p>
 <div class="cell" data-hash="aula13_cache/html/unnamed-chunk-3_ec41c58e7aa228f1caa97cf9fb08637a">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
@@ -499,9 +502,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><img src="aula13_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="modelo-glm" class="level1">
-<h1>Modelo GLM</h1>
+<section id="modelo-glm" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-glm">Modelo GLM</h3>
 <p>Modelo linear é um caso especial do GLM</p>
 <div class="cell" data-hash="aula13_cache/html/unnamed-chunk-5_73ad304bf3db0a545254828121b5af7a">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(nplants <span class="sc">~</span> trat, <span class="at">data =</span> exp3)</span>
@@ -591,6 +593,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

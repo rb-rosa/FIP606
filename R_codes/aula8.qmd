@@ -1,5 +1,5 @@
 ---
-title: "aula8"
+title: "**Comparação entre dois grupos**"
 format: html
 
 execute: 
@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-# Comparação entre dois grupos
+Aula 8
 
 ```{r}
 library(tidyverse)
@@ -24,6 +24,8 @@ mg |>
   ylim(5,20)
 ```
 
+## Tabela em formato largo
+
 ```{r}
 #Para usar o t.test, organizar a tabela no formato largo, um nível do tratamento em uma coluna e outro em outra coluna
 mg2 <- mg |> 
@@ -35,6 +37,8 @@ mg2
 
 ```
 
+## Teste t
+
 ```{r}
 #recebe o grupo mg e depois o grupo controle
 #o $ liga o objeto mg2 a variável Mg2 da tabela no formato longo
@@ -42,6 +46,8 @@ t <- t.test(mg2$Mg2, mg2$Ctrl)
 
 #resultado:df é grau de liberdade
 ```
+
+## Erro padrão da média e resultados
 
 ```{r}
 mg |>

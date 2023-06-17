@@ -1,5 +1,5 @@
 ---
-title: "aula7"
+title: "**Transformar dados**"
 format: html
 
 execute: 
@@ -8,12 +8,13 @@ execute:
   warning: false
 ---
 
+Aula 7
+
 ```{r}
 library(tidyverse)
 library(readxl)
 
 mofo <- read_excel("dados-diversos.xlsx","mofo")
-
 ```
 
 ```{r}
@@ -25,6 +26,8 @@ mofo |>
 
 ```
 
+## Histograma
+
 ```{r}
 
 h1 <- mofo |> 
@@ -32,6 +35,8 @@ h1 <- mofo |>
   geom_histogram(bins = 10)
 
 ```
+
+## Boxplot
 
 ```{r}
 
@@ -43,6 +48,8 @@ library (patchwork)
 (h1 / i)
 
 ```
+
+## Média
 
 ```{r}
 #média 
@@ -71,6 +78,8 @@ h2
 h1 / h2
 
 ```
+
+## Modificar variáveis
 
 ```{r}
 #cria um novo conjunto com a aba survey do arquivo dados-diversos
