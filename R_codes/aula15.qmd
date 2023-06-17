@@ -91,7 +91,7 @@ curve3 <- curve |>
 t.test(curve3$Drip, curve3$Furrow)
 ```
 
-## Experimetno fatorial, dados tan-spot-wheat
+## Experimetno fatorial
 
 ```{r}
 library(gsheet)
