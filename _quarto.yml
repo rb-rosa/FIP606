@@ -102,8 +102,7 @@ website:
   page-footer:
     border: false
     left: "Copyright 2023, Raphael B Rosa"
-    
-    - icon: linkedin
+      - icon: linkedin
         href: https://www.linkedin.com/in/raphaelbarbozaagronomia
       - icon: instagram
         href: https://www.instagram.com/invites/contact/?i=xk2vhn0e4rad&utm_content=2owlczy
@@ -113,7 +112,6 @@ website:
             url:  https://github.com/rb-rosa
           - text: Report a Bug
             url:  mailto:rbarboza.rosa@gmail.com
-    
 format:
   html:
     theme: spacelab
