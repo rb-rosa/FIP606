@@ -2,6 +2,6 @@
 
 ![](images/plot2.png){style="float: right; padding-left:20px" fig-align="right" width="219"}
 
-Este é o [Quarto](https://quarto.org/) website para disponibilizar as aulas da FIP 606 sobre **"Análise e Visualização de Dados em Fitopatologia"** no programa **RStudio**. A disciplina é oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa pelo professor [Emerson M Del Ponte](https://emersondelponte.netlify.app/).
+Este é o [Quarto](https://quarto.org/) website para disponibilizar as aulas sobre **"Análise e Visualização de Dados em Fitopatologia"** no programa [**RStudio**](https://posit.co/products/open-source/rstudio/) da disciplina FIP 606, oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa pelo professor [Emerson M Del Ponte](https://emersondelponte.netlify.app/).
 
 Para mais informações sobre ciência de dados no R, [clique aqui](https://r4ds.hadley.nz/).

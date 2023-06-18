@@ -1,5 +1,5 @@
 ---
-title: "**Ggplot**"
+title: ""
 format: html
 editor: visual
 
@@ -9,7 +9,11 @@ execute:
   warning: false
 ---
 
+![](/images/ggplot2.png){width="54"}
+
 Aula 4
+
+[Referência](https://ggplot2.tidyverse.org/reference/index.html)
 
 ## Importar dados
 

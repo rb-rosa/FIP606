@@ -13,6 +13,8 @@ O carregamento de **pacotes** pode ser feito pelo menu ou então com um comando 
 
 ## Instalar e carregar um pacote
 
+O tidyverse é uma [**coleção de pacotes R**](https://www.tidyverse.org/packages/) projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design subjacente, gramática e estruturas de dados.
+
 A instalação é feita através do menu: Tools \> Install packages.
 
 ```{r}

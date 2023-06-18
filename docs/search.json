@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "FIP606",
     "section": "",
-    "text": "Este é o Quarto website para disponibilizar as aulas da FIP 606 sobre “Análise e Visualização de Dados em Fitopatologia” no programa RStudio. A disciplina é oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa pelo professor Emerson M Del Ponte.\nPara mais informações sobre ciência de dados no R, clique aqui."
+    "text": "Este é o Quarto website para disponibilizar as aulas sobre “Análise e Visualização de Dados em Fitopatologia” no programa RStudio da disciplina FIP 606, oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa pelo professor Emerson M Del Ponte.\nPara mais informações sobre ciência de dados no R, clique aqui."
   },
   {
     "objectID": "R_codes/aula1.html",
@@ -347,7 +347,7 @@
     "href": "R_codes/aula18.html#transformação-box-cox",
     "title": "Transformação Box Cox",
     "section": "Transformação Box-Cox",
-    "text": "Transformação Box-Cox\nOs estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma \"forma normal\". Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados ideênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde Y’ é a transformação dos dados oriinais Y.Observe que para Lambda = 0, a transformação NÃO é Y 0 (porque seria 1 para cada valor), mas sim o logaRitmo de Y.\n\n\n\n1\nY'\n\n\n-2\nY-2 = 1/Y2\n\n\n-1\nY-1 = 1/Y1\n\n\n-0.5\nY-0.5 = 1/(Sqrt(Y))\n\n\n0\nlog(Y)\n\n\n0.5\nY0.5 = Sqrt(Y)\n\n\n1\nY1 = Y\n\n\n2\nY2\n\n\n\nA transformação Box-cox busca encontrar um λ para que os dados trasnformados se aproximem de uma distribuição normal.\nA função boxcox foi implementada no pacote MASS. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula “variávelresposta ^ lambda - 1”."
+    "text": "Transformação Box-Cox\nOs estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma “forma normal”. Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde Y’ é a transformação dos dados oriinais Y.Observe que para Lambda = 0, a transformação NÃO é Y 0 (porque seria 1 para cada valor), mas sim o logaRitmo de Y.\n\n\n\n1\nY’\n\n\n-2\nY-2 = 1/Y2\n\n\n-1\nY-1 = 1/Y1\n\n\n-0.5\nY-0.5 = 1/(Sqrt(Y))\n\n\n0\nlog(Y)\n\n\n0.5\nY0.5 = Sqrt(Y)\n\n\n1\nY1 = Y\n\n\n2\nY2\n\n\n\nA transformação Box-cox busca encontrar um λ para que os dados trasnformados se aproximem de uma distribuição normal.\nA função boxcox foi implementada no pacote MASS. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula “variávelresposta ^ lambda - 1”."
   },
   {
     "objectID": "R_codes/aula18.html#transformando-dados",
@@ -368,7 +368,7 @@
     "href": "R_codes/aula2.html#instalar-e-carregar-um-pacote",
     "title": "Carregar pacotes",
     "section": "Instalar e carregar um pacote",
-    "text": "Instalar e carregar um pacote\nA instalação é feita através do menu: Tools > Install packages.\n\nlibrary(tidyverse)\nlibrary(gsheet)"
+    "text": "Instalar e carregar um pacote\nO tidyverse é uma coleção de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design subjacente, gramática e estruturas de dados.\nA instalação é feita através do menu: Tools > Install packages.\n\nlibrary(tidyverse)\nlibrary(gsheet)"
   },
   {
     "objectID": "R_codes/aula2.html#invocar-uma-função-de-um-pacote",
@@ -429,21 +429,21 @@
   {
     "objectID": "R_codes/aula4.html",
     "href": "R_codes/aula4.html",
-    "title": "Ggplot",
+    "title": "FIP606",
     "section": "",
-    "text": "Aula 4"
+    "text": "Aula 4\nReferência"
   },
   {
     "objectID": "R_codes/aula4.html#importar-dados",
     "href": "R_codes/aula4.html#importar-dados",
-    "title": "Ggplot",
+    "title": "FIP606",
     "section": "Importar dados",
     "text": "Importar dados\n\nlibrary(tidyverse)\nmg <- read_csv(\"dados-diversos.csv\")\n\nmg |> \n  ggplot(aes(Irrigation, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)"
   },
   {
     "objectID": "R_codes/aula4.html#gerando-gráficos",
     "href": "R_codes/aula4.html#gerando-gráficos",
-    "title": "Ggplot",
+    "title": "FIP606",
     "section": "Gerando gráficos",
     "text": "Gerando gráficos\n\nmg |> \n# filter(rep == 3) |> \n  ggplot(aes(day, severity, shape = Irrigation))+\n  geom_point(alpha = 0.5)+\n  geom_line()+\n  facet_wrap(~rep)\n\n\n\n\n\nmg2 <- mg |> \n  select(day, rep, severity) |> \n  group_by(day) |> \n  summarize(sev =  mean(severity))\n\n  mg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_point()+\n  geom_line()+\n  ylim(0,100)+\n    labs(x = \"Time (days)\", y = \"Severity (%)\")\n\n\n\n#   Configurar o gráfico\n\n\nmg2 |> \n  ggplot(aes(day, sev*100))+\n  geom_line(color = \"darkorange\")+\n  geom_point(size = 3, \n             color = \"darkorange\")+\n  scale_x_continuous(breaks = c(0,7,14,21,28,35,42,49,56,63))+\n  scale_y_continuous(n.breaks = 5, \n                     limits = c(0,100))+\n    labs(x = \"Time (days)\", \n         y = \"Severity (%)\", \n         title = \"My first ggplot\", \n         subtitle = \"It is beatiful\", \n         caption = \"Source: FIP 606\")+\n#   Configurar o gráfico\n  theme_light()\n\n\n\nggsave(\"figs/myfirstggplot.png\",\n       bg = \"white\",\n       width = 4,\n       height = 3)"
   },
@@ -620,6 +620,6 @@
     "href": "R_codes/rrstudio.html#o-que-é-rstudio",
     "title": "FIP606",
     "section": "O que é RStudio?",
-    "text": "O que é RStudio?\nRStudio é um ambiente de desenvolvimento integrado (IDE) para R e Python. Ele inclui um console, editor de realce de sintaxe que oferece suporte à execução direta de código e ferramentas para plotagem, histórico, depuração e gerenciamento de espaço de trabalho. O RStudio está disponível em código aberto e edições comerciais e é executado na área de trabalho (Windows, Mac e Linux).\nAlgumas de suas características incluem:\n\nBancada de trabalho personalizável com todas as ferramentas necessárias para trabalhar com R em um só lugar (console, source, plots, workspace, help, history, etc.).\nEditor de realce de sintaxe com conclusão de código.\nExecute o código diretamente do editor de origem (linha, seleção ou arquivo).\nSuporte completo para autoria de documentos Sweave e TeX.\nRoda em Windows, Mac e Linux, e tem uma porta FreeBSD mantida pela comunidade.\nTambém pode ser executado como um servidor, permitindo que vários usuários acessem o RStudio IDE usando um navegador da web.\n\nPara mais informações sobre o RStudio e download dos programas, visite o site do projeto ."
+    "text": "O que é RStudio?\nRStudio é um ambiente de desenvolvimento integrado (IDE) para R e Python. Ele inclui um console, editor de realce de sintaxe que oferece suporte à execução direta de código e ferramentas para plotagem, histórico, depuração e gerenciamento de espaço de trabalho. O RStudio está disponível em código aberto e edições comerciais e é executado na área de trabalho (Windows, Mac e Linux).\nPara mais informações sobre o RStudio e download dos programas, visite o site do projeto ."
   }
 ]

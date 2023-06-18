@@ -25,10 +25,10 @@ website:
         menu:
         - text: "Teste T"
           file: R_codes/aula8.qmd
-        - text: "Anova"
-          file: R_codes/aula10.qmd
         - text: "Transformação Box Cox"
           file: R_codes/aula18.qmd
+        - text: "Anova"
+          file: R_codes/aula10.qmd
         - text: "Variável categórica"
           file: R_codes/aula15.qmd
         - text: "Regressão"
