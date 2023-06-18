@@ -266,16 +266,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#from-packages" id="toc-from-packages" class="nav-link active" data-scroll-target="#from-packages">From packages</a></li>
-  <li><a href="#dataframe-from-packages" id="toc-dataframe-from-packages" class="nav-link" data-scroll-target="#dataframe-from-packages">Dataframe from packages</a></li>
-  <li><a href="#from-excel" id="toc-from-excel" class="nav-link" data-scroll-target="#from-excel">From excel</a></li>
-  <li><a href="#from-csv" id="toc-from-csv" class="nav-link" data-scroll-target="#from-csv">From CSV</a></li>
-  <li><a href="#from-txt" id="toc-from-txt" class="nav-link" data-scroll-target="#from-txt">From TXT</a></li>
-  <li><a href="#from-google-sheet" id="toc-from-google-sheet" class="nav-link" data-scroll-target="#from-google-sheet">From google sheet</a>
+  <li><a href="#de-pacotes" id="toc-de-pacotes" class="nav-link active" data-scroll-target="#de-pacotes">De pacotes</a></li>
+  <li><a href="#dataframe-de-pacotes" id="toc-dataframe-de-pacotes" class="nav-link" data-scroll-target="#dataframe-de-pacotes">Dataframe de pacotes</a></li>
+  <li><a href="#do-excel" id="toc-do-excel" class="nav-link" data-scroll-target="#do-excel">Do excel</a></li>
+  <li><a href="#de-csv" id="toc-de-csv" class="nav-link" data-scroll-target="#de-csv">De CSV</a></li>
+  <li><a href="#de-txt" id="toc-de-txt" class="nav-link" data-scroll-target="#de-txt">De TXT</a></li>
+  <li><a href="#do-google-sheet" id="toc-do-google-sheet" class="nav-link" data-scroll-target="#do-google-sheet">Do google sheet</a>
   <ul class="collapse">
-  <li><a href="#first-tab-link" id="toc-first-tab-link" class="nav-link" data-scroll-target="#first-tab-link">First tab link</a></li>
-  <li><a href="#second-tab-link" id="toc-second-tab-link" class="nav-link" data-scroll-target="#second-tab-link">Second tab link</a></li>
-  <li><a href="#internet-link" id="toc-internet-link" class="nav-link" data-scroll-target="#internet-link">Internet link</a></li>
+  <li><a href="#link-da-primeira-aba" id="toc-link-da-primeira-aba" class="nav-link" data-scroll-target="#link-da-primeira-aba">Link da primeira aba</a></li>
+  <li><a href="#link-da-segunda-aba" id="toc-link-da-segunda-aba" class="nav-link" data-scroll-target="#link-da-segunda-aba">Link da segunda aba</a></li>
+  <li><a href="#link-da-internet" id="toc-link-da-internet" class="nav-link" data-scroll-target="#link-da-internet">Link da internet</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -301,8 +301,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>Aula 3</p>
-<section id="from-packages" class="level2">
-<h2 class="anchored" data-anchor-id="from-packages">From packages</h2>
+<section id="de-pacotes" class="level2">
+<h2 class="anchored" data-anchor-id="de-pacotes">De pacotes</h2>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-1_2d428db463e203bb5ac98e6dc952ae14">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -362,25 +362,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> cars2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dataframe-from-packages" class="level2">
-<h2 class="anchored" data-anchor-id="dataframe-from-packages">Dataframe from packages</h2>
+<section id="dataframe-de-pacotes" class="level2">
+<h2 class="anchored" data-anchor-id="dataframe-de-pacotes">Dataframe de pacotes</h2>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-2_94653b679eff05da21f02c89fc51e96d">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"emdelponte/r4pde"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>vctrs  (0.6.2 -&gt; 0.6.3) [CRAN]
-igraph (1.4.3 -&gt; 1.5.0) [CRAN]
-
-  There is a binary version available but the source version is later:
-       binary source needs_compilation
-igraph  1.4.3  1.5.0              TRUE
-
-package 'vctrs' successfully unpacked and MD5 sums checked
+<pre><code>igraph (1.4.3 -&gt; 1.5.0) [CRAN]
+package 'igraph' successfully unpacked and MD5 sums checked
 
 The downloaded binary packages are in
-    C:\Users\rbarb\AppData\Local\Temp\RtmpuO7EDV\downloaded_packages
+    C:\Users\rbarb\AppData\Local\Temp\Rtmp2TQLtE\downloaded_packages
 ── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file 'C:\Users\rbarb\AppData\Local\Temp\RtmpuO7EDV\remotes39f041e35afb\emdelponte-r4pde-c1cc0b7/DESCRIPTION' ... OK
+* checking for file 'C:\Users\rbarb\AppData\Local\Temp\Rtmp2TQLtE\remotes268c6f71447\emdelponte-r4pde-2501c89/DESCRIPTION' ... OK
 * preparing 'r4pde':
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
@@ -409,8 +403,8 @@ The downloaded binary packages are in
 </div>
 </div>
 </section>
-<section id="from-excel" class="level2">
-<h2 class="anchored" data-anchor-id="from-excel">From excel</h2>
+<section id="do-excel" class="level2">
+<h2 class="anchored" data-anchor-id="do-excel">Do excel</h2>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-3_134dcd1140b848bf183c53e6820ba1ac">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>magnesio <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>)</span>
@@ -418,30 +412,30 @@ The downloaded binary packages are in
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>escala2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="from-csv" class="level2">
-<h2 class="anchored" data-anchor-id="from-csv">From CSV</h2>
+<section id="de-csv" class="level2">
+<h2 class="anchored" data-anchor-id="de-csv">De CSV</h2>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-4_022ed41f516fe78c3e3e6da74306e94d">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>magnesio2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dados-diversos.csv"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>magnesio3 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados-diversos.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="from-txt" class="level2">
-<h2 class="anchored" data-anchor-id="from-txt">From TXT</h2>
+<section id="de-txt" class="level2">
+<h2 class="anchored" data-anchor-id="de-txt">De TXT</h2>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-5_ac79d0613afdbc98f9874ce09452aa2f">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>magnesio4 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"dados-diversos.txt"</span>, <span class="at">sep =</span> <span class="st">','</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="from-google-sheet" class="level2">
-<h2 class="anchored" data-anchor-id="from-google-sheet">From google sheet</h2>
-<section id="first-tab-link" class="level3">
-<h3 class="anchored" data-anchor-id="first-tab-link">First tab link</h3>
+<section id="do-google-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="do-google-sheet">Do google sheet</h2>
+<section id="link-da-primeira-aba" class="level3">
+<h3 class="anchored" data-anchor-id="link-da-primeira-aba">Link da primeira aba</h3>
 </section>
-<section id="second-tab-link" class="level3">
-<h3 class="anchored" data-anchor-id="second-tab-link">Second tab link</h3>
+<section id="link-da-segunda-aba" class="level3">
+<h3 class="anchored" data-anchor-id="link-da-segunda-aba">Link da segunda aba</h3>
 </section>
-<section id="internet-link" class="level3">
-<h3 class="anchored" data-anchor-id="internet-link">Internet link</h3>
+<section id="link-da-internet" class="level3">
+<h3 class="anchored" data-anchor-id="link-da-internet">Link da internet</h3>
 <div class="cell" data-hash="aula3_cache/html/unnamed-chunk-6_787428ca151efc32bd82d1323a465015">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>magnesio5 <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(<span class="st">"https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=921203844"</span>)</span>

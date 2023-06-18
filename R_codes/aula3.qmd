@@ -11,7 +11,7 @@ execute:
 
 Aula 3
 
-## From packages
+## De pacotes
 
 ```{r}
 cars
@@ -20,7 +20,7 @@ speed <- cars2
 
 ```
 
-## Dataframe from packages
+## Dataframe de pacotes
 
 ```{r}
 library(remotes)
@@ -30,7 +30,7 @@ df <- RustSoybean
 df
 ```
 
-## From excel
+## Do excel
 
 ```{r}
 library(readxl)
@@ -39,7 +39,7 @@ escala1 <- read_excel("dados-diversos.xlsx", "escala")
 escala2 <- read_excel("dados-diversos.xlsx", 2)
 ```
 
-## From CSV
+## De CSV
 
 ```{r}
 library(tidyverse)
@@ -47,20 +47,20 @@ magnesio2 <- read.csv("dados-diversos.csv")
 magnesio3 <- read_csv("dados-diversos.csv")
 ```
 
-## From TXT
+## De TXT
 
 ```{r}
 magnesio4 <- read.table("dados-diversos.txt", sep = ',')
 
 ```
 
-## From google sheet
+## Do google sheet
 
-### First tab link
+### Link da primeira aba
 
-### Second tab link
+### Link da segunda aba
 
-### Internet link
+### Link da internet
 
 ```{r}
 library(gsheet)

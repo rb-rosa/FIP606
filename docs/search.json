@@ -385,46 +385,46 @@
     "text": "Aula 3"
   },
   {
-    "objectID": "R_codes/aula3.html#from-packages",
-    "href": "R_codes/aula3.html#from-packages",
+    "objectID": "R_codes/aula3.html#de-pacotes",
+    "href": "R_codes/aula3.html#de-pacotes",
     "title": "Importar dados",
-    "section": "From packages",
-    "text": "From packages\n\ncars\n\n   speed dist\n1      4    2\n2      4   10\n3      7    4\n4      7   22\n5      8   16\n6      9   10\n7     10   18\n8     10   26\n9     10   34\n10    11   17\n11    11   28\n12    12   14\n13    12   20\n14    12   24\n15    12   28\n16    13   26\n17    13   34\n18    13   34\n19    13   46\n20    14   26\n21    14   36\n22    14   60\n23    14   80\n24    15   20\n25    15   26\n26    15   54\n27    16   32\n28    16   40\n29    17   32\n30    17   40\n31    17   50\n32    18   42\n33    18   56\n34    18   76\n35    18   84\n36    19   36\n37    19   46\n38    19   68\n39    20   32\n40    20   48\n41    20   52\n42    20   56\n43    20   64\n44    22   66\n45    23   54\n46    24   70\n47    24   92\n48    24   93\n49    24  120\n50    25   85\n\ncars2 <- cars\nspeed <- cars2"
+    "section": "De pacotes",
+    "text": "De pacotes\n\ncars\n\n   speed dist\n1      4    2\n2      4   10\n3      7    4\n4      7   22\n5      8   16\n6      9   10\n7     10   18\n8     10   26\n9     10   34\n10    11   17\n11    11   28\n12    12   14\n13    12   20\n14    12   24\n15    12   28\n16    13   26\n17    13   34\n18    13   34\n19    13   46\n20    14   26\n21    14   36\n22    14   60\n23    14   80\n24    15   20\n25    15   26\n26    15   54\n27    16   32\n28    16   40\n29    17   32\n30    17   40\n31    17   50\n32    18   42\n33    18   56\n34    18   76\n35    18   84\n36    19   36\n37    19   46\n38    19   68\n39    20   32\n40    20   48\n41    20   52\n42    20   56\n43    20   64\n44    22   66\n45    23   54\n46    24   70\n47    24   92\n48    24   93\n49    24  120\n50    25   85\n\ncars2 <- cars\nspeed <- cars2"
   },
   {
-    "objectID": "R_codes/aula3.html#dataframe-from-packages",
-    "href": "R_codes/aula3.html#dataframe-from-packages",
+    "objectID": "R_codes/aula3.html#dataframe-de-pacotes",
+    "href": "R_codes/aula3.html#dataframe-de-pacotes",
     "title": "Importar dados",
-    "section": "Dataframe from packages",
-    "text": "Dataframe from packages\n\nlibrary(remotes)\nremotes::install_github(\"emdelponte/r4pde\")\n\nvctrs  (0.6.2 -> 0.6.3) [CRAN]\nigraph (1.4.3 -> 1.5.0) [CRAN]\n\n  There is a binary version available but the source version is later:\n       binary source needs_compilation\nigraph  1.4.3  1.5.0              TRUE\n\npackage 'vctrs' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\rbarb\\AppData\\Local\\Temp\\RtmpuO7EDV\\downloaded_packages\n── R CMD build ─────────────────────────────────────────────────────────────────\n* checking for file 'C:\\Users\\rbarb\\AppData\\Local\\Temp\\RtmpuO7EDV\\remotes39f041e35afb\\emdelponte-r4pde-c1cc0b7/DESCRIPTION' ... OK\n* preparing 'r4pde':\n* checking DESCRIPTION meta-information ... OK\n* checking for LF line-endings in source and make files and shell scripts\n* checking for empty or unneeded directories\n* building 'r4pde_0.0.0.9000.tar.gz'\n\n\nlibrary(\"r4pde\")\ndf <- RustSoybean\ndf\n\n# A tibble: 34 × 7\n   epidemia latitude longitude local              planting   detection  severity\n      <dbl>    <dbl>     <dbl> <chr>              <date>     <date>        <dbl>\n 1       23    -23.0     -50.1 Cambara            2003-11-25 2004-02-02     24  \n 2       24    -24.0     -52.4 Campo Mourao       2003-11-28 2004-02-02     21  \n 3       31    -15.5     -55.2 Campo Verde        2004-11-20 2005-01-25     78  \n 4        3    -13.3     -44.6 Correntina         2002-11-10 2003-01-03     85  \n 5       15    -13.3     -44.6 Correntina         2003-11-28 2004-01-31     25  \n 6       34    -25.4     -51.5 Guarapuava         2004-11-29 2005-03-14     32  \n 7        7    -29.2     -53.7 Julio Castilhos    2002-12-15 2003-04-10     40  \n 8       13    -12.1     -45.8 Luis Eduardo Maga… 2003-11-12 2004-02-15     39.2\n 9       33    -12.1     -45.8 Luis Eduardo Maga… 2004-11-19 2005-01-25     55  \n10        1    -23.3     -51.2 Londrina           2002-11-06 2003-02-03     45  \n# ℹ 24 more rows"
+    "section": "Dataframe de pacotes",
+    "text": "Dataframe de pacotes\n\nlibrary(remotes)\nremotes::install_github(\"emdelponte/r4pde\")\n\nigraph (1.4.3 -> 1.5.0) [CRAN]\npackage 'igraph' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\rbarb\\AppData\\Local\\Temp\\Rtmp2TQLtE\\downloaded_packages\n── R CMD build ─────────────────────────────────────────────────────────────────\n* checking for file 'C:\\Users\\rbarb\\AppData\\Local\\Temp\\Rtmp2TQLtE\\remotes268c6f71447\\emdelponte-r4pde-2501c89/DESCRIPTION' ... OK\n* preparing 'r4pde':\n* checking DESCRIPTION meta-information ... OK\n* checking for LF line-endings in source and make files and shell scripts\n* checking for empty or unneeded directories\n* building 'r4pde_0.0.0.9000.tar.gz'\n\n\nlibrary(\"r4pde\")\ndf <- RustSoybean\ndf\n\n# A tibble: 34 × 7\n   epidemia latitude longitude local              planting   detection  severity\n      <dbl>    <dbl>     <dbl> <chr>              <date>     <date>        <dbl>\n 1       23    -23.0     -50.1 Cambara            2003-11-25 2004-02-02     24  \n 2       24    -24.0     -52.4 Campo Mourao       2003-11-28 2004-02-02     21  \n 3       31    -15.5     -55.2 Campo Verde        2004-11-20 2005-01-25     78  \n 4        3    -13.3     -44.6 Correntina         2002-11-10 2003-01-03     85  \n 5       15    -13.3     -44.6 Correntina         2003-11-28 2004-01-31     25  \n 6       34    -25.4     -51.5 Guarapuava         2004-11-29 2005-03-14     32  \n 7        7    -29.2     -53.7 Julio Castilhos    2002-12-15 2003-04-10     40  \n 8       13    -12.1     -45.8 Luis Eduardo Maga… 2003-11-12 2004-02-15     39.2\n 9       33    -12.1     -45.8 Luis Eduardo Maga… 2004-11-19 2005-01-25     55  \n10        1    -23.3     -51.2 Londrina           2002-11-06 2003-02-03     45  \n# ℹ 24 more rows"
   },
   {
-    "objectID": "R_codes/aula3.html#from-excel",
-    "href": "R_codes/aula3.html#from-excel",
+    "objectID": "R_codes/aula3.html#do-excel",
+    "href": "R_codes/aula3.html#do-excel",
     "title": "Importar dados",
-    "section": "From excel",
-    "text": "From excel\n\nlibrary(readxl)\nmagnesio <- read_excel(\"dados-diversos.xlsx\")\nescala1 <- read_excel(\"dados-diversos.xlsx\", \"escala\")\nescala2 <- read_excel(\"dados-diversos.xlsx\", 2)"
+    "section": "Do excel",
+    "text": "Do excel\n\nlibrary(readxl)\nmagnesio <- read_excel(\"dados-diversos.xlsx\")\nescala1 <- read_excel(\"dados-diversos.xlsx\", \"escala\")\nescala2 <- read_excel(\"dados-diversos.xlsx\", 2)"
   },
   {
-    "objectID": "R_codes/aula3.html#from-csv",
-    "href": "R_codes/aula3.html#from-csv",
+    "objectID": "R_codes/aula3.html#de-csv",
+    "href": "R_codes/aula3.html#de-csv",
     "title": "Importar dados",
-    "section": "From CSV",
-    "text": "From CSV\n\nlibrary(tidyverse)\nmagnesio2 <- read.csv(\"dados-diversos.csv\")\nmagnesio3 <- read_csv(\"dados-diversos.csv\")"
+    "section": "De CSV",
+    "text": "De CSV\n\nlibrary(tidyverse)\nmagnesio2 <- read.csv(\"dados-diversos.csv\")\nmagnesio3 <- read_csv(\"dados-diversos.csv\")"
   },
   {
-    "objectID": "R_codes/aula3.html#from-txt",
-    "href": "R_codes/aula3.html#from-txt",
+    "objectID": "R_codes/aula3.html#de-txt",
+    "href": "R_codes/aula3.html#de-txt",
     "title": "Importar dados",
-    "section": "From TXT",
-    "text": "From TXT\n\nmagnesio4 <- read.table(\"dados-diversos.txt\", sep = ',')"
+    "section": "De TXT",
+    "text": "De TXT\n\nmagnesio4 <- read.table(\"dados-diversos.txt\", sep = ',')"
   },
   {
-    "objectID": "R_codes/aula3.html#from-google-sheet",
-    "href": "R_codes/aula3.html#from-google-sheet",
+    "objectID": "R_codes/aula3.html#do-google-sheet",
+    "href": "R_codes/aula3.html#do-google-sheet",
     "title": "Importar dados",
-    "section": "From google sheet",
-    "text": "From google sheet\n\nFirst tab link\n\n\nSecond tab link\n\n\nInternet link\n\nlibrary(gsheet)\nmagnesio5 <- gsheet2tbl(\"https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=921203844\")\nsurvey <- gsheet2tbl(\"https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=366054269\")\nfusarium <- read_csv(\"https://raw.githubusercontent.com/emdelponte/epidemiology-R/main/data/fusarium_banana.csv\")"
+    "section": "Do google sheet",
+    "text": "Do google sheet\n\nLink da primeira aba\n\n\nLink da segunda aba\n\n\nLink da internet\n\nlibrary(gsheet)\nmagnesio5 <- gsheet2tbl(\"https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=921203844\")\nsurvey <- gsheet2tbl(\"https://docs.google.com/spreadsheets/d/1aID5Dh6PlBVCKzU1j7k-WA6zuWQWE2NhtWEgdJtt5iA/edit#gid=366054269\")\nfusarium <- read_csv(\"https://raw.githubusercontent.com/emdelponte/epidemiology-R/main/data/fusarium_banana.csv\")"
   },
   {
     "objectID": "R_codes/aula4.html",
