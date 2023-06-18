@@ -94,7 +94,7 @@ mofo1 <- mofo |>
   filter(study == 3)
 mofo1
 # Correlação linear resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.
-# teste de correlação, de pearson, quando tem normalidade. Testar a associação. Quanto maior o cor, maior a associação. Quanto mais disperso os pontos, menor a associação.
+# teste de correlação de pearson, quando tem normalidade. Testar a associação. Quanto maior o cor, maior a associação. Quanto mais disperso os pontos, menor a associação.
 cor.test(mofo1$inc, mofo1$yld)
 #função cor
 pcor <- cor(mofo1 |> select(3:5))

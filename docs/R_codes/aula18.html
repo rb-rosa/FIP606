@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>FIP606 - Transformação Box Cox</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">FIP606</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../R_codes/aula1.html">
+ <span class="menu-text">Fundamentos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../R_codes/aula4.html">
+ <span class="menu-text">Análise exploratória</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análise-de-dados" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Análise de dados</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-análise-de-dados">    
+        <li>
+    <a class="dropdown-item" href="../R_codes/aula8.html">
+ <span class="dropdown-text">Teste T</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_codes/aula10.html">
+ <span class="dropdown-text">Anova</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_codes/aula18.html">
+ <span class="dropdown-text">Transformação Box Cox</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_codes/aula15.html">
+ <span class="dropdown-text">Variável categórica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_codes/aula14.html">
+ <span class="dropdown-text">Regressão</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_codes/aula16.html">
+ <span class="dropdown-text">Mapas</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/raphaelfitopatologia"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/invites/contact/?i=xk2vhn0e4rad&amp;utm_content=2owlczy"><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-github" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-github">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/rb-rosa">
+ <span class="dropdown-text">Código fonte</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="mailto:rbarboza.rosa@gmail.com">
+ <span class="dropdown-text">Reportar um erro</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><strong>Transformação Box Cox</strong></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R_codes/aula18.html" class="sidebar-item-text sidebar-link active">Transformação Box Cox</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#transformação-de-dados" id="toc-transformação-de-dados" class="nav-link active" data-scroll-target="#transformação-de-dados">Transformação de dados</a></li>
+  <li><a href="#transformação-box-cox" id="toc-transformação-box-cox" class="nav-link" data-scroll-target="#transformação-box-cox">Transformação Box-Cox</a></li>
+  <li><a href="#transformando-dados" id="toc-transformando-dados" class="nav-link" data-scroll-target="#transformando-dados">Transformando dados</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><strong>Transformação Box Cox</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Aula 18</p>
+<p>Observação: dados da aula 10</p>
+<section id="transformação-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="transformação-de-dados">Transformação de dados</h2>
+<ul>
+<li><p>O modelo de Análise de Variância pressupõe que exista homocedasticidade, ou seja, que os tratamentos apresentem a mesma variabilidade;</p></li>
+<li><p>Algumas vezes este pressuposto pode não ser atendido e assim, para corrigir este problema existe uma saída por vezes bastante simples que é a transformação de dados;</p></li>
+<li><p>Esta técnica consiste na utilização de um artifício matemático para tornar o modelo de ANOVA válido.</p></li>
+</ul>
+</section>
+<section id="transformação-box-cox" class="level2">
+<h2 class="anchored" data-anchor-id="transformação-box-cox">Transformação Box-Cox</h2>
+<p>Os estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma "forma normal". Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados ideênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados.&nbsp;Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor.&nbsp;A tabela abaixo mostra algumas transformações Box-Cox comuns, onde <em>Y’</em> é a transformação dos dados oriinais <em>Y</em>.Observe que para Lambda = 0, a transformação NÃO é <em>Y 0</em> (porque seria 1 para cada valor), mas sim o logaRitmo de <em>Y.</em></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Y'</td>
+</tr>
+<tr class="even">
+<td>-2</td>
+<td>Y<sup>-2</sup> = 1/Y<sup>2</sup></td>
+</tr>
+<tr class="odd">
+<td>-1</td>
+<td>Y<sup>-1</sup> = 1/Y<sup>1</sup></td>
+</tr>
+<tr class="even">
+<td>-0.5</td>
+<td>Y<sup>-0.5</sup> = 1/(Sqrt(Y))</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>log(Y)</td>
+</tr>
+<tr class="even">
+<td>0.5</td>
+<td>Y<sup>0.5</sup> = Sqrt(Y)</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>Y<sup>1</sup> = Y</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Y<sup>2</sup></td>
+</tr>
+</tbody>
+</table>
+<p>A transformação Box-cox busca encontrar um&nbsp;λ&nbsp;para que os dados trasnformados se aproximem de uma distribuição normal.</p>
+<p>A função <code>boxcox</code> foi implementada no pacote <code>MASS</code>. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula “variávelresposta ^ lambda - 1”.</p>
+</section>
+<section id="transformando-dados" class="level2">
+<h2 class="anchored" data-anchor-id="transformando-dados">Transformando dados</h2>
+<div class="cell" data-hash="aula18_cache/html/unnamed-chunk-1_b420ae1dda90bd4cb3aeb7ab59ed9c74">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>micelial <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>, <span class="st">"fungicida_vaso"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>micelial <span class="ot">&lt;-</span> micelial <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inc =</span> inf_seeds<span class="sc">/</span>n_seeds<span class="sc">*</span><span class="dv">100</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rank_inc =</span> <span class="fu">rank</span>(inc))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># rank transforma dados quando tem-se dois fatores. rank transforma a variável resposta para dois fatores</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>rank_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(rank_inc <span class="sc">~</span> treat<span class="sc">*</span>dose, <span class="at">data =</span> micelial)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rank_anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+treat        1 220.00  220.00  14.204 0.00168 **
+dose         1 105.34  105.34   6.801 0.01904 * 
+treat:dose   1  80.34   80.34   5.187 0.03684 * 
+Residuals   16 247.82   15.49                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>means_rank <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rank_anova, <span class="sc">~</span> treat <span class="sc">|</span> dose)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcompView)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cld</span>(means_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dose = 0.5:
+ treat        emmean   SE df lower.CL upper.CL .group
+ Tebuconazole   6.90 1.76 16     3.17     10.6  1    
+ Ionic liquid  18.00 1.76 16    14.27     21.7   2   
+
+dose = 2.0:
+ treat        emmean   SE df lower.CL upper.CL .group
+ Tebuconazole   6.75 1.97 16     2.58     10.9  1    
+ Ionic liquid   9.75 1.61 16     6.34     13.2  1    
+
+Confidence level used: 0.95 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># usar boxcox</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># criando o objeto insects</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>insects <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(InsectSprays)<span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(spray, count)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>insects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 72 × 2
+   spray count
+   &lt;fct&gt; &lt;dbl&gt;
+ 1 A        10
+ 2 A         7
+ 3 A        20
+ 4 A        14
+ 5 A        14
+ 6 A        12
+ 7 A        10
+ 8 A        23
+ 9 A        17
+10 A        20
+# ℹ 62 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">boxcox</span>(<span class="fu">lm</span>(insects<span class="sc">$</span>count<span class="fl">+0.1</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="co"># o valor 0.1 é pq tinha zero nos dados; insects$count é a variável resposta </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aula18_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Encontra o lambda</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> b<span class="sc">$</span>x[<span class="fu">which.max</span>(b<span class="sc">$</span>y)]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4242424</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Após achar o lambda, a variável resposta é transformada com a fórmula abaixo</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>insects<span class="sc">$</span>count2 <span class="ot">&lt;-</span> (insects<span class="sc">$</span>count <span class="sc">^</span> lambda <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> lambda <span class="co"># insects$count2 cria count2 automaticamente, o lambda transformado</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>insects<span class="sc">$</span>count2 <span class="co"># variável resposta transformada</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  3.903635  3.024469  6.043993  4.864268  4.864268  4.407118  3.903635
+ [8]  6.557185  5.484274  6.043993  4.864268  4.640760  4.161975  5.484274
+[15]  6.219699  4.161975  5.285168  4.864268  5.484274  5.484274  5.863153
+[22]  6.219699  3.024469  4.640760 -2.357143  0.000000  3.024469  0.805831
+[29]  1.399509  0.000000  0.805831  0.000000  1.399509 -2.357143  0.000000
+[36]  1.887150  1.399509  2.308577  4.407118  2.683787  1.887150  1.399509
+[43]  2.308577  2.308577  2.308577  2.308577  0.805831  1.887150  1.399509
+[50]  2.308577  1.399509  2.308577  1.399509  2.683787  0.000000  0.000000
+[57]  1.399509  0.805831  2.683787  1.887150  4.161975  3.629951  5.078760
+[64]  6.390651  5.078760  5.285168  4.640760  3.903635  7.033117  7.033117
+[71]  6.719601  4.640760</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(insects<span class="sc">$</span>count) <span class="co"># muito assimétrico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aula18_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(insects<span class="sc">$</span>count2) <span class="co"># mais simétrico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aula18_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>insects<span class="sc">$</span>count2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  3.903635  3.024469  6.043993  4.864268  4.864268  4.407118  3.903635
+ [8]  6.557185  5.484274  6.043993  4.864268  4.640760  4.161975  5.484274
+[15]  6.219699  4.161975  5.285168  4.864268  5.484274  5.484274  5.863153
+[22]  6.219699  3.024469  4.640760 -2.357143  0.000000  3.024469  0.805831
+[29]  1.399509  0.000000  0.805831  0.000000  1.399509 -2.357143  0.000000
+[36]  1.887150  1.399509  2.308577  4.407118  2.683787  1.887150  1.399509
+[43]  2.308577  2.308577  2.308577  2.308577  0.805831  1.887150  1.399509
+[50]  2.308577  1.399509  2.308577  1.399509  2.683787  0.000000  0.000000
+[57]  1.399509  0.805831  2.683787  1.887150  4.161975  3.629951  5.078760
+[64]  6.390651  5.078760  5.285168  4.640760  3.903635  7.033117  7.033117
+[71]  6.719601  4.640760</code></pre>
+</div>
+</div>
+<p>O lambda tranformado é usado na ANOVA</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Raphael B Rosa</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

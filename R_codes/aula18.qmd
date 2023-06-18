@@ -1,0 +1,86 @@
+---
+title: "**Transformação Box Cox**"
+format: html
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+Aula 18
+
+Observação: dados da aula 10
+
+## Transformação de dados
+
+-   O modelo de Análise de Variância pressupõe que exista homocedasticidade, ou seja, que os tratamentos apresentem a mesma variabilidade;
+
+-   Algumas vezes este pressuposto pode não ser atendido e assim, para corrigir este problema existe uma saída por vezes bastante simples que é a transformação de dados;
+
+-   Esta técnica consiste na utilização de um artifício matemático para tornar o modelo de ANOVA válido.
+
+## Transformação Box-Cox
+
+Os estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma \"forma normal\". Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados ideênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde *Y'* é a transformação dos dados oriinais *Y*.Observe que para Lambda = 0, a transformação NÃO é *Y 0* (porque seria 1 para cada valor), mas sim o logaRitmo de *Y.*
+
+|      |                       |
+|------|-----------------------|
+| 1    | Y\'                   |
+| -2   | Y^-2^ = 1/Y^2^        |
+| -1   | Y^-1^ = 1/Y^1^        |
+| -0.5 | Y^-0.5^ = 1/(Sqrt(Y)) |
+| 0    | log(Y)                |
+| 0.5  | Y^0.5^ = Sqrt(Y)      |
+| 1    | Y^1^ = Y              |
+| 2    | Y^2^                  |
+
+A transformação Box-cox busca encontrar um λ para que os dados trasnformados se aproximem de uma distribuição normal.
+
+A função `boxcox` foi implementada no pacote `MASS`. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula "variávelresposta \^ lambda - 1".
+
+## Transformando dados
+
+```{r}
+library(readxl)
+library(tidyverse)
+micelial <- read_excel("dados-diversos.xlsx", "fungicida_vaso")
+micelial <- micelial |> 
+  mutate(inc = inf_seeds/n_seeds*100,
+         rank_inc = rank(inc))
+
+# rank transforma dados quando tem-se dois fatores. rank transforma a variável resposta para dois fatores
+rank_anova <- aov(rank_inc ~ treat*dose, data = micelial)
+summary(rank_anova)
+
+library(emmeans)
+means_rank <- emmeans(rank_anova, ~ treat | dose)
+library(multcomp)
+library(multcompView)
+cld(means_rank)
+
+# usar boxcox
+library(MASS)
+
+# criando o objeto insects
+insects <- tibble::as_tibble(InsectSprays)|> 
+  dplyr::select(spray, count)
+insects
+
+b <- boxcox(lm(insects$count+0.1 ~ 1)) # o valor 0.1 é pq tinha zero nos dados; insects$count é a variável resposta 
+
+# Encontra o lambda
+lambda <- b$x[which.max(b$y)]
+lambda
+
+# Após achar o lambda, a variável resposta é transformada com a fórmula abaixo
+
+insects$count2 <- (insects$count ^ lambda - 1) / lambda # insects$count2 cria count2 automaticamente, o lambda transformado
+insects$count2 # variável resposta transformada
+hist(insects$count) # muito assimétrico
+hist(insects$count2) # mais simétrico
+insects$count2
+```
+
+O lambda tranformado é usado na ANOVA

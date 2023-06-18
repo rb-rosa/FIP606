@@ -169,6 +169,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Anova</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../R_codes/aula18.html">
+ <span class="dropdown-text">Transformação Box Cox</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../R_codes/aula15.html">
  <span class="dropdown-text">Variável categórica</span></a>
   </li>  
@@ -424,7 +428,7 @@ m2  4 43.36151</code></pre>
 </section>
 <section id="correlação-linear" class="level2">
 <h2 class="anchored" data-anchor-id="correlação-linear">Correlação linear</h2>
-<div class="cell" data-hash="aula14_cache/html/unnamed-chunk-5_b19ff403ebb69643b2fa8959696f2d6b">
+<div class="cell" data-hash="aula14_cache/html/unnamed-chunk-5_b5a5547ecff1a890cec5affe20fe0741">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mofo1 <span class="ot">&lt;-</span> mofo <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="dv">3</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mofo1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -447,7 +451,7 @@ m2  4 43.36151</code></pre>
 13     3    13    33  2850  3334</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlação linear resume (mensura) o grau de associação entre duas variáveis (x e y). Fornece um número que resume o grau de associação entre a duas variáveis. A análise de regressão indica o efeito de uma mudança da unidade na variável explicativa (x) em relação a variável resposta (y). Ela descreve o efeito, por meio de uma equação, da variável explicativa em relação a variável resposta.</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de correlação, de pearson, quando tem normalidade. Testar a associação. Quanto maior o cor, maior a associação. Quanto mais disperso os pontos, menor a associação.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de correlação de pearson, quando tem normalidade. Testar a associação. Quanto maior o cor, maior a associação. Quanto mais disperso os pontos, menor a associação.</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(mofo1<span class="sc">$</span>inc, mofo1<span class="sc">$</span>yld)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>

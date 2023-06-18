@@ -169,6 +169,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Anova</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../R_codes/aula18.html">
+ <span class="dropdown-text">Transformação Box Cox</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../R_codes/aula15.html">
  <span class="dropdown-text">Variável categórica</span></a>
   </li>  
@@ -387,10 +391,10 @@ W = 0.95101, p-value = 0.07022</code></pre>
 <section id="e-quando-não-atende-às-premissas" class="level2">
 <h2 class="anchored" data-anchor-id="e-quando-não-atende-às-premissas">E quando não atende às premissas?</h2>
 <p>Efeito de inseticida na mortalidade de insetos (Beall, 1942). The Transformation of data from entomological field experiments, Biometrika, 29, 243–262. Dados no pacote “datasets” do R. data(InsectSprays)</p>
-<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-4_c9314134306ee65bd555d7dff4e292d1">
+<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-4_d1f98245b45dc69f30463bff7a4f059c">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criando o objeto insects</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>insects <span class="ot">&lt;-</span> <span class="fu">tbl_df</span>(InsectSprays) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spray, count)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>insects <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(InsectSprays) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(spray, count)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>insects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 72 × 2

@@ -66,8 +66,8 @@ Efeito de inseticida na mortalidade de insetos (Beall, 1942). The Transformation
 
 ```{r}
 # criando o objeto insects
-insects <- tbl_df(InsectSprays) |> 
-  select(spray, count)
+insects <- tibble::as_tibble(InsectSprays) |> 
+  dplyr::select(spray, count)
 insects
 ```
 

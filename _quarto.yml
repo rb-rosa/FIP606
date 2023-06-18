@@ -27,6 +27,8 @@ website:
           file: R_codes/aula8.qmd
         - text: "Anova"
           file: R_codes/aula10.qmd
+        - text: "Transformação Box Cox"
+          file: R_codes/aula18.qmd
         - text: "Variável categórica"
           file: R_codes/aula15.qmd
         - text: "Regressão"
@@ -113,6 +115,11 @@ website:
       contents:
         - href: R_codes/aula16.qmd
           text: Mapas
+    - title: "Transformação Box Cox"
+      contents:
+        - href: R_codes/aula18.qmd
+          text: Transformação Box Cox 
+          
   page-footer:
     border: true
     left: "Copyright 2023, Raphael B Rosa"
