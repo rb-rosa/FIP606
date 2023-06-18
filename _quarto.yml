@@ -119,13 +119,14 @@ website:
       contents:
         - href: R_codes/aula18.qmd
           text: Transformação Box Cox 
-          
+  
   page-footer:
     border: true
     left: "Copyright 2023, Raphael B Rosa"
 format:
   html:
-    theme: spacelab
+    theme: default
+      
     css: styles.css
     toc: true
 editor: visual

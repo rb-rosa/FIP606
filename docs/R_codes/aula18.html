@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="transformação-box-cox" class="level2">
 <h2 class="anchored" data-anchor-id="transformação-box-cox">Transformação Box-Cox</h2>
-<p>Os estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma “forma normal”. Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados.&nbsp;Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor.&nbsp;A tabela abaixo mostra algumas transformações Box-Cox comuns, onde <em>Y’</em> é a transformação dos dados oriinais <em>Y</em>.Observe que para Lambda = 0, a transformação NÃO é <em>Y 0</em> (porque seria 1 para cada valor), mas sim o logaRitmo de <em>Y.</em></p>
+<p>Os estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma “forma normal”. Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados.&nbsp;Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor.&nbsp;A tabela abaixo mostra algumas transformações Box-Cox comuns, onde <em>Y’</em> é a transformação dos dados oriinais <em>Y</em>.Observe que para Lambda = 0, a transformação NÃO é <em>Y 0</em> (porque seria 1 para cada valor), mas sim o logaRitmo de <em>Y</em>.</p>
 <table class="table">
 <tbody>
 <tr class="odd">
@@ -330,7 +330,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>A transformação Box-cox busca encontrar um&nbsp;λ&nbsp;para que os dados trasnformados se aproximem de uma distribuição normal.</p>
 <p>A função <code>boxcox</code> foi implementada no pacote <code>MASS</code>. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula “variávelresposta ^ lambda - 1”.</p>
 </section>
 <section id="transformando-dados" class="level2">

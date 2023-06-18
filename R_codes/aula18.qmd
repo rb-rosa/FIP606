@@ -23,7 +23,7 @@ Observação: dados da aula 10
 
 ## Transformação Box-Cox
 
-Os estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma "forma normal". Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde *Y'* é a transformação dos dados oriinais *Y*.Observe que para Lambda = 0, a transformação NÃO é *Y 0* (porque seria 1 para cada valor), mas sim o logaRitmo de *Y.*
+Os estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma "forma normal". Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde *Y'* é a transformação dos dados oriinais *Y*.Observe que para Lambda = 0, a transformação NÃO é *Y 0* (porque seria 1 para cada valor), mas sim o logaRitmo de *Y*.
 
 |      |                       |
 |------|-----------------------|
@@ -35,8 +35,6 @@ Os estatísticos George Box e David Cox desenvolveram um procedimento para ident
 | 0.5  | Y^0.5^ = Sqrt(Y)      |
 | 1    | Y^1^ = Y              |
 | 2    | Y^2^                  |
-
-A transformação Box-cox busca encontrar um λ para que os dados trasnformados se aproximem de uma distribuição normal.
 
 A função `boxcox` foi implementada no pacote `MASS`. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula "variávelresposta \^ lambda - 1".
 

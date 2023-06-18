@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "FIP606",
     "section": "",
-    "text": "Este é o Quarto website para disponibilizar as aulas sobre “Análise e Visualização de Dados em Fitopatologia” no programa RStudio da disciplina FIP 606, oferecida no mestrado em Fitopatologia da Universidade Federal de Viçosa pelo professor Emerson M Del Ponte. As aulas estão organizadas em três tópicos, Fundamentos, Análise exploratória e Análise de Dados. O objetivo do website é compartilhar o conhecimento aprendido para ajudar outros colegas da área e despertar o interesse daqueles que ainda não conhecem o assundo. Espero que aproveite!\nPara mais informações sobre ciência de dados no R, clique aqui."
+    "text": "Este é o Quarto website para disponibilizar as aulas sobre “Análise e Visualização de Dados em Fitopatologia” no programa RStudio da disciplina FIP 606, oferecida no mestrado em Fitopatologia pela Universidade Federal de Viçosa pelo professor Emerson M Del Ponte. As aulas estão organizadas em três tópicos, Fundamentos, Análise exploratória e Análise de Dados. O objetivo do website é compartilhar o conhecimento aprendido para ajudar outros colegas da área e despertar o interesse daqueles que ainda não conhecem o assundo.\nEspero que aproveite!\nPara mais informações sobre ciência de dados no R, clique aqui."
   },
   {
     "objectID": "R_codes/aula1.html",
@@ -49,18 +49,18 @@
     "text": "Preparo\n\nlibrary(readxl)\nlibrary(tidyverse)\nmicelial <- read_excel(\"dados-diversos.xlsx\", \"micelial\")\nhead (micelial)\n\n# A tibble: 6 × 3\n  especie   rep   tcm\n  <chr>   <dbl> <dbl>\n1 Fasi        1  1.5 \n2 Fasi        2  1.59\n3 Fasi        3  1.52\n4 Fasi        4  1.52\n5 Fasi        5  1.24\n6 Fasi        6  1.29\n\n\n\nmicelial|> \n  ggplot(aes(especie, tcm)) +\n  geom_boxplot()"
   },
   {
-    "objectID": "R_codes/aula10.html#premissas",
-    "href": "R_codes/aula10.html#premissas",
+    "objectID": "R_codes/aula10.html#ajustar-o-modelo-usando-aov",
+    "href": "R_codes/aula10.html#ajustar-o-modelo-usando-aov",
     "title": "1 Fator",
-    "section": "Premissas",
-    "text": "Premissas"
+    "section": "Ajustar o modelo usando aov()",
+    "text": "Ajustar o modelo usando aov()\n\n#Ajustar o modelo\n# <- (atribuiu aov a aov1); ~ (em função de); aov (função ANOVA)\naov1 <- aov(tcm ~ especie, data = micelial)\nsummary(aov1)\n\n            Df Sum Sq Mean Sq F value Pr(>F)\nespecie      4 0.4692 0.11729   1.983  0.117\nResiduals   37 2.1885 0.05915               \n\n#Não há efeito significativo de espécie P=0.117."
   },
   {
-    "objectID": "R_codes/aula10.html#modelo-usando-aov",
-    "href": "R_codes/aula10.html#modelo-usando-aov",
+    "objectID": "R_codes/aula10.html#testar-as-premissas",
+    "href": "R_codes/aula10.html#testar-as-premissas",
     "title": "1 Fator",
-    "section": "Modelo usando aov()",
-    "text": "Modelo usando aov()\n\n#Ajustar o modelo\n# <- (atribuiu aov a aov1); ~ (em função de); aov (função ANOVA)\naov1 <- aov(tcm ~ especie, data = micelial)\nsummary(aov1)\n\n            Df Sum Sq Mean Sq F value Pr(>F)\nespecie      4 0.4692 0.11729   1.983  0.117\nResiduals   37 2.1885 0.05915               \n\n#Não há efeito significativo de espécie P=0.117.\n\n#Checar as premissas para verificar se o modelo está correto\nlibrary(performance)\ncheck_heteroscedasticity(aov1)\n\nOK: Error variance appears to be homoscedastic (p = 0.175).\n\n#OK: Error variance appears to be homoscedastic (p = 0.175). Significa que as variâncias são homogeneas.\ncheck_normality(aov1)\n\nOK: residuals appear as normally distributed (p = 0.074).\n\n#OK: residuals appear as normally distributed (p = 0.074). Significa que há normalidade \nlibrary(DHARMa)\nplot(simulateResiduals(aov1))\n\n\n\n#Normalidade a direita e variância homogenea a esquerda\n# teste de normalidade\nhist(aov1$residuals)\n\n\n\nqqnorm(aov1$residuals)\nqqline(aov1$residuals)\n\n\n\nshapiro.test(aov1$residuals)\n\n\n    Shapiro-Wilk normality test\n\ndata:  aov1$residuals\nW = 0.95101, p-value = 0.07022"
+    "section": "Testar as premissas",
+    "text": "Testar as premissas\nOs prossupostos da ANOVA são normalidade e a homocedasticidade dos dados. Se são normais e apresentam igualdade de variâncias, então pode se realizar ANOVA. Se os dados não forem normais e não apresentarem igualdade, pode-se fazer a transformação dos dados, se não funcionar, utilizar modelos não paramétricos, se não, usar modelo linear generalizao (GLM) ou outros. Falta de homocedasticidade não é tolerável, de normalidade, sim.\n\n#Checar as premissas para verificar se o modelo está correto\nlibrary(performance)\ncheck_heteroscedasticity(aov1)\n\nOK: Error variance appears to be homoscedastic (p = 0.175).\n\n#Resultado: OK. Error variance appears to be homoscedastic (p = 0.175). Significa que as variâncias são homogeneas.Se o p-valor for < 0.05 indica que os dados não são homogeneos.\ncheck_normality(aov1)\n\nOK: residuals appear as normally distributed (p = 0.074).\n\n#OK: residuals appear as normally distributed (p = 0.074). Significa que há normalidade. Se o p-valor for < 0.05 indica que os dados não apresentam normalidade.\nlibrary(DHARMa)\nplot(simulateResiduals(aov1))\n\n\n\n#Normalidade a direita e variância homogenea a esquerda\n# teste de normalidade\nhist(aov1$residuals)\n\n\n\nqqnorm(aov1$residuals)\nqqline(aov1$residuals)\n\n\n\nshapiro.test(aov1$residuals)\n\n\n    Shapiro-Wilk normality test\n\ndata:  aov1$residuals\nW = 0.95101, p-value = 0.07022"
   },
   {
     "objectID": "R_codes/aula10.html#e-quando-não-atende-às-premissas",
@@ -347,7 +347,7 @@
     "href": "R_codes/aula18.html#transformação-box-cox",
     "title": "Transformação Box Cox",
     "section": "Transformação Box-Cox",
-    "text": "Transformação Box-Cox\nOs estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma “forma normal”. Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde Y’ é a transformação dos dados oriinais Y.Observe que para Lambda = 0, a transformação NÃO é Y 0 (porque seria 1 para cada valor), mas sim o logaRitmo de Y.\n\n\n\n1\nY’\n\n\n-2\nY-2 = 1/Y2\n\n\n-1\nY-1 = 1/Y1\n\n\n-0.5\nY-0.5 = 1/(Sqrt(Y))\n\n\n0\nlog(Y)\n\n\n0.5\nY0.5 = Sqrt(Y)\n\n\n1\nY1 = Y\n\n\n2\nY2\n\n\n\nA transformação Box-cox busca encontrar um λ para que os dados trasnformados se aproximem de uma distribuição normal.\nA função boxcox foi implementada no pacote MASS. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula “variávelresposta ^ lambda - 1”."
+    "text": "Transformação Box-Cox\nOs estatísticos George Box e David Cox desenvolveram um procedimento para identificar um expoente apropriado (Lambda = 1) a ser usado para transformar dados em uma “forma normal”. Quando o valor de Lambda é 1, nenhuma transformação é necessária, produz resultados idênticos aos originais. O valor Lambda indica a potência à qual todos os dados devem ser elevados. Para isso, a transformação de potência Box-Cox busca de Lambda = -5 a Lamba = +5 até encontrar o melhor valor. A tabela abaixo mostra algumas transformações Box-Cox comuns, onde Y’ é a transformação dos dados oriinais Y.Observe que para Lambda = 0, a transformação NÃO é Y 0 (porque seria 1 para cada valor), mas sim o logaRitmo de Y.\n\n\n\n1\nY’\n\n\n-2\nY-2 = 1/Y2\n\n\n-1\nY-1 = 1/Y1\n\n\n-0.5\nY-0.5 = 1/(Sqrt(Y))\n\n\n0\nlog(Y)\n\n\n0.5\nY0.5 = Sqrt(Y)\n\n\n1\nY1 = Y\n\n\n2\nY2\n\n\n\nA função boxcox foi implementada no pacote MASS. O lambda (λ) é utilizado para transformar a variável resposta pela fórmula “variávelresposta ^ lambda - 1”."
   },
   {
     "objectID": "R_codes/aula18.html#transformando-dados",
@@ -431,7 +431,14 @@
     "href": "R_codes/aula4.html",
     "title": "FIP606",
     "section": "",
-    "text": "Aula 4\nReferência"
+    "text": "Aula 4"
+  },
+  {
+    "objectID": "R_codes/aula4.html#noções-básicas-de-plotagem",
+    "href": "R_codes/aula4.html#noções-básicas-de-plotagem",
+    "title": "FIP606",
+    "section": "Noções básicas de plotagem",
+    "text": "Noções básicas de plotagem\nTodos os gráficos ggplot2 começam com uma chamada para ggplot(), fornecendo dados padrão e mapeamentos estéticos, especificados por aes(). Em seguida, você adiciona camadas, escalas, coordenadas e facetas com +. Para salvar um gráfico em disco, use ggsave().\n\nggplot()\n\nCriar um novo ggplot\n\naes()\n\nConstruir mapeamentos estéticos\n\n\n`+`(<gg>) |>\n: Adicionar componentes a um gráfico\n\nggsave()\n\nSalve um ggplot (ou outro objeto de grade) com padrões sensatos\n\nqplot() quickplot()\n\nplotagem rápida\n\n\nPara mais informações sobre o pacote ggplo2, clique aqui."
   },
   {
     "objectID": "R_codes/aula4.html#importar-dados",
@@ -455,11 +462,25 @@
     "text": "Aula 5"
   },
   {
-    "objectID": "R_codes/aula5.html#importa-dados",
-    "href": "R_codes/aula5.html#importa-dados",
+    "objectID": "R_codes/aula5.html#o-que-é-o-boxplot",
+    "href": "R_codes/aula5.html#o-que-é-o-boxplot",
     "title": "Boxplot",
-    "section": "Importa dados",
-    "text": "Importa dados\n\nlibrary(tidyverse)\nlibrary(readxl)\nmg <- read_excel(\"dados-diversos.xlsx\")"
+    "section": "O que é o boxplot?",
+    "text": "O que é o boxplot?\nO boxplot ou diagrama de caixa é uma ferramenta gráfica que permite visualizar a distribuição e valores discrepantes (outliers) dos dados, fornecendo assim um meio complementar para desenvolver uma perspectiva sobre o caráter dos dados. Além disso, o boxplot também é uma disposição gráfica comparativa.\nAs medidas de estatísticas descritivas como o mínimo, máximo, primeiro quartil, segundo quartil ou mediana e o terceiro quartil formam o boxplot.\nOs quartis são os percentis 25, 50 e 75, representando respectivamente o primeiro, segundo e terceiro quartil. O segundo quartil equivale ao percentil 50, valor em que pelo menos 50% da amostra está acima dele e pelo menos 50% está abaixo. Não é isso a definição de mediana? Sim! O percentil 50 ou segundo quartil equivalem à mediana!\nObserve a figura do boxplot. Note que o local onde a haste vertical começa (de baixo para cima) indica o mínimo (excetuando algum possível valor extremo ou outlier) e, onde a haste termina indica o máximo (também excetuando algum possível outlier).\n\nO retângulo no meio dessa haste possui três linhas horizontais: a linha de baixo, que é o próprio contorno externo inferior do retângulo, indica o primeiro quartil. A de cima, que também é o próprio contorno externo superior do retângulo, indica o terceiro quartil. A linha interna indica o segundo quartil ou mediana.\nOs asteriscos ou pontos que ás vezes aparecem no boxplot indicam que aquelas observações são atípicas, valores discrepantes, extremos ou outliers."
+  },
+  {
+    "objectID": "R_codes/aula5.html#como-interpretar-o-boxplot",
+    "href": "R_codes/aula5.html#como-interpretar-o-boxplot",
+    "title": "Boxplot",
+    "section": "Como interpretar o boxplot?",
+    "text": "Como interpretar o boxplot?\nO boxplot nos fornece uma análise visual da posição, dispersão, simetria, caudas e valores discrepantes (outliers) do conjunto de dados.\n\nPosição – Em relação à posição dos dados, observa-se a linha central do retângulo (a mediana ou segundo quartil).\nDispersão – A dispersão dos dados pode ser representada pelo intervalo interquartílico que é a diferença entre o terceiro quartil e o primeiro quartil (tamanho da caixa), ou ainda pela amplitude que é calculada da seguinte maneira: valor máximo – valor mínimo. Embora a amplitude seja de fácil entendimento, o intervalo interquartílico é uma estatística mais robusta para medir variabilidade uma vez que não sofre influência de outliers.\nSimetria – Um conjunto de dados que tem uma distribuição simétrica, terá a linha da mediana no centro do retângulo. Quando a linha da mediana está próxima ao primeiro quartil, os dados são assimétricos positivos e quando a posição da linha da mediana é próxima ao terceiro quartil, os dados são assimétricos negativos. Vale ressaltar que a mediana é a medida de tendência central mais indicada quando os dados possuem distribuição assimétrica, uma vez que a média aritmética é influenciada pelos valores extremos.\nCaudas – As linhas que vão do retângulo até aos outliers podem fornecer o comprimento das caudas da distribuição.\nOutliers – Já os outliers indicam possíveis valores discrepantes. No boxplot, as observações são consideradas outliers quando estão abaixo ou acima do limite de detecção de outliers.\n\nO limite de detecção de outliers é construído utilizando o intervalo interquartílico, dado pela distância entre o primeiro e o terceiro quartil. Sendo assim, os limites inferior e superior de detecção de outlier são dados por:\n\nLimite Inferior = Primeiro Quartil – 1,5 * (Terceiro Quartil – Primeiro Quartil)\nLimite Superior = Terceiro Quartil + 1,5 * (Terceiro Quartil – Primeiro Quartil)"
+  },
+  {
+    "objectID": "R_codes/aula5.html#importar-dados",
+    "href": "R_codes/aula5.html#importar-dados",
+    "title": "Boxplot",
+    "section": "Importar dados",
+    "text": "Importar dados\n\nlibrary(tidyverse)\nlibrary(readxl)\nmg <- read_excel(\"dados-diversos.xlsx\")"
   },
   {
     "objectID": "R_codes/aula5.html#visualizar",
@@ -494,7 +515,7 @@
     "href": "R_codes/aula6.html#histograms",
     "title": "Gráficos",
     "section": "Histograms",
-    "text": "Histograms\n\ny <- milho |> \n  ggplot(aes(x = yield))+\n  geom_histogram(bins = 10,\n                 color = \"black\", fill = \"green\")\n\ni <- milho |> \n  ggplot(aes(x = index))+\n  geom_histogram(bins = 10,\n                 color = \"black\", fill = \"green\")\n\nlibrary(patchwork)\n(y + i) +\n  plot_annotation(tag_levels = \"A\")\n\n\n\nggsave(\"figs/histograms.png\", bg = \"white\")"
+    "text": "Histograms\nUtilizado para observar a frequência dos seus dados.\n\ny <- milho |> \n  ggplot(aes(x = yield))+\n  geom_histogram(bins = 10,\n                 color = \"black\", fill = \"green\")\n\ni <- milho |> \n  ggplot(aes(x = index))+\n  geom_histogram(bins = 10,\n                 color = \"black\", fill = \"green\")\n\nlibrary(patchwork)\n(y + i) +\n  plot_annotation(tag_levels = \"A\")\n\n\n\nggsave(\"figs/histograms.png\", bg = \"white\")"
   },
   {
     "objectID": "R_codes/aula6.html#gráfico-de-densidade",

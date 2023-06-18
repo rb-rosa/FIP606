@@ -9,11 +9,37 @@ execute:
   warning: false
 ---
 
-![](/images/ggplot2.png){width="54"}
+![](/images/ggplot2.png){width="81"}
 
 Aula 4
 
-[Referência](https://ggplot2.tidyverse.org/reference/index.html)
+## **Noções básicas de plotagem**
+
+Todos os gráficos ggplot2 começam com uma chamada para `ggplot()`, fornecendo dados padrão e mapeamentos estéticos, especificados por `aes()`. Em seguida, você adiciona camadas, escalas, coordenadas e facetas com `+`. Para salvar um gráfico em disco, use `ggsave()`.
+
+`ggplot()`
+
+:   Criar um novo ggplot
+
+`aes()`
+
+:   Construir mapeamentos estéticos
+
+`` `+`(<gg>) |> ``
+
+ 
+
+:   Adicionar componentes a um gráfico
+
+`ggsave()`
+
+:   Salve um ggplot (ou outro objeto de grade) com padrões sensatos
+
+`qplot()` `quickplot()`
+
+:   plotagem rápida
+
+Para mais informações sobre o pacote ggplo2, [clique aqui](https://ggplot2.tidyverse.org/reference/index.html).
 
 ## Importar dados
 

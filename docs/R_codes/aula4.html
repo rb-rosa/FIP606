@@ -271,7 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#importar-dados" id="toc-importar-dados" class="nav-link active" data-scroll-target="#importar-dados">Importar dados</a></li>
+  <li><a href="#noções-básicas-de-plotagem" id="toc-noções-básicas-de-plotagem" class="nav-link active" data-scroll-target="#noções-básicas-de-plotagem"><strong>Noções básicas de plotagem</strong></a></li>
+  <li><a href="#importar-dados" id="toc-importar-dados" class="nav-link" data-scroll-target="#importar-dados">Importar dados</a></li>
   <li><a href="#gerando-gráficos" id="toc-gerando-gráficos" class="nav-link" data-scroll-target="#gerando-gráficos">Gerando gráficos</a></li>
   </ul>
 </nav>
@@ -281,9 +282,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p><img src="..\images/ggplot2.png" class="img-fluid" width="54"></p>
+<p><img src="..\images/ggplot2.png" class="img-fluid" width="81"></p>
 <p>Aula 4</p>
-<p><a href="https://ggplot2.tidyverse.org/reference/index.html">Referência</a></p>
+<section id="noções-básicas-de-plotagem" class="level2">
+<h2 class="anchored" data-anchor-id="noções-básicas-de-plotagem"><strong>Noções básicas de plotagem</strong></h2>
+<p>Todos os gráficos ggplot2 começam com uma chamada para <code>ggplot()</code>, fornecendo dados padrão e mapeamentos estéticos, especificados por <code>aes()</code>. Em seguida, você adiciona camadas, escalas, coordenadas e facetas com <code>+</code>. Para salvar um gráfico em disco, use <code>ggsave()</code>.</p>
+<dl>
+<dt><code>ggplot()</code></dt>
+<dd>
+<p>Criar um novo ggplot</p>
+</dd>
+<dt><code>aes()</code></dt>
+<dd>
+<p>Construir mapeamentos estéticos</p>
+</dd>
+</dl>
+<p><code>`+`(&lt;gg&gt;) |&gt;</code></p>
+<p>: Adicionar componentes a um gráfico</p>
+<dl>
+<dt><code>ggsave()</code></dt>
+<dd>
+<p>Salve um ggplot (ou outro objeto de grade) com padrões sensatos</p>
+</dd>
+<dt><code>qplot()</code> <code>quickplot()</code></dt>
+<dd>
+<p>plotagem rápida</p>
+</dd>
+</dl>
+<p>Para mais informações sobre o pacote ggplo2, <a href="https://ggplot2.tidyverse.org/reference/index.html">clique aqui</a>.</p>
+</section>
 <section id="importar-dados" class="level2">
 <h2 class="anchored" data-anchor-id="importar-dados">Importar dados</h2>
 <div class="cell" data-hash="aula4_cache/html/unnamed-chunk-1_08dcea617523537d2091277af8c3663c">

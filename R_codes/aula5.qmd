@@ -11,7 +11,43 @@ execute:
 
 Aula 5
 
-## Importa dados
+## **O que é o boxplot?**
+
+O boxplot ou diagrama de caixa é uma ferramenta gráfica que permite visualizar a distribuição e valores discrepantes (outliers) dos dados, fornecendo assim um meio complementar para desenvolver uma perspectiva sobre o caráter dos dados. Além disso, o boxplot também é uma disposição gráfica comparativa.
+
+As medidas de estatísticas descritivas como o mínimo, máximo, primeiro quartil, segundo quartil ou mediana e o terceiro quartil formam o boxplot.
+
+Os quartis são os percentis 25, 50 e 75, representando respectivamente o primeiro, segundo e terceiro quartil. O segundo quartil equivale ao percentil 50, valor em que pelo menos 50% da amostra está acima dele e pelo menos 50% está abaixo. Não é isso a definição de mediana? Sim! O percentil 50 ou segundo quartil equivalem à mediana!
+
+Observe a figura do boxplot. Note que o local onde a haste vertical começa (de baixo para cima) indica o mínimo (excetuando algum possível valor extremo ou outlier) e, onde a haste termina indica o máximo (também excetuando algum possível outlier).
+
+![](/images/boxplot-1-1024x664%20(1).png){width="380"}
+
+O retângulo no meio dessa haste possui três linhas horizontais: a linha de baixo, que é o próprio contorno externo inferior do retângulo, indica o primeiro quartil. A de cima, que também é o próprio contorno externo superior do retângulo, indica o terceiro quartil. A linha interna indica o segundo quartil ou mediana.
+
+Os asteriscos ou pontos que ás vezes aparecem no boxplot indicam que aquelas observações são atípicas, valores discrepantes, extremos ou outliers.
+
+## **Como interpretar o boxplot?**
+
+O boxplot nos fornece uma análise visual da posição, dispersão, simetria, caudas e valores discrepantes (outliers) do conjunto de dados.
+
+-   Posição -- Em relação à posição dos dados, observa-se a linha central do retângulo (a mediana ou segundo quartil).
+
+-   Dispersão -- A dispersão dos dados pode ser representada pelo intervalo interquartílico que é a diferença entre o terceiro quartil e o primeiro quartil (tamanho da caixa), ou ainda pela amplitude que é calculada da seguinte maneira: valor máximo -- valor mínimo. Embora a amplitude seja de fácil entendimento, o intervalo interquartílico é uma estatística mais robusta para medir variabilidade uma vez que não sofre influência de outliers.
+
+-   Simetria -- Um conjunto de dados que tem uma distribuição simétrica, terá a linha da mediana no centro do retângulo. Quando a linha da mediana está próxima ao primeiro quartil, os dados são assimétricos positivos e quando a posição da linha da mediana é próxima ao terceiro quartil, os dados são assimétricos negativos. Vale ressaltar que a mediana é a medida de tendência central mais indicada quando os dados possuem distribuição assimétrica, uma vez que a média aritmética é influenciada pelos valores extremos.
+
+-   Caudas -- As linhas que vão do retângulo até aos outliers podem fornecer o comprimento das caudas da distribuição.
+
+-   Outliers -- Já os outliers indicam possíveis valores discrepantes. No boxplot, as observações são consideradas outliers quando estão abaixo ou acima do limite de detecção de outliers.
+
+O limite de detecção de outliers é construído utilizando o intervalo interquartílico, dado pela distância entre o primeiro e o terceiro quartil. Sendo assim, os limites inferior e superior de detecção de outlier são dados por:
+
+-   Limite Inferior = Primeiro Quartil -- 1,5 \* (Terceiro Quartil -- Primeiro Quartil)
+
+-   Limite Superior = Terceiro Quartil + 1,5 \* (Terceiro Quartil -- Primeiro Quartil)
+
+## Importar dados
 
 ```{r}
 library(tidyverse)

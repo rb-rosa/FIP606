@@ -63,6 +63,8 @@ milho |>
 
 ## Histograms
 
+Utilizado para observar a frequência dos seus dados.
+
 ```{r}
 y <- milho |> 
   ggplot(aes(x = yield))+
