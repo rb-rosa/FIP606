@@ -7,10 +7,13 @@ execute:
   freeze: auto
 
 website:
+  favicon: images/logo.png
   reader-mode: true
   page-navigation: true
   title: "FIP606"
   navbar:
+    pinned: true
+    logo: images/logo.png
     border: false
     background: "White"
     search: true
@@ -125,7 +128,9 @@ website:
     left: "Copyright 2023, Raphael B Rosa"
 format:
   html:
-    theme: default
+    theme: 
+      light: default
+      dark: cyborg
       
     css: styles.css
     toc: true
