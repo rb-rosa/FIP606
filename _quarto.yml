@@ -22,9 +22,9 @@ website:
         file: index.qmd
       - text: "Fundamentos"
         file: R_codes/aula1.qmd
-      - text: "Análise exploratória"
+      - text: "Análise Exploratória"
         file: R_codes/aula4.qmd
-      - text: "Análise de dados"
+      - text: "Análise de Dados"
         menu:
         - text: "Teste T"
           file: R_codes/aula8.qmd
