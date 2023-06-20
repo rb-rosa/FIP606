@@ -3,5 +3,7 @@
 ![](images/unnamed-chunk-3-2.png){style="float: right; padding-left:px" width="221"}
 
 | Este é o [Quarto](https://quarto.org/) website para disponibilizar as aulas em [RStudio](https://posit.co/products/open-source/rstudio/) sobre **Análise e Visualização de Dados em Fitopatologia** da disciplina FIP 606, oferecida no [Programa de Pós-graduação em Fitopatologia](https://www.dfp.ufv.br/) da Universidade Federal de Viçosa pelo professor [Emerson M Del Ponte](https://emersondelponte.netlify.app/). As aulas são códigos comentados e estão organizadas em "Fundamentos", "Análise Exploratória" e "Análise de Dados". O objetivo do website é compartilhar o conhecimento aprendido com outros colegas da área e despertar o interesse daqueles que ainda não conhecem o tema.
+| 
 | **Espero que aproveite!**
+| 
 | Para mais informações sobre ciência de dados no R, [clique aqui](https://r4ds.hadley.nz/).
