@@ -178,6 +178,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Anova</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../R_codes/aula19.html">
+ <span class="dropdown-text">Teste de Scott-Knott</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../R_codes/aula15.html">
  <span class="dropdown-text">Variável categórica</span></a>
   </li>  
@@ -281,6 +285,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#ajustar-o-modelo-usando-aov" id="toc-ajustar-o-modelo-usando-aov" class="nav-link" data-scroll-target="#ajustar-o-modelo-usando-aov">Ajustar o modelo usando <code>aov()</code></a></li>
   <li><a href="#testar-as-premissas" id="toc-testar-as-premissas" class="nav-link" data-scroll-target="#testar-as-premissas">Testar as premissas</a></li>
   <li><a href="#e-quando-não-atende-às-premissas" id="toc-e-quando-não-atende-às-premissas" class="nav-link" data-scroll-target="#e-quando-não-atende-às-premissas">E quando não atende às premissas?</a></li>
+  <li><a href="#teste-de-tukey" id="toc-teste-de-tukey" class="nav-link" data-scroll-target="#teste-de-tukey">Teste de Tukey</a></li>
+  <li><a href="#teste-não-paramétrico" id="toc-teste-não-paramétrico" class="nav-link" data-scroll-target="#teste-não-paramétrico">Teste não paramétrico</a></li>
   <li><a href="#modelo-linear-generalizado" id="toc-modelo-linear-generalizado" class="nav-link" data-scroll-target="#modelo-linear-generalizado">Modelo linear generalizado</a></li>
   </ul>
 </nav>
@@ -429,7 +435,7 @@ W = 0.95101, p-value = 0.07022</code></pre>
 <p><img src="aula10_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-7_ec4b456d7d64c47b5420bd3b8b7e8b6a">
+<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-7_10b2c8a8648ee326f244ecb57c444bd7">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(count <span class="sc">~</span> spray, <span class="at">data =</span> insects)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -488,6 +494,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 Confidence level used: 0.95 
 Intervals are back-transformed from the sqrt scale </code></pre>
 </div>
+</div>
+</section>
+<section id="teste-de-tukey" class="level2">
+<h2 class="anchored" data-anchor-id="teste-de-tukey">Teste de Tukey</h2>
+<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-8_023b651eaeb2e468388d10771778fc77">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparação entre pares</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwpm</span>(aov2_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -504,7 +515,7 @@ Upper triangle: P values   adjust = "tukey"
 Diagonal: [Estimates] (response)   type = "response"
 Lower triangle: Comparisons (estimate)   earlier vs. later</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># com letras</span></span>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># com letras. O teste de Tukey faz uma comparação múltipla (teste de médias comun mais utilizado). Ele apresenta uma ambiguidade, por exemplo, um tratamento com duas letras, pertencendo a dois grupos.</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcompView)</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cld</span>(aov2_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -526,6 +537,11 @@ NOTE: If two or more means share the same grouping symbol,
       then we cannot show them to be different.
       But we also did not show them to be the same. </code></pre>
 </div>
+</div>
+</section>
+<section id="teste-não-paramétrico" class="level2">
+<h2 class="anchored" data-anchor-id="teste-não-paramétrico">Teste não paramétrico</h2>
+<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-9_d863bff7b3d16882412ab5498db59c94">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># teste não paramétrico, se não atendeu as premissas da ANOVA mesmo com transformção dos dados.</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(count <span class="sc">~</span> spray, <span class="at">data =</span> insects)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -578,14 +594,14 @@ C      11.45833      c</code></pre>
 <section id="modelo-linear-generalizado" class="level2">
 <h2 class="anchored" data-anchor-id="modelo-linear-generalizado">Modelo linear generalizado</h2>
 <p>Para publicar artigo, o modelo linear é melhor que transformar os dados originais. É mais elegante usar o glm do que transformar os dados.</p>
-<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-8_c97715addea467f6edb89027fb21e535">
+<div class="cell" data-hash="aula10_cache/html/unnamed-chunk-10_762ccd074e3c13955fe459c4b30e2607">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(count <span class="sc">~</span> spray,</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> insects,</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"identity"</span>))</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># poisson: adequado para dados de contagem. Muito utilizado para nematoide.</span></span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">simulateResiduals</span>(glm1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="aula10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="aula10_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># catPred é o mais importante</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

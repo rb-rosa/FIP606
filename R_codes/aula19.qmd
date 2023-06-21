@@ -1,0 +1,72 @@
+---
+title: "Teste de Scott-Knott"
+format: html
+editor: visual
+
+execute: 
+  freeze: auto
+  cache: true
+  warning: false
+---
+
+Aula 19
+
+A função do pacote "ExpDes.pt" permite fazer o teste de Scott-Knott para um fator, agrupando os tratamentos de acordo com as médias. O teste de Tukey faz uma comparação múltipla (teste de médias comun mais utilizado). Ele apresenta uma ambiguidade de um tratamento com duas letras, pertencendo a dois grupos (aula 10). Por exemplo, o resultado da função "dic" do primeiro Chunk abaixo mostra que o tratamento E pode ser do grupo b ou c.
+
+## Teste de Tukey
+
+Assume-se que o delideamento do experimento "insects" é DIC
+
+```{r}
+insects <- InsectSprays
+library(ExpDes.pt)
+
+insects$count2 <- sqrt(insects$count) # sqrt é para transformar dados de contagem; insects$count2" é do R básico, poderia usar a função "mutate".
+
+# usar o pacote para fazer a ANOVA
+dic(insects$spray,
+    insects$count2,
+    mcomp = "tukey")
+```
+
+A função "ExpDes.pt" faz a ANOVA e o agrupamento do Scott-Knott ("sk"), cada tratamento tem apenas uma letra. O Scott-Knott é utilizado para se mais de 15 ou 20 tratamentos e precisa fazer agrupamento. Quando se tem muitos tratamento, é melhor fazer um agrupametno do que por tratamento. O teste de Scott-Knott é um algorítimo que agrupa o tratamentos de acordo com as médias. Cada tratamento fica em um grupo.
+
+As premissas devem ser atendidas no Scott-Knott, deve-se trabalhar com transformação de dados.
+
+## Scott-Knott 1 Fator
+
+Pesqueisar no help as funções do pacote.
+
+```{r}
+insects <- InsectSprays
+library(ExpDes.pt)
+
+insects$count2 <- sqrt(insects$count)
+
+dic(insects$spray,
+    insects$count2,
+    mcomp = "sk")
+```
+
+Observe que no resultado acima não há tratamento no mesmo grupo. Então, quando você tem um experimento com um número de tratamentos muito grande e quer fazer agrupamento, para verificar quais os tratamentos são iguáis, mas sem abiguidade, use o Scott-Knott.
+
+## 
+
+Teste de Scott-Knott Fatorial
+
+Para fazer o Scott-Knott fatorial, precisa fazer o teste para cada nível de cada fator.
+
+DBC
+
+```{r}
+data(ex5)
+attach(ex5)
+fat2.dbc(trat, genero, bloco, sabor, quali=c(TRUE,TRUE),
+mcomp="sk", fac.names=c("Amostras","Genero"), sigT = 0.05,
+sigF = 0.05, unfold=NULL)
+
+```
+
+## Observação
+
+É preferível fazer as análises exploratórias e verificar as premissas usando os pacotes "performance" e "DHARMa". O pacote "ExpDes.pt" aplica os testes mais o p-valor, mas não dá os gráficos dos pacotes "performance" e "DHARMa". Então, deve-se usar os pacotes verificar se os resíduos da ANOVA e a homocedasticidade das amostras estão bons, depois fazer as transformações e depois aplicar o "ExpDes.pt" com a função "dic" para fazer o Scott-Knott. O pacote "ExpDes.pt" é para fazer só o Scott-Knott.

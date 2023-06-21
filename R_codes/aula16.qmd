@@ -83,6 +83,35 @@ geom_sf(color = "black",
   geom_point(data = sbr, aes(longitude, latitude), alpha = 0.5)
 ```
 
+## Mapas interativos
+
+```{r}
+BRA <- ne_states(country = "Brazil", 
+                    returnclass = "sf")
+MG <- BRA |> filter(name_en == "Minas Gerais")
+
+m <- ggplot(BRA) +
+geom_sf(color = "black",
+          fill = "white") +
+  geom_point(data = sbr, aes(longitude, latitude), alpha = 0.5)
+
+library(plotly)
+  ggplotly(m)# passe o cursor por cima dos pontos no mapa
+  
+#O pacote leaflet cria um mapa interativo como Google Maps utilizando coordenadas geográficas
+lat = -20.7474
+long = -42.883
+dat <- data.frame(lat, long)
+library(leaflet)
+
+dat |> 
+  leaflet() |> 
+  addProviderTiles(providers$Esri.WorldImagery) |> 
+  addMarkers() #tipo de ponto no mapa
+  #addTiles() |>
+  #addCircleMarkers() #ponto tipo círculo no mapa
+```
+
 ## Separar a data em dia, mês e ano
 
 ```{r}

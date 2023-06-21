@@ -64,7 +64,7 @@ mofo2 <- mofo |>
   #cria a variável scl2, que é igual ao logarítimo (log) do número de escleródios (scl)
   #mutate(scl2 = log(scl))
 #cria a variável scl2, que é igual a raíz quadrada (sqrt) do número de escleródios (scl)
-  mutate(scl2 = sqrt(scl))
+  mutate(scl2 = sqrt(scl)) # sqrt é para transformar dados de contagem
 mofo2
 ```
 

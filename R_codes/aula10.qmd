@@ -106,19 +106,33 @@ library(emmeans)
 # type = "response": para que a média não seja transformada, o inverso da raiz
 aov2_means <- emmeans(aov2, ~ spray, type = "response")
 aov2_means
+```
+
+## Teste de Tukey
+
+```{r}
 # comparação entre pares
 pwpm(aov2_means)
-# com letras
+# com letras. O teste de Tukey faz uma comparação múltipla (teste de médias comun mais utilizado). Ele apresenta uma ambiguidade, por exemplo, um tratamento com duas letras, pertencendo a dois grupos.
 library(multcomp)
 library(multcompView)
 cld(aov2_means)
+```
 
+## Teste não paramétrico
+
+```{r}
 # teste não paramétrico, se não atendeu as premissas da ANOVA mesmo com transformção dos dados.
 kruskal.test(count ~ spray, data = insects)
 library(agricolae)
 kruskal(insects$count, insects$spray, console = TRUE)
-
 ```
+
+
+
+
+
+
 
 ## Modelo linear generalizado
 

@@ -179,6 +179,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Anova</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../R_codes/aula19.html">
+ <span class="dropdown-text">Teste de Scott-Knott</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../R_codes/aula15.html">
  <span class="dropdown-text">Variável categórica</span></a>
   </li>  
@@ -283,6 +287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
   <li><a href="#gráfico-de-densidade" id="toc-gráfico-de-densidade" class="nav-link" data-scroll-target="#gráfico-de-densidade">Gráfico de densidade</a></li>
   <li><a href="#formato-largo-para-longo" id="toc-formato-largo-para-longo" class="nav-link" data-scroll-target="#formato-largo-para-longo">Formato largo para longo</a></li>
+  <li><a href="#gráfico-de-interação-em-plotly" id="toc-gráfico-de-interação-em-plotly" class="nav-link" data-scroll-target="#gráfico-de-interação-em-plotly">Gráfico de interação em plotly</a></li>
   </ul>
 </nav>
     </div>
@@ -309,11 +314,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Aula 6</p>
 <section id="scatter-plot" class="level2">
 <h2 class="anchored" data-anchor-id="scatter-plot">Scatter plot</h2>
-<div class="cell" data-hash="aula6_cache/html/unnamed-chunk-1_8f41ee6391cee7e6f551d30351bbdca1">
+<div class="cell" data-hash="aula6_cache/html/unnamed-chunk-1_2c3d043b5bfa7de5fa2a45534d3fb51c">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fungicida <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"fungicida_campo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"fungicida_campo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="aula6_cache/html/unnamed-chunk-2_855b41376ae269653dc8ad3977098717">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fungicida <span class="sc">|&gt;</span> </span>
@@ -396,7 +401,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="formato-largo-para-longo" class="level2">
 <h2 class="anchored" data-anchor-id="formato-largo-para-longo">Formato largo para longo</h2>
-<div class="cell" data-hash="aula6_cache/html/unnamed-chunk-8_ce3ee9f7d82923ce034fdd0c294f90af">
+<div class="cell" data-hash="aula6_cache/html/unnamed-chunk-8_4d7d4a690946180f3a2e67e41169f164">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>insect <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados-diversos.xlsx"</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"mortalidade"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>insect <span class="sc">|&gt;</span> </span>
@@ -410,6 +415,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="aula6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="gráfico-de-interação-em-plotly" class="level2">
+<h2 class="anchored" data-anchor-id="gráfico-de-interação-em-plotly">Gráfico de interação em plotly</h2>
 
 
 </section>

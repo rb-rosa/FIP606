@@ -37,7 +37,23 @@ library(readxl)
 magnesio <- read_excel("dados-diversos.xlsx")
 escala1 <- read_excel("dados-diversos.xlsx", "escala")
 escala2 <- read_excel("dados-diversos.xlsx", 2)
+
 ```
+
+## Tabela com menu
+
+```{r} 
+#| echo: false # não mostra o código, só a saída
+survey <- read_excel("dados-diversos.xlsx", "survey")
+library(DT)
+datatable(survey,
+          extensions = 'Buttons',
+          options = list(
+            dom = 'Bfrtip',
+            buttons = c('copy', 'excel')
+          ))
+```
+
 
 ## De CSV
 

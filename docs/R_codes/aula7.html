@@ -178,6 +178,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Anova</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../R_codes/aula19.html">
+ <span class="dropdown-text">Teste de Scott-Knott</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../R_codes/aula15.html">
  <span class="dropdown-text">Variável categórica</span></a>
   </li>  
@@ -362,13 +366,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  Max.   :4.00   Max.   :13   Max.   :76.00   Max.   :6216   Max.   :3702  </code></pre>
 </div>
 </div>
-<div class="cell" data-hash="aula7_cache/html/unnamed-chunk-6_a72cdd2408f5142c49f0e925e1b84bf0">
+<div class="cell" data-hash="aula7_cache/html/unnamed-chunk-6_96f27a49f32087d2846f822f4c8bc6af">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cria um novo conjunto, entra no mofo, então</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mofo2 <span class="ot">&lt;-</span> mofo <span class="sc">|&gt;</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#cria a variável scl2, que é igual ao logarítimo (log) do número de escleródios (scl)</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(scl2 = log(scl))</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#cria a variável scl2, que é igual a raíz quadrada (sqrt) do número de escleródios (scl)</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">scl2 =</span> <span class="fu">sqrt</span>(scl))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">scl2 =</span> <span class="fu">sqrt</span>(scl)) <span class="co"># sqrt é para transformar dados de contagem</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>mofo2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 6

@@ -32,6 +32,8 @@ website:
           file: R_codes/aula18.qmd
         - text: "Anova"
           file: R_codes/aula10.qmd
+        - text: "Teste de Scott-Knott"
+          file: R_codes/aula19.qmd
         - text: "Variável categórica"
           file: R_codes/aula15.qmd
         - text: "Regressão"
@@ -96,7 +98,10 @@ website:
           text: 2 ou mais fatores
         - href: R_codes/aula12.qmd
           text: DBC
-    - title: "Variável categórica" 
+    - title: "Anova"   
+      contents:
+        - href: R_codes/aula19.qmd
+    - title: "Teste de Scott-Knott" 
       contents:
         - text: Variável categórica
           file:

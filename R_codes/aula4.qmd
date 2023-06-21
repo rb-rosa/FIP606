@@ -27,8 +27,6 @@ Todos os gráficos ggplot2 começam com uma chamada para `ggplot()`, fornecendo 
 
 `` `+`(<gg>) |> ``
 
- 
-
 :   Adicionar componentes a um gráfico
 
 `ggsave()`
@@ -102,3 +100,36 @@ ggsave("figs/myfirstggplot.png",
        width = 4,
        height = 3)
 ```
+
+## Gráfico de interação em plotly
+
+```{r}
+p <- mg2 |> 
+  ggplot(aes(day, sev*100))+
+  geom_line(color = "darkorange")+
+  geom_point(size = 3, 
+             color = "darkorange")+
+  scale_x_continuous(breaks = c(0,7,14,21,28,35,42,49,56,63))+
+  scale_y_continuous(n.breaks = 5, 
+                     limits = c(0,100))+
+    labs(x = "Time (days)", 
+         y = "Severity (%)", 
+         title = "My first ggplot", 
+         subtitle = "It is beatiful", 
+         caption = "Source: FIP 606")+
+#   Configurar o gráfico
+  theme_light()
+ggsave("figs/myfirstggplot.png",
+       bg = "white",
+       width = 4,
+       height = 3)
+
+
+p
+library(plotly)
+  ggplotly(p)
+  
+#plotly sem usar ggplot
+plot_ly(mg2, x = ~day, y = ~sev, type = 'scatter', mode = 'dots')
+```
+
