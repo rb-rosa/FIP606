@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>Aula 19</p>
-<p>A função do pacote “ExpDes.pt” permite fazer o teste de Scott-Knott para um fator, agrupando os tratamentos de acordo com as médias. O teste de Tukey faz uma comparação múltipla (teste de médias comun mais utilizado). Ele apresenta uma ambiguidade de um tratamento com duas letras, pertencendo a dois grupos (aula 10). Por exemplo, o resultado da função “dic” do primeiro Chunk abaixo mostra que o tratamento E pode ser do grupo b ou c.</p>
+<p>O teste de Tukey faz comparação múltipla das médias, ele é o teste comum de médias mais utilizado. O Tukey apresenta uma ambiguidade, quando um tratamento recebe duas letras de grupos diferentes. Por exemplo, o resultado do teste de Tukey abaixo mostra que o tratamento E pode ser do grupo b ou c.</p>
 <section id="teste-de-tukey" class="level2">
 <h2 class="anchored" data-anchor-id="teste-de-tukey">Teste de Tukey</h2>
 <p>Assume-se que o delideamento do experimento “insects” é DIC</p>
@@ -342,7 +342,7 @@ a    A   3.760678
 ------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<p>A função “ExpDes.pt” faz a ANOVA e o agrupamento do Scott-Knott (“sk”), cada tratamento tem apenas uma letra. O Scott-Knott é utilizado para se mais de 15 ou 20 tratamentos e precisa fazer agrupamento. Quando se tem muitos tratamento, é melhor fazer um agrupametno do que por tratamento. O teste de Scott-Knott é um algorítimo que agrupa o tratamentos de acordo com as médias. Cada tratamento fica em um grupo.</p>
+<p>A função do pacote "ExpDes.pt" permite fazer o teste de Scott-Knott para um fator, agrupando os tratamentos de acordo com as médias. A função "dic" do pacote "ExpDes.pt" faz a ANOVA e o agrupamento do Scott-Knott ("sk"), cada tratamento recebe apenas uma letra. O Scott-Knott é utilizado para 15 ou mais de 20 tratamentos. É recomendável fazer o agrupamento dos tratamentos do que analisá-los separadamente. O teste de Scott-Knott é um algorítimo que agrupa os tratamentos de acordo com as médias. Cada tratamento fica em um grupo.</p>
 <p>As premissas devem ser atendidas no Scott-Knott, deve-se trabalhar com transformação de dados.</p>
 </section>
 <section id="scott-knott-1-fator" class="level2">

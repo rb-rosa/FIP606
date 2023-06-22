@@ -86,6 +86,8 @@ geom_sf(color = "black",
 ## Mapas interativos
 
 ```{r}
+sbr <- RustSoybean
+
 BRA <- ne_states(country = "Brazil", 
                     returnclass = "sf")
 MG <- BRA |> filter(name_en == "Minas Gerais")

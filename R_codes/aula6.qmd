@@ -103,3 +103,25 @@ insect |>
 ```
 
 ## Gráfico de interação em plotly
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthhires)
+
+remotes::install_github("emdelponte/r4pde")
+library(r4pde)
+
+sbr <- RustSoybean
+
+BRA <- ne_states(country = "Brazil", 
+                    returnclass = "sf")
+MG <- BRA |> filter(name_en == "Minas Gerais")
+
+m <- ggplot(BRA) +
+geom_sf(color = "black",
+          fill = "white") +
+  geom_point(data = sbr, aes(longitude, latitude), alpha = 0.5)
+
+library(plotly)
+  ggplotly(m)# passe o cursor por cima dos pontos no mapa
+```

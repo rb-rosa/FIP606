@@ -1,3 +1,7 @@
+remotes
+r4pde
+readxl
+DT
 tidyverse
 ggplot2
 tibble
@@ -8,10 +12,4 @@ dplyr
 stringr
 forcats
 lubridate
-readxl
-ggthemes
-patchwork
-rnaturalearth
-rnaturalearthhires
-r4pde
-plotly
+gsheet

@@ -42,8 +42,9 @@ escala2 <- read_excel("dados-diversos.xlsx", 2)
 
 ## Tabela com menu
 
-```{r} 
-#| echo: false # não mostra o código, só a saída
+O comando "\| echo: false" colocado dentro do Chunk não mostra o código na saída
+
+```{r}
 survey <- read_excel("dados-diversos.xlsx", "survey")
 library(DT)
 datatable(survey,
@@ -53,7 +54,6 @@ datatable(survey,
             buttons = c('copy', 'excel')
           ))
 ```
-
 
 ## De CSV
 
