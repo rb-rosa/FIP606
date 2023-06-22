@@ -267,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#teste-de-tukey" id="toc-teste-de-tukey" class="nav-link active" data-scroll-target="#teste-de-tukey">Teste de Tukey</a></li>
   <li><a href="#scott-knott-1-fator" id="toc-scott-knott-1-fator" class="nav-link" data-scroll-target="#scott-knott-1-fator">Scott-Knott 1 Fator</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#scott-knott-fatorial" id="toc-scott-knott-fatorial" class="nav-link" data-scroll-target="#scott-knott-fatorial">Scott-Knott Fatorial</a></li>
   <li><a href="#observação" id="toc-observação" class="nav-link" data-scroll-target="#observação">Observação</a></li>
   </ul>
 </nav>
@@ -342,7 +342,7 @@ a    A   3.760678
 ------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<p>A função do pacote "ExpDes.pt" permite fazer o teste de Scott-Knott para um fator, agrupando os tratamentos de acordo com as médias. A função "dic" do pacote "ExpDes.pt" faz a ANOVA e o agrupamento do Scott-Knott ("sk"), cada tratamento recebe apenas uma letra. O Scott-Knott é utilizado para 15 ou mais de 20 tratamentos. É recomendável fazer o agrupamento dos tratamentos do que analisá-los separadamente. O teste de Scott-Knott é um algorítimo que agrupa os tratamentos de acordo com as médias. Cada tratamento fica em um grupo.</p>
+<p>A função do pacote “ExpDes.pt” permite fazer o teste de Scott-Knott para um fator, agrupando os tratamentos de acordo com as médias. A função “dic” do pacote “ExpDes.pt” faz a ANOVA e o agrupamento do Scott-Knott (“sk”), cada tratamento recebe apenas uma letra. O Scott-Knott é utilizado para 15 ou mais de 20 tratamentos. É recomendável fazer o agrupamento dos tratamentos do que analisá-los separadamente. O teste de Scott-Knott é um algorítimo que agrupa os tratamentos de acordo com as médias. Cada tratamento fica em um grupo.</p>
 <p>As premissas devem ser atendidas no Scott-Knott, deve-se trabalhar com transformação de dados.</p>
 </section>
 <section id="scott-knott-1-fator" class="level2">
@@ -394,9 +394,8 @@ Teste de Scott-Knott
 </div>
 <p>Observe que no resultado acima não há tratamento no mesmo grupo. Então, quando você tem um experimento com um número de tratamentos muito grande e quer fazer agrupamento, para verificar quais os tratamentos são iguáis, mas sem abiguidade, use o Scott-Knott.</p>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<p>Teste de Scott-Knott Fatorial</p>
+<section id="scott-knott-fatorial" class="level2">
+<h2 class="anchored" data-anchor-id="scott-knott-fatorial">Scott-Knott Fatorial</h2>
 <p>Para fazer o Scott-Knott fatorial, precisa fazer o teste para cada nível de cada fator.</p>
 <p>DBC</p>
 <div class="cell" data-hash="aula19_cache/html/unnamed-chunk-3_7c93e352831aeab7c260a3b49191ec3e">
