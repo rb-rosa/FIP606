@@ -32,7 +32,7 @@
     "href": "R_codes/aula1.html#ocultar-código-fonte",
     "title": "Quarto",
     "section": "Ocultar código fonte",
-    "text": "Ocultar código fonte\nUsar echo=FALSE mostra apens a saída de 2 * 2.\n{r, echo=FALSE}\n\n\n[1] 4"
+    "text": "Ocultar código fonte\nUsar {r, echo=FALSE} oculta o código 2 * 2.\n\n\n[1] 4"
   },
   {
     "objectID": "R_codes/aula10.html",

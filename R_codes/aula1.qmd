@@ -28,13 +28,8 @@ Você pode adicionar opções ao código executável como este
 
 ## Ocultar código fonte
 
-Usar echo=FALSE mostra apens a saída de 2 * 2.
-
-{r, echo=FALSE}
+Usar {r, echo=FALSE} oculta o código 2 * 2.
 
 ```{r, echo=FALSE}
 2 * 2
 ```
-
-
-
