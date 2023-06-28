@@ -1,3 +1,7 @@
+AUTOR
+
+Raphael B Rosa
+
 ## **Bem-vindo**
 
 ![](images/unnamed-chunk-3-2.png){style="float: right; padding-left:px" width="221"}
