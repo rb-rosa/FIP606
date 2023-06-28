@@ -25,7 +25,14 @@
     "href": "R_codes/aula1.html#código-em-execução",
     "title": "Quarto",
     "section": "Código em execução",
-    "text": "Código em execução\nAo clicar no botão Renderizar, será gerado um documento que inclui o conteúdo e a saída do código incorporado. Você pode incorporar código como este:\n\n1 + 1\n\n[1] 2\n\n\nVocê pode adicionar opções ao código executável como este\n\n\n[1] 4\n\n\nA opção echo: false desativa a impressão do código (somente a saída é exibida)."
+    "text": "Código em execução\nAo clicar no botão Renderizar, será gerado um documento que inclui o conteúdo e a saída do código incorporado. Você pode incorporar código como este:\n\n1 + 1\n\n[1] 2\n\n\nVocê pode adicionar opções ao código executável como este\n\n2 * 2\n\n[1] 4"
+  },
+  {
+    "objectID": "R_codes/aula1.html#ocultar-código-fonte",
+    "href": "R_codes/aula1.html#ocultar-código-fonte",
+    "title": "Quarto",
+    "section": "Ocultar código fonte",
+    "text": "Ocultar código fonte\nUsar echo=FALSE mostra apens a saída de 2 * 2.\n{r, echo=FALSE}\n\n\n[1] 4"
   },
   {
     "objectID": "R_codes/aula10.html",
@@ -466,7 +473,7 @@
     "href": "R_codes/aula3.html#tabela-com-menu",
     "title": "Importar dados",
     "section": "Tabela com menu",
-    "text": "Tabela com menu\nO comando “| echo: false” colocado dentro do Chunk não mostra o código na saída\n\nsurvey <- read_excel(\"dados-diversos.xlsx\", \"survey\")\nlibrary(DT)\ndatatable(survey,\n          extensions = 'Buttons',\n          options = list(\n            dom = 'Bfrtip',\n            buttons = c('copy', 'excel')\n          ))"
+    "text": "Tabela com menu\n\nsurvey <- read_excel(\"dados-diversos.xlsx\", \"survey\")\nlibrary(DT)\ndatatable(survey,\n          extensions = 'Buttons',\n          options = list(\n            dom = 'Bfrtip',\n            buttons = c('copy', 'excel')\n          ))"
   },
   {
     "objectID": "R_codes/aula3.html#de-csv",

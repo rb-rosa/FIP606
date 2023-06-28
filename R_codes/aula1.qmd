@@ -23,8 +23,18 @@ Ao clicar no botão **Renderizar**, será gerado um documento que inclui o conte
 Você pode adicionar opções ao código executável como este
 
 ```{r}
-#| echo: false
 2 * 2
 ```
 
-A opção echo: false desativa a impressão do código (somente a saída é exibida).
+## Ocultar código fonte
+
+Usar echo=FALSE mostra apens a saída de 2 * 2.
+
+{r, echo=FALSE}
+
+```{r, echo=FALSE}
+2 * 2
+```
+
+
+

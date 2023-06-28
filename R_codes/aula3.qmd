@@ -42,8 +42,6 @@ escala2 <- read_excel("dados-diversos.xlsx", 2)
 
 ## Tabela com menu
 
-O comando "\| echo: false" colocado dentro do Chunk não mostra o código na saída
-
 ```{r}
 survey <- read_excel("dados-diversos.xlsx", "survey")
 library(DT)
