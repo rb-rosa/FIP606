@@ -56,7 +56,7 @@ check_normality(aov1)
 #OK: residuals appear as normally distributed (p = 0.074). Significa que há normalidade. Se o p-valor for < 0.05 indica que os dados não apresentam normalidade.
 library(DHARMa)
 plot(simulateResiduals(aov1))
-#Normalidade a direita e variância homogenea a esquerda
+#Normalidade a esquerda e variância homogenea a direita
 # teste de normalidade
 hist(aov1$residuals)
 qqnorm(aov1$residuals)
@@ -127,12 +127,6 @@ kruskal.test(count ~ spray, data = insects)
 library(agricolae)
 kruskal(insects$count, insects$spray, console = TRUE)
 ```
-
-
-
-
-
-
 
 ## Modelo linear generalizado
 
